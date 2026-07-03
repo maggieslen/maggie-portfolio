@@ -153,6 +153,23 @@ export const apps: AppProject[] = [
 ]
 
 /* ------------------------------------------------------------------ *
+ * ABOUT ME  (headshot + links, shown in the "about me!" folder)
+ * Replace the '#' links with your real URLs.
+ * ------------------------------------------------------------------ */
+export const about = {
+  headshot: 'about/headshot.jpg',
+  name: 'Maggie Slen',
+  intro:
+    'Hi, I’m Maggie! Placeholder intro — a few warm sentences about who you are, what you love creating, and what you’re looking for. Edit me in src/content.ts.',
+  links: [
+    { label: 'Email', href: 'mailto:maggie.slen42@gmail.com', icon: '✉️' },
+    { label: 'LinkedIn', href: '#', icon: '💼' },
+    { label: 'Instagram', href: '#', icon: '📸' },
+    { label: 'Resume', href: '#', icon: '📄' },
+  ],
+}
+
+/* ------------------------------------------------------------------ *
  * DECORATIVE WIDGETS  (not folders — just personality)
  * ------------------------------------------------------------------ */
 export const widgets = {

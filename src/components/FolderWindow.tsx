@@ -1,6 +1,7 @@
 import { folders } from '../content'
 import { ItemTile } from './ItemTile'
 import { PhotosAlbum } from './PhotosAlbum'
+import { AboutMe } from './AboutMe'
 
 /** The contents shown inside an opened folder window. */
 export function FolderWindow({ refId }: { refId: string }) {
@@ -9,6 +10,9 @@ export function FolderWindow({ refId }: { refId: string }) {
 
   // The photos folder gets the iPhone shared-album experience.
   if (folder.id === 'photos') return <PhotosAlbum folder={folder} />
+
+  // The about folder shows the headshot + links.
+  if (folder.id === 'about') return <AboutMe />
 
   return (
     <div className="p-5">
