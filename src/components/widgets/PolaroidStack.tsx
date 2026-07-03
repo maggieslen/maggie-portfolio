@@ -1,34 +1,69 @@
 import { widgets } from '../../content'
+import { asset } from '../../lib/asset'
 
-const LAYOUT = [
-  { rotate: -9, left: 0, top: 18, gradient: 'linear-gradient(160deg,#f6c9a0,#e88fae)' },
-  { rotate: 5, left: 46, top: 0, gradient: 'linear-gradient(160deg,#cfe0f2,#8bbf74)' },
-  { rotate: -3, left: 84, top: 58, gradient: 'linear-gradient(160deg,#e6b7d6,#b39ad8)' },
-]
+/**
+ * Frame geometry: display width + where the transparent "window" sits inside
+ * each uploaded frame PNG (as % of the frame image). The photo is placed in
+ * that window and the frame is layered on top.
+ */
+const FRAMES = {
+  large: {
+    src: 'elements/polaroid-large.png',
+    width: 150,
+    window: { top: '7%', left: '8%', width: '84%', height: '63%' },
+  },
+  small: {
+    src: 'elements/polaroid-small.png',
+    width: 104,
+    window: { top: '7%', left: '13%', width: '74%', height: '66%' },
+  },
+} as const
 
-/** Three overlapping Polaroid-style photos, scattered on the desktop. */
+/** Three overlapping polaroids: your photos dropped into the uploaded frames. */
 export function PolaroidStack() {
   return (
-    <div className="absolute right-[80px] top-[228px] h-[220px] w-[250px] select-none">
-      {LAYOUT.map((p, i) => (
-        <div
-          key={i}
-          className="absolute w-[120px] rounded-[3px] bg-white p-2 pb-6 shadow-lg ring-1 ring-black/5"
-          style={{
-            left: p.left,
-            top: p.top,
-            transform: `rotate(${p.rotate}deg)`,
-          }}
-        >
+    <div className="absolute right-[92px] top-[198px] h-[250px] w-[290px] select-none">
+      {widgets.polaroids.map((p, i) => {
+        const f = FRAMES[p.frame as keyof typeof FRAMES]
+        return (
           <div
-            className="h-[104px] w-full rounded-[2px]"
-            style={{ background: p.gradient }}
-          />
-          <span className="absolute bottom-1 left-0 right-0 text-center text-[10px] italic text-charcoal/60">
-            {widgets.polaroids[i]}
-          </span>
-        </div>
-      ))}
+            key={i}
+            className="absolute"
+            style={{
+              left: p.left,
+              top: p.top,
+              width: f.width,
+              transform: `rotate(${p.rotate}deg)`,
+            }}
+          >
+            <div className="relative">
+              {/* photo, clipped to the frame's transparent window */}
+              <div className="absolute overflow-hidden" style={f.window}>
+                <img
+                  src={asset(p.photo)}
+                  alt={p.caption}
+                  draggable={false}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              {/* frame on top */}
+              <img
+                src={asset(f.src)}
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                className="relative w-full drop-shadow-[0_6px_12px_rgba(0,0,0,0.18)]"
+              />
+              <span
+                className="absolute inset-x-0 text-center text-[9px] italic text-charcoal/70"
+                style={{ bottom: '3%' }}
+              >
+                {p.caption}
+              </span>
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }

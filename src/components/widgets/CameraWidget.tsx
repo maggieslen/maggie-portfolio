@@ -1,16 +1,25 @@
+import { widgets } from '../../content'
+import { asset } from '../../lib/asset'
+
 /**
- * A stylized vintage point-and-shoot camera with a "photo" on its
- * screen. Static for now — later it can cycle through real photos on
- * click. Drop a real image in and swap the gradient for an <img>.
+ * Vintage point-and-shoot camera. The BODY is drawn in CSS for now — the
+ * uploaded "digital-camera.png" was a duplicate of the iPod, so once you
+ * upload a real camera graphic we'll swap the whole thing for an <img>.
+ * The photo below shows on the camera's "screen".
  */
 export function CameraWidget() {
   return (
     <div className="absolute left-8 top-11 w-[330px] select-none">
       <div className="rounded-[18px] bg-gradient-to-b from-gray-200 to-gray-400 p-3 shadow-xl ring-1 ring-black/10">
         <div className="flex gap-3">
-          {/* screen / photo */}
+          {/* screen — your real photo */}
           <div className="relative h-[168px] flex-1 overflow-hidden rounded-md ring-2 ring-gray-500/40">
-            <div className="h-full w-full bg-[linear-gradient(160deg,#cfe0f2_0%,#f6c9a0_45%,#e88fae_70%,#8bbf74_100%)]" />
+            <img
+              src={asset(widgets.camera.screenPhoto)}
+              alt="Camera screen"
+              draggable={false}
+              className="h-full w-full object-cover"
+            />
             <span className="absolute left-2 top-1.5 text-[10px] font-semibold tracking-wide text-white/90 drop-shadow">
               ● REC
             </span>

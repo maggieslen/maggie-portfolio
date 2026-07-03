@@ -26,12 +26,12 @@ export const folders: Folder[] = [
     position: { top: 70, right: 150 },
     accent: '#e8a7bd',
     items: [
-      { id: 'p1', title: 'Poppy field', kind: 'image', description: 'Placeholder — swap in a favorite photo.' },
-      { id: 'p2', title: 'Golden hour', kind: 'image', description: 'Placeholder photo.' },
-      { id: 'p3', title: 'City walk', kind: 'image', description: 'Placeholder photo.' },
-      { id: 'p4', title: 'Coffee run', kind: 'image', description: 'Placeholder photo.' },
-      { id: 'p5', title: 'Sunday flowers', kind: 'image', description: 'Placeholder photo.' },
-      { id: 'p6', title: 'Road trip', kind: 'image', description: 'Placeholder photo.' },
+      { id: 'p1', title: 'Poppy field', kind: 'image', image: 'photos/field.jpg' },
+      { id: 'p2', title: 'Beach day', kind: 'image', image: 'photos/beach.jpg' },
+      { id: 'p3', title: 'Spin', kind: 'image', image: 'photos/spin.jpg' },
+      { id: 'p4', title: 'Campus', kind: 'image', image: 'photos/purdue.jpg' },
+      { id: 'p5', title: 'Add your own', kind: 'image', description: 'Drop a file in public/photos and set its name here.' },
+      { id: 'p6', title: 'Add your own', kind: 'image', description: 'Placeholder photo.' },
     ],
   },
   {
@@ -128,14 +128,32 @@ export const apps: AppProject[] = [
  * DECORATIVE WIDGETS  (not folders — just personality)
  * ------------------------------------------------------------------ */
 export const widgets = {
-  postcard: {
-    lines: ['YOU ARE', 'ALL KINDS', 'OF', 'WONDERFUL'],
+  // NOTE: the camera BODY is still drawn in CSS — the uploaded
+  // "digital-camera.png" turned out to be a duplicate of the iPod image.
+  // Upload a real camera graphic and we'll swap it in. Meanwhile this
+  // photo shows on the camera's screen.
+  camera: {
+    screenPhoto: 'photos/field.jpg',
   },
+  // Uploaded postcard image (a full rectangular card).
+  postcard: {
+    image: 'elements/postcard.png',
+  },
+  // Uploaded iPod image + what shows on its little screen.
   ipod: {
+    image: 'elements/ipod.png',
     track: 'Someday, Someday',
     artist: 'BANNERS',
     album: 'Where the Shadow Ends',
   },
-  /** Captions for the little camera "screen" and polaroid stack. */
-  polaroids: ['sunset', 'field day', 'the trip'],
+  // Dusty-rose folder icon (uploaded) used across the desktop.
+  folderIcon: 'elements/folder.png',
+  // Three scattered polaroids — each drops a photo into an uploaded frame.
+  // frame: 'large' (landscape) or 'small' (portrait). left/top position the
+  // card within the stack; rotate tilts it.
+  polaroids: [
+    { photo: 'photos/spin.jpg', frame: 'large', caption: 'field day', rotate: -9, left: 0, top: 8 },
+    { photo: 'photos/beach.jpg', frame: 'small', caption: 'the beach', rotate: 6, left: 82, top: 0 },
+    { photo: 'photos/purdue.jpg', frame: 'large', caption: 'purdue', rotate: -4, left: 40, top: 70 },
+  ],
 }

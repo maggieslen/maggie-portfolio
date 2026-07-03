@@ -1,45 +1,31 @@
 import { widgets } from '../../content'
+import { asset } from '../../lib/asset'
 
 /**
- * An iPod-nano-style music player. Static for now — the play button
- * becomes an interactive play/pause toggle in the polish step.
+ * The iPod-nano-style music player (uploaded image) with a small
+ * "now playing" overlay on its screen. The screen rectangle is positioned
+ * as a percentage of the image, so it stays aligned if the widget resizes.
  */
 export function IpodWidget() {
+  const { image, track, artist } = widgets.ipod
   return (
-    <div className="absolute bottom-24 right-8 w-[300px] select-none">
-      <div className="rounded-[22px] bg-gradient-to-b from-gray-100 to-gray-300 p-4 shadow-xl ring-1 ring-black/10">
-        <div className="flex gap-4">
-          {/* now-playing + transport */}
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2.5 rounded-lg bg-[#efe7dc] p-2 ring-1 ring-black/5">
-              <div className="h-14 w-14 shrink-0 rounded bg-[linear-gradient(135deg,#2b3a67,#7a5c8e_55%,#c98aa0)] ring-1 ring-black/10" />
-              <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold text-charcoal">
-                  {widgets.ipod.track}
-                </p>
-                <p className="truncate text-[10px] text-charcoal/60">
-                  {widgets.ipod.artist}
-                </p>
-                <p className="truncate text-[9px] text-charcoal/40">
-                  {widgets.ipod.album}
-                </p>
-              </div>
-            </div>
-            <div className="mt-2.5 flex items-center justify-center gap-6 text-[15px] text-charcoal/70">
-              <span>⏮</span>
-              <span className="text-[17px]">▶︎</span>
-              <span>⏭</span>
-            </div>
-          </div>
-
-          {/* click wheel */}
-          <div className="flex w-[92px] shrink-0 flex-col items-center">
-            <span className="mb-2 text-[10px] font-semibold tracking-[0.2em] text-charcoal/50">
-              MUSIC
-            </span>
-            <div className="relative h-[92px] w-[92px] rounded-full bg-gradient-to-b from-white to-gray-200 shadow-inner ring-1 ring-black/10">
-              <div className="absolute inset-[30px] rounded-full bg-gray-100 ring-1 ring-black/10" />
-            </div>
+    <div className="absolute bottom-24 right-8 w-[250px] select-none">
+      <div className="relative">
+        <img
+          src={asset(image)}
+          alt="Music player"
+          draggable={false}
+          className="w-full drop-shadow-[0_10px_24px_rgba(0,0,0,0.18)]"
+        />
+        {/* now-playing overlay, sitting on the iPod screen */}
+        <div
+          className="absolute flex items-center gap-1.5 overflow-hidden px-1"
+          style={{ left: '9%', top: '34%', width: '42%', height: '30%' }}
+        >
+          <div className="h-[74%] aspect-square shrink-0 rounded-[2px] bg-[linear-gradient(135deg,#26305f,#7a5c8e_55%,#c98aa0)] ring-1 ring-black/10" />
+          <div className="min-w-0 leading-tight">
+            <p className="truncate text-[8px] font-bold text-charcoal">{artist}</p>
+            <p className="truncate text-[7px] text-charcoal/70">{track}</p>
           </div>
         </div>
       </div>
