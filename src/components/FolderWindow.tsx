@@ -1,10 +1,14 @@
 import { folders } from '../content'
 import { ItemTile } from './ItemTile'
+import { PhotosAlbum } from './PhotosAlbum'
 
 /** The contents shown inside an opened folder window. */
 export function FolderWindow({ refId }: { refId: string }) {
   const folder = folders.find((f) => f.id === refId)
   if (!folder) return null
+
+  // The photos folder gets the iPhone shared-album experience.
+  if (folder.id === 'photos') return <PhotosAlbum folder={folder} />
 
   return (
     <div className="p-5">

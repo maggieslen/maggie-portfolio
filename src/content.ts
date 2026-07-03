@@ -25,13 +25,17 @@ export const folders: Folder[] = [
     label: 'photos!',
     position: { top: 70, right: 150 },
     accent: '#e7c4cb',
+    // 📸 Your photography. `description` is the caption shown in the album —
+    // edit these freely. Drop new files in public/photos and add a row.
     items: [
-      { id: 'p1', title: 'Poppy field', kind: 'image', image: 'photos/field.jpg' },
-      { id: 'p2', title: 'Beach day', kind: 'image', image: 'photos/beach.jpg' },
-      { id: 'p3', title: 'Spin', kind: 'image', image: 'photos/spin.jpg' },
-      { id: 'p4', title: 'Campus', kind: 'image', image: 'photos/purdue.jpg' },
-      { id: 'p5', title: 'Add your own', kind: 'image', description: 'Drop a file in public/photos and set its name here.' },
-      { id: 'p6', title: 'Add your own', kind: 'image', description: 'Placeholder photo.' },
+      { id: 'ph-italy', title: 'Italy', kind: 'image', image: 'photos/italy-flower-stand.jpg', description: 'flower stand in italy 🌸' },
+      { id: 'ph-cali', title: 'California', kind: 'image', image: 'photos/california-beach.jpg', description: 'california coast ☀️' },
+      { id: 'ph-fountain', title: 'Engineering Fountain', kind: 'image', image: 'photos/purdue-engineering-fountain.jpg', description: 'engineering fountain 💦' },
+      { id: 'ph-hovde', title: 'Hovde Hall', kind: 'image', image: 'photos/purdue-hovde-hall.jpg', description: 'hovde hall at golden hour' },
+      { id: 'ph-walking', title: 'Erica & Ian', kind: 'image', image: 'photos/erica-ian-walking.jpg', description: 'erica & ian 🤍' },
+      { id: 'ph-whisper', title: 'A Quiet Moment', kind: 'image', image: 'photos/erica-ian-whisper.jpg', description: 'a quiet moment' },
+      { id: 'ph-semi', title: 'DU Semi', kind: 'image', image: 'photos/du-semi.jpg', description: 'du semi-formal' },
+      { id: 'ph-boys', title: 'The Boys', kind: 'image', image: 'photos/boys-couch.jpg', description: 'the boys 🛋️' },
     ],
   },
   {
