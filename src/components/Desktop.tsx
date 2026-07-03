@@ -7,6 +7,7 @@ import { Dock } from './Dock'
 import { Window } from './Window'
 import { FolderWindow } from './FolderWindow'
 import { AppWindow } from './AppWindow'
+import { MusicWindow } from './MusicWindow'
 import { CameraWidget } from './widgets/CameraWidget'
 import { PostcardWidget } from './widgets/PostcardWidget'
 import { PolaroidStack } from './widgets/PolaroidStack'
@@ -38,10 +39,12 @@ export function Desktop() {
             key={win.id}
             win={win}
             index={index}
-            fullscreen={win.kind === 'app'}
+            fullscreen={win.kind === 'app' || win.kind === 'music'}
           >
             {win.kind === 'folder' ? (
               <FolderWindow refId={win.refId} />
+            ) : win.kind === 'music' ? (
+              <MusicWindow />
             ) : (
               <AppWindow refId={win.refId} />
             )}

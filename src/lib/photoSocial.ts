@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import {
+  addDoc,
+  collection,
+  doc,
+  increment,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+  setDoc,
+} from 'firebase/firestore'
+import { db } from './firebase'
 
 /* ------------------------------------------------------------------ *
- * Likes + comments for the photos album.
+ * Shared likes + comments for the photos album (Firebase Firestore).
  *
- * For now this saves to the visitor's own browser (localStorage) so the
- * feature works immediately. It's written behind a small hook so we can
- * later swap the storage for a shared backend (e.g. Firebase) WITHOUT
- * touching the album UI — only this file changes.
+ *   photos/{photoId}                     -> { likes: number }
+ *   photos/{photoId}/comments/{id}       -> { name, text, ts }
+ *
+ * Likes + comments are shared across ALL visitors (real-time). Whether
+ * THIS device has liked a photo is remembered locally so the heart can
+ * toggle, but the count itself lives in Firestore.
  * ------------------------------------------------------------------ */
 
 export interface Comment {
@@ -16,66 +30,95 @@ export interface Comment {
   ts: number
 }
 
-interface PhotoState {
-  likes: number
-  liked: boolean
-  comments: Comment[]
-}
+const LIKED_KEY = 'maggie-liked-v1'
 
-const KEY = 'maggie-photo-social-v1'
-type Store = Record<string, PhotoState>
-
-function readStore(): Store {
+function readLiked(): Record<string, boolean> {
   try {
-    return JSON.parse(localStorage.getItem(KEY) || '{}') as Store
+    return JSON.parse(localStorage.getItem(LIKED_KEY) || '{}')
   } catch {
     return {}
   }
 }
 
-function readOne(id: string): PhotoState {
-  return readStore()[id] ?? { likes: 0, liked: false, comments: [] }
+function writeLiked(map: Record<string, boolean>) {
+  localStorage.setItem(LIKED_KEY, JSON.stringify(map))
 }
 
-function writeOne(id: string, state: PhotoState) {
-  const store = readStore()
-  store[id] = state
-  localStorage.setItem(KEY, JSON.stringify(store))
-}
-
-function newId(): string {
-  return (crypto.randomUUID?.() ?? String(Math.random())).slice(0, 12)
-}
-
-/** Likes + comments for a single photo. */
+/** Live likes + comments for a single photo. */
 export function usePhotoSocial(id: string) {
-  const [state, setState] = useState<PhotoState>(() => readOne(id))
+  const [likes, setLikes] = useState(0)
+  const [liked, setLiked] = useState<boolean>(() => !!readLiked()[id])
+  const [comments, setComments] = useState<Comment[]>([])
 
-  function toggleLike() {
-    setState((s) => {
-      const next: PhotoState = {
-        ...s,
-        liked: !s.liked,
-        likes: Math.max(0, s.likes + (s.liked ? -1 : 1)),
-      }
-      writeOne(id, next)
-      return next
-    })
+  useEffect(() => {
+    const photoRef = doc(db, 'photos', id)
+    const unsubLikes = onSnapshot(
+      photoRef,
+      (snap) => setLikes(Math.max(0, (snap.data()?.likes as number) ?? 0)),
+      () => setLikes(0),
+    )
+
+    const commentsQuery = query(
+      collection(db, 'photos', id, 'comments'),
+      orderBy('ts', 'asc'),
+    )
+    const unsubComments = onSnapshot(
+      commentsQuery,
+      (snap) =>
+        setComments(
+          snap.docs.map((d) => {
+            const data = d.data()
+            return {
+              id: d.id,
+              name: (data.name as string) ?? 'anonymous',
+              text: (data.text as string) ?? '',
+              ts: data.ts?.toMillis?.() ?? Date.now(),
+            }
+          }),
+        ),
+      () => setComments([]),
+    )
+
+    return () => {
+      unsubLikes()
+      unsubComments()
+    }
+  }, [id])
+
+  async function toggleLike() {
+    const nowLiked = !liked
+    // optimistic local update
+    setLiked(nowLiked)
+    setLikes((n) => Math.max(0, n + (nowLiked ? 1 : -1)))
+    const map = readLiked()
+    map[id] = nowLiked
+    writeLiked(map)
+    try {
+      await setDoc(
+        doc(db, 'photos', id),
+        { likes: increment(nowLiked ? 1 : -1) },
+        { merge: true },
+      )
+    } catch {
+      // revert on failure
+      setLiked(!nowLiked)
+      setLikes((n) => Math.max(0, n + (nowLiked ? -1 : 1)))
+      map[id] = !nowLiked
+      writeLiked(map)
+    }
   }
 
-  function addComment(name: string, text: string) {
-    setState((s) => {
-      const next: PhotoState = {
-        ...s,
-        comments: [
-          ...s.comments,
-          { id: newId(), name: name || 'anonymous', text, ts: Date.now() },
-        ],
-      }
-      writeOne(id, next)
-      return next
-    })
+  async function addComment(name: string, text: string) {
+    try {
+      await addDoc(collection(db, 'photos', id, 'comments'), {
+        name: name || 'anonymous',
+        text,
+        ts: serverTimestamp(),
+      })
+    } catch (e) {
+      console.warn('Comment not saved (are the Firestore rules published?)', e)
+    }
   }
 
-  return { ...state, toggleLike, addComment }
+  return { likes, liked, comments, toggleLike, addComment }
 }

@@ -162,11 +162,24 @@ export const about = {
   intro:
     'Hi, I’m Maggie! Placeholder intro — a few warm sentences about who you are, what you love creating, and what you’re looking for. Edit me in src/content.ts.',
   links: [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/maggie-slen', icon: '💼' },
+    { label: 'Instagram', href: 'https://www.instagram.com/maggie.slen/', icon: '📸' },
     { label: 'Email', href: 'mailto:maggie.slen42@gmail.com', icon: '✉️' },
-    { label: 'LinkedIn', href: '#', icon: '💼' },
-    { label: 'Instagram', href: '#', icon: '📸' },
+    { label: 'Purdue Email', href: 'mailto:mslen@purdue.edu', icon: '🎓' },
     { label: 'Resume', href: '#', icon: '📄' },
   ],
+}
+
+/* ------------------------------------------------------------------ *
+ * MUSIC  (the iPod opens a player that embeds this Spotify playlist)
+ * ------------------------------------------------------------------ */
+export const music = {
+  title: "Maggie's Playlist",
+  subtitle: 'a few on repeat 🎧',
+  // Spotify playlist embed. To change it: open your playlist → Share → Copy
+  // link, then keep the id after "/playlist/" in this URL.
+  spotifyEmbed:
+    'https://open.spotify.com/embed/playlist/6TasZcy6HRijqnZA0DcR0k?utm_source=generator',
 }
 
 /* ------------------------------------------------------------------ *
