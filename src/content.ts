@@ -174,16 +174,13 @@ export const about = {
  * MUSIC  (the iPod opens a player that embeds this Spotify playlist)
  * ------------------------------------------------------------------ */
 export const music = {
-  // Matches the real Spotify playlist name.
+  // Matches the real playlist name (also shown in the sidebar).
   title: 'borrow my headphones 🎧',
-  subtitle: 'curated by Maggie Slen',
-  // Playlist cover. Drop an image in public/elements and set its path here
-  // (e.g. 'elements/playlist-cover.png'). Leave '' to show a gradient.
-  cover: '',
-  // Spotify playlist embed. To change it: open your playlist → Share → Copy
-  // link, then keep the id after "/playlist/" in this URL.
-  spotifyEmbed:
-    'https://open.spotify.com/embed/playlist/6TasZcy6HRijqnZA0DcR0k?utm_source=generator',
+  // Apple Music playlist embed — the single source of the cover art, title,
+  // and playback (Apple resolves by the "pl...." id; the name in the URL is
+  // cosmetic). To change it, grab a new share link from music.apple.com.
+  embed:
+    'https://embed.music.apple.com/us/playlist/borrow-my-headphones/pl.u-PDb44lgFLNEY53r',
 }
 
 /* ------------------------------------------------------------------ *
