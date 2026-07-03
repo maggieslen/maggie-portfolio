@@ -24,7 +24,7 @@ export const folders: Folder[] = [
     id: 'photos',
     label: 'photos!',
     position: { top: 70, right: 150 },
-    accent: '#e8a7bd',
+    accent: '#e7c4cb',
     items: [
       { id: 'p1', title: 'Poppy field', kind: 'image', image: 'photos/field.jpg' },
       { id: 'p2', title: 'Beach day', kind: 'image', image: 'photos/beach.jpg' },
@@ -38,7 +38,7 @@ export const folders: Folder[] = [
     id: 'ugc',
     label: 'ugc content',
     position: { top: 120, right: 30 },
-    accent: '#d79ac0',
+    accent: '#d99aa6',
     items: [
       { id: 'u1', title: 'Skincare reel', kind: 'link', description: 'Short-form video — add your link.', href: '#' },
       { id: 'u2', title: 'GRWM', kind: 'link', description: 'Get-ready-with-me collab.', href: '#' },
@@ -50,7 +50,7 @@ export const folders: Folder[] = [
     id: 'about',
     label: 'about me!',
     position: { top: 405, left: 300 },
-    accent: '#e6a9b4',
+    accent: '#c8d8e6',
     items: [
       {
         id: 'a1',
@@ -74,7 +74,7 @@ export const folders: Folder[] = [
     id: 'projects',
     label: 'personal projects',
     position: { top: 520, left: 365 },
-    accent: '#d59ac2',
+    accent: '#aebca2',
     items: [
       { id: 'pr1', title: 'Side project one', kind: 'note', description: 'Short write-up placeholder. What it is + what you learned.' },
       { id: 'pr2', title: 'Side project two', kind: 'note', description: 'Another small project.' },
@@ -91,36 +91,60 @@ export const folders: Folder[] = [
  * ------------------------------------------------------------------ */
 export const apps: AppProject[] = [
   {
-    id: 'app-portfolio',
-    name: 'This Portfolio',
-    icon: '🖥️',
-    tagline: 'A macOS desktop, in the browser',
-    accent: '#cd8f9f',
+    id: 'northeast-dance',
+    name: 'Northeast School of Dance',
+    icon: 'app-icons/northeast-school-of-dance.png',
+    tagline: 'Dance',
+    accent: '#e7c4cb',
     description:
-      'Placeholder case study. The very site you’re looking at — built with React, Vite, Tailwind, and Framer Motion. Replace this with a real flagship project write-up.',
-    codeUrl: 'https://github.com/maggieslen/maggie-portfolio',
+      'Placeholder — add your role (dancer / instructor), what you did, highlights, and a link to the studio.',
+    liveUrl: '#',
   },
   {
-    id: 'app-two',
-    name: 'Flagship Two',
-    icon: '🌷',
-    tagline: 'Your standout project',
-    accent: '#e29ec2',
+    id: 'letters-of-love',
+    name: 'Letters of Love',
+    icon: 'app-icons/letters-of-love.png',
+    tagline: 'Nonprofit',
+    accent: '#d99aa6',
     description:
-      'Placeholder. Describe the problem, your role, the outcome, and add live + code links.',
+      'Placeholder — describe your involvement and impact, and link the organization.',
     liveUrl: '#',
-    codeUrl: '#',
   },
   {
-    id: 'app-three',
-    name: 'Flagship Three',
-    icon: '✨',
-    tagline: 'Another highlight',
-    accent: '#c79ad8',
-    description:
-      'Placeholder. A short, punchy summary with a screenshot or embedded demo goes here.',
+    id: 'dream-girl',
+    name: 'Dream Girl',
+    icon: 'app-icons/dream-girl.png',
+    tagline: 'Brand',
+    accent: '#c8d8e6',
+    description: 'Placeholder — your role / collaboration details go here.',
     liveUrl: '#',
-    codeUrl: '#',
+  },
+  {
+    id: 'dippin-daisys',
+    name: "Dippin' Daisy's",
+    icon: 'app-icons/dippin-daisys.png',
+    tagline: 'Brand',
+    accent: '#cbb58a',
+    description: 'Placeholder — your role / collaboration details go here.',
+    liveUrl: '#',
+  },
+  {
+    id: 'purdue-pharmacy',
+    name: 'Purdue Pre-Pharmacy Club',
+    icon: 'app-icons/purdue-pre-pharmacy-club.png',
+    tagline: 'Club',
+    accent: '#aebca2',
+    description: 'Placeholder — your role and what you did in the club.',
+    liveUrl: '#',
+  },
+  {
+    id: 'purdue',
+    name: 'Purdue University',
+    icon: 'app-icons/Purdue.png',
+    tagline: 'University',
+    accent: '#cbb58a',
+    description: 'Placeholder — your studies, major, and activities at Purdue.',
+    liveUrl: '#',
   },
 ]
 
@@ -128,32 +152,24 @@ export const apps: AppProject[] = [
  * DECORATIVE WIDGETS  (not folders — just personality)
  * ------------------------------------------------------------------ */
 export const widgets = {
-  // NOTE: the camera BODY is still drawn in CSS — the uploaded
-  // "digital-camera.png" turned out to be a duplicate of the iPod image.
-  // Upload a real camera graphic and we'll swap it in. Meanwhile this
-  // photo shows on the camera's screen.
+  // Realistic camera cropped from the mockup — a photo of a Sony
+  // point-and-shoot with a real photo on its screen.
   camera: {
-    screenPhoto: 'photos/field.jpg',
+    image: 'elements/camera.png',
   },
-  // Uploaded postcard image (a full rectangular card).
+  // "You are so loved" hand-drawn card (cropped from the uploaded art).
   postcard: {
-    image: 'elements/postcard.png',
+    image: 'elements/you-are-so-loved.jpg',
   },
-  // Uploaded iPod image + what shows on its little screen.
+  // iPod image + what shows on its little screen.
   ipod: {
     image: 'elements/ipod.png',
     track: 'Someday, Someday',
     artist: 'BANNERS',
     album: 'Where the Shadow Ends',
   },
-  // Dusty-rose folder icon (uploaded) used across the desktop.
+  // Dusty-rose folder icon used across the desktop.
   folderIcon: 'elements/folder.png',
-  // Three scattered polaroids — each drops a photo into an uploaded frame.
-  // frame: 'large' (landscape) or 'small' (portrait). left/top position the
-  // card within the stack; rotate tilts it.
-  polaroids: [
-    { photo: 'photos/spin.jpg', frame: 'large', caption: 'field day', rotate: -9, left: 0, top: 8 },
-    { photo: 'photos/beach.jpg', frame: 'small', caption: 'the beach', rotate: 6, left: 82, top: 0 },
-    { photo: 'photos/purdue.jpg', frame: 'large', caption: 'purdue', rotate: -4, left: 40, top: 70 },
-  ],
+  // Pre-arranged cluster of polaroids (a single transparent image).
+  photoCluster: 'elements/polaroid-cluster.png',
 }

@@ -6,6 +6,7 @@ import { FolderIcon } from './FolderIcon'
 import { Dock } from './Dock'
 import { Window } from './Window'
 import { FolderWindow } from './FolderWindow'
+import { AppWindow } from './AppWindow'
 import { CameraWidget } from './widgets/CameraWidget'
 import { PostcardWidget } from './widgets/PostcardWidget'
 import { PolaroidStack } from './widgets/PolaroidStack'
@@ -33,8 +34,17 @@ export function Desktop() {
       {/* open windows (folders now; apps added with the dock) */}
       <AnimatePresence>
         {windows.map((win, index) => (
-          <Window key={win.id} win={win} index={index}>
-            {win.kind === 'folder' ? <FolderWindow refId={win.refId} /> : null}
+          <Window
+            key={win.id}
+            win={win}
+            index={index}
+            size={win.kind === 'app' ? { width: 560, height: 430 } : undefined}
+          >
+            {win.kind === 'folder' ? (
+              <FolderWindow refId={win.refId} />
+            ) : (
+              <AppWindow refId={win.refId} />
+            )}
           </Window>
         ))}
       </AnimatePresence>

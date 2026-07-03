@@ -1,19 +1,33 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ *
- * Design tokens — the pastel / Y2K-scrapbook palette.
- * These become Tailwind utilities automatically, e.g. `bg-blush`,
- * `text-charcoal`, `bg-mauve`, etc. Tweak a value here to re-skin
- * the whole site.
+ * Maggie's brand system.
+ *  - Colors sampled from the brand board (design/mockup + inspo).
+ *  - These become Tailwind utilities automatically, e.g. `bg-rose-petal`,
+ *    `text-charcoal`, `bg-warm-ivory`, `font-heading`.
  * ------------------------------------------------------------------ */
 @theme {
-  --color-blush: #f4d4dc;          /* desktop wallpaper */
-  --color-blush-soft: #f7dfe6;     /* lighter pink for panels */
-  --color-cream: #f3eee9;          /* menu bar / window chrome */
-  --color-mauve: #cd8f9f;          /* folder front */
-  --color-mauve-dark: #bd7d8f;     /* folder back / tab */
-  --color-charcoal: #3a3336;       /* label + body text */
-  --color-dock: #f6cdd8;           /* dock bar tint */
+  /* brand palette */
+  --color-rose-petal: #e7c4cb;
+  --color-meadow-sage: #aebca2;
+  --color-warm-ivory: #f7f3ee;
+  --color-ballet-slipper: #f1d9dd;
+  --color-champagne-cream: #e8dccb;
+  --color-dusty-sky: #c8d8e6;
+  --color-garden-bloom: #d99aa6;
+  --color-antique-gold: #cbb58a;
+
+  /* desktop + UI tokens (aligned to the brand) */
+  --color-blush: #f3dce1; /* desktop wallpaper — matches the mockup exactly */
+  --color-blush-soft: #f7e7ea; /* soft panel pink */
+  --color-cream: #f7f3ee; /* warm-ivory chrome (menu bar / window bars) */
+  --color-charcoal: #3a3336; /* body + label text */
+  --color-dock: #f4cdd6; /* dock tint */
+
+  /* fonts */
+  --font-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
+  --font-heading: "Prata", Georgia, "Times New Roman", serif;
 }
 
 html,
@@ -25,8 +39,7 @@ body,
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow: hidden; /* the "desktop" fills the screen; windows scroll internally */
