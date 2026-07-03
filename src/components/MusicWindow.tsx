@@ -1,4 +1,5 @@
 import { music } from '../content'
+import { asset } from '../lib/asset'
 
 /** Apple-Music-style player that embeds Maggie's real Spotify playlist. */
 export function MusicWindow() {
@@ -26,7 +27,16 @@ export function MusicWindow() {
       <div className="mac-scroll flex-1 overflow-auto">
         <div className="mx-auto max-w-3xl p-6">
           <div className="flex items-end gap-4">
-            <div className="h-28 w-28 shrink-0 rounded-xl bg-[linear-gradient(135deg,#e7c4cb,#c8d8e6_55%,#cbb58a)] shadow-md ring-1 ring-black/10" />
+            {music.cover ? (
+              <img
+                src={asset(music.cover)}
+                alt={music.title}
+                draggable={false}
+                className="h-28 w-28 shrink-0 rounded-xl object-cover shadow-md ring-1 ring-black/10"
+              />
+            ) : (
+              <div className="h-28 w-28 shrink-0 rounded-xl bg-[linear-gradient(135deg,#e7c4cb,#c8d8e6_55%,#cbb58a)] shadow-md ring-1 ring-black/10" />
+            )}
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-wide text-charcoal/40">
                 Playlist

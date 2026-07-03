@@ -174,8 +174,12 @@ export const about = {
  * MUSIC  (the iPod opens a player that embeds this Spotify playlist)
  * ------------------------------------------------------------------ */
 export const music = {
-  title: "Maggie's Playlist",
-  subtitle: 'a few on repeat 🎧',
+  // Matches the real Spotify playlist name.
+  title: 'borrow my headphones 🎧',
+  subtitle: 'curated by Maggie Slen',
+  // Playlist cover. Drop an image in public/elements and set its path here
+  // (e.g. 'elements/playlist-cover.png'). Leave '' to show a gradient.
+  cover: '',
   // Spotify playlist embed. To change it: open your playlist → Share → Copy
   // link, then keep the id after "/playlist/" in this URL.
   spotifyEmbed:
