@@ -2,18 +2,17 @@ import { widgets } from '../../content'
 import { asset } from '../../lib/asset'
 
 /**
- * Vintage point-and-shoot camera — a realistic photo cropped from the
- * mockup (Sony body with a real photo on its screen). Its pink margins
- * blend into the matching desktop background, so no CSS shadow is needed.
+ * Vintage Sony point-and-shoot (transparent PNG, with a real photo on
+ * its screen). Sits in the top-left of the desktop.
  */
 export function CameraWidget() {
   return (
-    <div className="absolute left-7 top-11 w-[368px] select-none">
+    <div className="absolute left-7 top-12 w-[360px] select-none">
       <img
         src={asset(widgets.camera.image)}
         alt="Camera showing a photo"
         draggable={false}
-        className="w-full"
+        className="w-full drop-shadow-[0_14px_28px_rgba(0,0,0,0.18)]"
       />
     </div>
   )

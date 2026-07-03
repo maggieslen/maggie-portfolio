@@ -38,7 +38,7 @@ export function Desktop() {
             key={win.id}
             win={win}
             index={index}
-            size={win.kind === 'app' ? { width: 560, height: 430 } : undefined}
+            fullscreen={win.kind === 'app'}
           >
             {win.kind === 'folder' ? (
               <FolderWindow refId={win.refId} />

@@ -10,7 +10,7 @@ import { create } from 'zustand'
  * close it.
  * ------------------------------------------------------------------ */
 
-export type WindowKind = 'folder' | 'app'
+export type WindowKind = 'folder' | 'app' | 'music'
 
 export interface OpenWindow {
   /** Unique id for this specific open window. */

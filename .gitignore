@@ -17,8 +17,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# raw/original uploads staging folder (full-res). Optimized copies live in public/
+# raw/original uploads staging folders (full-res). Optimized copies live in public/
 /elements/
+/about me/
+/photos/
 
 # local Claude Code settings (keep launch.json, ignore machine-local prefs)
 .claude/settings.local.json

@@ -139,11 +139,11 @@ export const apps: AppProject[] = [
   },
   {
     id: 'purdue',
-    name: 'Purdue University',
+    name: 'Purdue Brand Studio',
     icon: 'app-icons/Purdue.png',
-    tagline: 'University',
+    tagline: 'Brand Studio',
     accent: '#cbb58a',
-    description: 'Placeholder — your studies, major, and activities at Purdue.',
+    description: 'Placeholder — your role at Purdue Brand Studio and the work you did.',
     liveUrl: '#',
   },
 ]
@@ -152,10 +152,9 @@ export const apps: AppProject[] = [
  * DECORATIVE WIDGETS  (not folders — just personality)
  * ------------------------------------------------------------------ */
 export const widgets = {
-  // Realistic camera cropped from the mockup — a photo of a Sony
-  // point-and-shoot with a real photo on its screen.
+  // Sony point-and-shoot (transparent PNG) with a real photo on its screen.
   camera: {
-    image: 'elements/camera.png',
+    image: 'elements/sony-camera.png',
   },
   // "You are so loved" hand-drawn card (cropped from the uploaded art).
   postcard: {
