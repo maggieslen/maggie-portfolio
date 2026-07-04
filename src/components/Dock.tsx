@@ -7,10 +7,13 @@ import { useWindowStore } from '../store/windowStore'
  * The bottom dock. Each flagship "app" (organization) is a rounded
  * macOS-style tile. The icons have their own (often white) backgrounds,
  * so we clip them to a rounded square and space them out with a gap.
- * Clicking one opens its window.
+ * Clicking one opens its window; a dot shows which apps are open.
  */
 export function Dock() {
   const openWindow = useWindowStore((s) => s.openWindow)
+  const windows = useWindowStore((s) => s.windows)
+  const isOpen = (id: string) =>
+    windows.some((w) => w.kind === 'app' && w.refId === id)
 
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-3 z-[9000] flex justify-center px-4">
@@ -32,8 +35,14 @@ export function Dock() {
               draggable={false}
               className="h-[52px] w-[52px] rounded-[24%] bg-white object-cover shadow-md ring-1 ring-black/10"
             />
+            {/* open-app indicator dot */}
+            <span
+              className={`mt-1 h-1 w-1 rounded-full transition-colors ${
+                isOpen(app.id) ? 'bg-charcoal/70' : 'bg-transparent'
+              }`}
+            />
             {/* hover tooltip */}
-            <span className="pointer-events-none absolute -top-9 whitespace-nowrap rounded-md bg-charcoal/85 px-2 py-1 text-[11px] font-medium text-white opacity-0 shadow transition-opacity duration-150 group-hover:opacity-100">
+            <span className="pointer-events-none absolute -top-8 whitespace-nowrap rounded-md bg-charcoal/85 px-2 py-1 text-[11px] font-medium text-white opacity-0 shadow transition-opacity duration-150 group-hover:opacity-100">
               {app.name}
             </span>
           </motion.button>

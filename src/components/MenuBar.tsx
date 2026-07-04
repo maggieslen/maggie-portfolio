@@ -1,7 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { ReactNode } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import { SITE_TITLE } from '../content'
+import { useWindowStore } from '../store/windowStore'
 
-const MENUS = ['File', 'Edit', 'View', 'Window', 'Help']
+const REPO = 'https://github.com/maggieslen/maggie-portfolio'
 
 function formatClock(d: Date): string {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -17,28 +20,81 @@ function formatClock(d: Date): string {
 
 export function MenuBar() {
   const [now, setNow] = useState(() => new Date())
+  const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const barRef = useRef<HTMLDivElement>(null)
+  const openWindow = useWindowStore((s) => s.openWindow)
+
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 15_000)
     return () => clearInterval(id)
   }, [])
 
+  // Click outside to close any open menu.
+  useEffect(() => {
+    if (!openMenu) return
+    const onDown = (e: MouseEvent) => {
+      if (barRef.current && !barRef.current.contains(e.target as Node))
+        setOpenMenu(null)
+    }
+    document.addEventListener('mousedown', onDown)
+    return () => document.removeEventListener('mousedown', onDown)
+  }, [openMenu])
+
+  const toggle = (k: string) => setOpenMenu((cur) => (cur === k ? null : k))
+  const hover = (k: string) => setOpenMenu((cur) => (cur ? k : cur))
+  const close = () => setOpenMenu(null)
+
   return (
-    <div className="absolute inset-x-0 top-0 z-[9999] flex h-7 items-center justify-between border-b border-black/5 bg-cream/80 px-3 text-[13px] text-charcoal backdrop-blur-md select-none">
+    <div
+      ref={barRef}
+      className="absolute inset-x-0 top-0 z-[9999] flex h-7 items-center justify-between border-b border-black/5 bg-cream/80 px-2 text-[13px] text-charcoal backdrop-blur-md select-none"
+    >
       {/* left: app title + menus */}
-      <div className="flex items-center gap-4">
-        <span className="font-semibold"> {SITE_TITLE}</span>
-        {MENUS.map((m) => (
-          <span
-            key={m}
-            className="hidden cursor-default rounded px-1 hover:bg-black/5 sm:inline"
-          >
-            {m}
-          </span>
-        ))}
+      <div className="flex items-center gap-0.5">
+        <Menu label={SITE_TITLE} bold menuKey="title" openMenu={openMenu} onToggle={toggle} onHover={hover}>
+          <DropItem onClick={() => { openWindow('folder', 'about'); close() }}>About this portfolio</DropItem>
+          <DropItem href={REPO}>View the code ↗</DropItem>
+          <Divider />
+          <DropNote>Made with 🩷 in a browser</DropNote>
+        </Menu>
+
+        <Menu label="File" menuKey="file" openMenu={openMenu} onToggle={toggle} onHover={hover}>
+          <DropItem onClick={close}>New Idea 💡</DropItem>
+          <DropItem onClick={() => { openWindow('folder', 'photos'); close() }}>Open Photos…</DropItem>
+          <Divider />
+          <DropNote>nothing to save here 🙂</DropNote>
+        </Menu>
+
+        <Menu label="Edit" menuKey="edit" openMenu={openMenu} onToggle={toggle} onHover={hover}>
+          <DropItem onClick={close}>Undo life choices ↩︎</DropItem>
+          <DropItem onClick={close}>Copy good vibes</DropItem>
+          <DropItem onClick={close}>Paste good vibes</DropItem>
+        </Menu>
+
+        <Menu label="View" menuKey="view" openMenu={openMenu} onToggle={toggle} onHover={hover}>
+          <DropItem onClick={close}>Enter Full Vibes</DropItem>
+          <DropItem onClick={close}>Show Dock ✓</DropItem>
+          <Divider />
+          <DropNote>current mood: dreamy ☁️</DropNote>
+        </Menu>
+
+        <Menu label="Window" menuKey="window" openMenu={openMenu} onToggle={toggle} onHover={hover}>
+          <DropItem onClick={close}>Minimize worries</DropItem>
+          <DropItem onClick={close}>Bring All to Front</DropItem>
+          <Divider />
+          <DropNote>psst — drag a window around ✨</DropNote>
+        </Menu>
+
+        <Menu label="Help" menuKey="help" openMenu={openMenu} onToggle={toggle} onHover={hover}>
+          <DropNote>you are all kinds of wonderful ✨</DropNote>
+          <DropItem href="mailto:maggie.slen42@gmail.com">Say hi 👋</DropItem>
+          <Divider />
+          <DropNote>psst — tap the iPod 🎧</DropNote>
+        </Menu>
       </div>
 
       {/* right: status icons + clock */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 pr-1">
         <BatteryIcon />
         <WifiIcon />
         <SearchIcon />
@@ -47,6 +103,71 @@ export function MenuBar() {
       </div>
     </div>
   )
+}
+
+interface MenuProps {
+  label: string
+  menuKey: string
+  bold?: boolean
+  openMenu: string | null
+  onToggle: (k: string) => void
+  onHover: (k: string) => void
+  children: ReactNode
+}
+
+function Menu({ label, menuKey, bold, openMenu, onToggle, onHover, children }: MenuProps) {
+  const isOpen = openMenu === menuKey
+  return (
+    <div className="relative hidden sm:block">
+      <button
+        type="button"
+        onClick={() => onToggle(menuKey)}
+        onMouseEnter={() => onHover(menuKey)}
+        className={`rounded px-2 py-0.5 ${bold ? 'font-semibold' : ''} ${
+          isOpen ? 'bg-black/10' : 'hover:bg-black/5'
+        }`}
+      >
+        {label}
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -4, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.98 }}
+            transition={{ duration: 0.12 }}
+            className="absolute left-0 top-full mt-1 min-w-[210px] origin-top-left rounded-lg border border-black/10 bg-warm-ivory/95 p-1 text-[13px] text-charcoal shadow-xl backdrop-blur-md"
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+function DropItem({ children, onClick, href }: { children: ReactNode; onClick?: () => void; href?: string }) {
+  const cls =
+    'block w-full rounded-md px-3 py-1.5 text-left hover:bg-garden-bloom hover:text-white'
+  if (href)
+    return (
+      <a href={href} target="_blank" rel="noreferrer" className={cls}>
+        {children}
+      </a>
+    )
+  return (
+    <button type="button" onClick={onClick} className={cls}>
+      {children}
+    </button>
+  )
+}
+
+function DropNote({ children }: { children: ReactNode }) {
+  return <div className="px-3 py-1.5 text-[12px] text-charcoal/45">{children}</div>
+}
+
+function Divider() {
+  return <div className="my-1 h-px bg-black/10" />
 }
 
 function BatteryIcon() {

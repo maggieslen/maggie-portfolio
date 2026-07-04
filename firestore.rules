@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Photo likes + comments for the "photos!" album.
+    match /photos/{photoId} {
+      allow read: if true;
+      // Only the numeric like counter may be written to the photo doc.
+      allow write: if request.resource.data.keys().hasOnly(['likes'])
+                   && request.resource.data.likes is int;
+
+      match /comments/{commentId} {
+        allow read: if true;
+        // Anyone may add a comment (with sane length limits)...
+        allow create: if request.resource.data.keys().hasOnly(['name', 'text', 'ts'])
+                       && request.resource.data.name is string
+                       && request.resource.data.name.size() <= 40
+                       && request.resource.data.text is string
+                       && request.resource.data.text.size() > 0
+                       && request.resource.data.text.size() <= 400;
+        // ...but no one can edit or delete someone else's comment.
+        allow update, delete: if false;
+      }
+    }
+  }
+}
