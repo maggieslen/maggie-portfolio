@@ -5,6 +5,8 @@ import type { CwItem, CwStoryGroup } from '../lib/clientWork'
 /**
  * A single Story/Reel shown inside an iPhone frame. Tap the right/left half
  * to advance/go back a frame, like real Instagram Stories (no swipe needed).
+ * Videos autoplay muted (required by browsers); a speaker icon lets you
+ * turn the sound on, like Instagram Reels.
  */
 export function StoriesFrame({
   slug,
@@ -16,6 +18,7 @@ export function StoriesFrame({
   width?: number
 }) {
   const [index, setIndex] = useState(0)
+  const [muted, setMuted] = useState(true)
   const current = items[index]
 
   function go(delta: number) {
@@ -46,7 +49,7 @@ export function StoriesFrame({
               <video
                 key={current.src}
                 src={cwMedia(slug, current.src!)}
-                muted
+                muted={muted}
                 loop
                 autoPlay
                 playsInline
@@ -61,6 +64,18 @@ export function StoriesFrame({
               />
             )}
           </div>
+
+          {/* mute/unmute toggle, only shown on video frames */}
+          {isVideo(current.src) && (
+            <button
+              type="button"
+              aria-label={muted ? 'Unmute' : 'Mute'}
+              onClick={() => setMuted((m) => !m)}
+              className="absolute right-2 top-8 z-20 grid h-7 w-7 place-items-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+            >
+              {muted ? <SpeakerOffIcon /> : <SpeakerOnIcon />}
+            </button>
+          )}
 
           {/* invisible left/right tap zones to click through frames */}
           {items.length > 1 && (
@@ -87,6 +102,25 @@ export function StoriesFrame({
         </p>
       )}
     </div>
+  )
+}
+
+function SpeakerOnIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3 9v6h4l5 5V4L7 9H3z" />
+      <path d="M16.5 12a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12z" />
+      <path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+    </svg>
+  )
+}
+
+function SpeakerOffIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3 9v6h4l5 5V4L7 9H3z" />
+      <path d="M19.8 12l2.5-2.5-1.3-1.3-2.5 2.5-2.5-2.5-1.3 1.3 2.5 2.5-2.5 2.5 1.3 1.3 2.5-2.5 2.5 2.5 1.3-1.3z" />
+    </svg>
   )
 }
 
