@@ -80,19 +80,16 @@ export const folders: Folder[] = [
     position: { top: 520, left: 365 },
     accent: '#aebca2',
     items: [
-      { id: 'pr1', title: 'Side project one', kind: 'note', description: 'Short write-up placeholder. What it is + what you learned.' },
+      {
+        id: 'personal-project',
+        title: 'Personal Project',
+        kind: 'project',
+        projectSlug: 'personal-project',
+        description: 'A personal creative project.',
+      },
       { id: 'pr2', title: 'Side project two', kind: 'note', description: 'Another small project.' },
       { id: 'pr3', title: 'Experiment', kind: 'link', description: 'Link to a repo or live demo.', href: '#' },
     ],
-  },
-  {
-    // Client / brand work. Its projects live in /public/client-work/* (each with
-    // an index.json + media/ folder) — see ClientWorkGrid + ProjectWindow.
-    id: 'clientwork',
-    label: 'client work',
-    position: { top: 250, left: 585 },
-    accent: '#d99aa6',
-    items: [],
   },
 ]
 
@@ -112,6 +109,7 @@ export const apps: AppProject[] = [
     description:
       'Placeholder — add your role (dancer / instructor), what you did, highlights, and a link to the studio.',
     liveUrl: '#',
+    projectSlug: 'northeast-school-of-dance',
   },
   {
     id: 'letters-of-love',
@@ -140,6 +138,7 @@ export const apps: AppProject[] = [
     accent: '#cbb58a',
     description: 'Placeholder — your role / collaboration details go here.',
     liveUrl: '#',
+    projectSlug: 'dippin-daisies',
   },
   {
     id: 'purdue-pharmacy',
@@ -149,6 +148,7 @@ export const apps: AppProject[] = [
     accent: '#aebca2',
     description: 'Placeholder — your role and what you did in the club.',
     liveUrl: '#',
+    projectSlug: 'purdue-pre-pharmacy-club',
   },
   {
     id: 'purdue',
@@ -158,6 +158,7 @@ export const apps: AppProject[] = [
     accent: '#cbb58a',
     description: 'Placeholder — your role at Purdue Brand Studio and the work you did.',
     liveUrl: '#',
+    projectSlug: 'purdue-brand-studio',
   },
 ]
 

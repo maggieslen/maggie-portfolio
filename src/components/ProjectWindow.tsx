@@ -1,7 +1,7 @@
 import { useJson } from '../lib/useJson'
 import { cwMedia, igEmbedUrl, isVideo } from '../lib/clientWork'
-import type { CwProject, CwSection } from '../lib/clientWork'
-import { StoriesFrame } from './StoriesFrame'
+import type { CwItem, CwProject, CwSection } from '../lib/clientWork'
+import { StoriesRow } from './StoriesFrame'
 
 /** A dedicated project page (fullscreen). Your own media is the focus. */
 export function ProjectWindow({ refId }: { refId: string }) {
@@ -50,29 +50,37 @@ export function ProjectWindow({ refId }: { refId: string }) {
 }
 
 function Section({ slug, section }: { slug: string; section: CwSection }) {
+  const isEmpty =
+    section.type === 'stories'
+      ? !section.groups?.length && !section.items?.length
+      : !section.items?.length
+
   return (
     <section>
       <h2 className="mb-4 font-heading text-2xl text-charcoal">{section.title}</h2>
-      {section.items.length === 0 ? (
+      {isEmpty ? (
         <Placeholder type={section.type} />
       ) : section.type === 'stories' ? (
-        <StoriesFrame slug={slug} items={section.items} />
+        <StoriesRow
+          slug={slug}
+          groups={section.groups ?? [{ items: section.items ?? [] }]}
+        />
       ) : section.type === 'grid' ? (
-        <IgGrid slug={slug} section={section} />
+        <IgGrid slug={slug} items={section.items ?? []} />
       ) : section.type === 'embeds' ? (
-        <IgEmbed section={section} />
+        <IgEmbed items={section.items ?? []} />
       ) : (
-        <Gallery slug={slug} section={section} />
+        <Gallery slug={slug} items={section.items ?? []} />
       )}
     </section>
   )
 }
 
-function Gallery({ slug, section }: { slug: string; section: CwSection }) {
-  const single = section.items.length === 1
+function Gallery({ slug, items }: { slug: string; items: CwItem[] }) {
+  const single = items.length === 1
   return (
     <div className={single ? '' : 'grid grid-cols-1 gap-4 sm:grid-cols-2'}>
-      {section.items.map((it, i) => (
+      {items.map((it, i) => (
         <figure
           key={i}
           className={`overflow-hidden rounded-xl bg-white ring-1 ring-black/5 ${
@@ -93,10 +101,10 @@ function Gallery({ slug, section }: { slug: string; section: CwSection }) {
   )
 }
 
-function IgGrid({ slug, section }: { slug: string; section: CwSection }) {
+function IgGrid({ slug, items }: { slug: string; items: CwItem[] }) {
   return (
     <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-      {section.items.map((it, i) => (
+      {items.map((it, i) => (
         <div key={i} className="aspect-square overflow-hidden rounded-lg ring-1 ring-black/5">
           <img src={cwMedia(slug, it.src!)} alt={it.caption || ''} className="h-full w-full object-cover" />
         </div>
@@ -105,10 +113,10 @@ function IgGrid({ slug, section }: { slug: string; section: CwSection }) {
   )
 }
 
-function IgEmbed({ section }: { section: CwSection }) {
+function IgEmbed({ items }: { items: CwItem[] }) {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {section.items.map((it, i) => (
+      {items.map((it, i) => (
         <div key={i} className="overflow-hidden rounded-xl bg-white ring-1 ring-black/5">
           <iframe
             src={igEmbedUrl(it.url!)}
@@ -127,8 +135,8 @@ function Placeholder({ type }: { type: string }) {
   const hints: Record<string, string> = {
     gallery: "Drop images/videos into this project's media/ folder and list them under this section in index.json.",
     grid: 'Add feed posts (square images) to show an Instagram-profile-style grid.',
-    stories: "Add Stories/Reels — they'll appear in a scrollable phone frame (built in the next step).",
-    embeds: 'Add public Instagram post/reel URLs to embed the real posts (built in the next step).',
+    stories: 'Add Stories/Reels groups — each becomes its own phone mockup with a caption below.',
+    embeds: 'Add public Instagram post/reel URLs to embed the real posts.',
   }
   return (
     <div className="grid place-items-center rounded-2xl border-2 border-dashed border-charcoal/15 bg-blush-soft/30 px-6 py-10 text-center">

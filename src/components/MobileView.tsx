@@ -6,8 +6,9 @@ import { FolderGlyph } from './FolderGlyph'
 import { FolderWindow } from './FolderWindow'
 import { AppWindow } from './AppWindow'
 import { MusicWindow } from './MusicWindow'
+import { ProjectWindow } from './ProjectWindow'
 
-type OpenItem = { kind: 'folder' | 'app' | 'music'; id: string; label: string }
+type OpenItem = { kind: 'folder' | 'app' | 'music' | 'project'; id: string; label: string }
 
 const sectionLabel =
   'mb-2 text-[11px] font-semibold uppercase tracking-wide text-charcoal/40'
@@ -56,7 +57,11 @@ export function MobileView() {
             <li key={a.id}>
               <button
                 type="button"
-                onClick={() => setOpen({ kind: 'app', id: a.id, label: a.name })}
+                onClick={() =>
+                  a.projectSlug
+                    ? setOpen({ kind: 'project', id: a.projectSlug, label: a.name })
+                    : setOpen({ kind: 'app', id: a.id, label: a.name })
+                }
                 className="flex w-full items-center gap-2.5 rounded-2xl bg-white/70 p-2.5 text-left ring-1 ring-black/5 transition active:scale-[0.99]"
               >
                 <img
@@ -114,6 +119,8 @@ export function MobileView() {
                 <FolderWindow refId={open.id} />
               ) : open.kind === 'app' ? (
                 <AppWindow refId={open.id} />
+              ) : open.kind === 'project' ? (
+                <ProjectWindow refId={open.id} />
               ) : (
                 <MusicWindow />
               )}

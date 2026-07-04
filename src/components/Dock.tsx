@@ -12,8 +12,12 @@ import { useWindowStore } from '../store/windowStore'
 export function Dock() {
   const openWindow = useWindowStore((s) => s.openWindow)
   const windows = useWindowStore((s) => s.windows)
-  const isOpen = (id: string) =>
-    windows.some((w) => w.kind === 'app' && w.refId === id)
+  const isOpen = (app: (typeof apps)[number]) =>
+    windows.some(
+      (w) =>
+        (w.kind === 'app' && w.refId === app.id) ||
+        (w.kind === 'project' && w.refId === app.projectSlug),
+    )
 
   // Fullscreen windows (apps, music, projects) cover the desktop — hide the
   // dock behind them, like macOS does in fullscreen.
@@ -29,7 +33,11 @@ export function Dock() {
           <motion.button
             key={app.id}
             type="button"
-            onClick={() => openWindow('app', app.id)}
+            onClick={() =>
+              app.projectSlug
+                ? openWindow('project', app.projectSlug, app.name)
+                : openWindow('app', app.id)
+            }
             aria-label={app.name}
             className="group relative flex flex-col items-center focus:outline-none"
             whileHover={{ scale: 1.18, y: -6 }}
@@ -45,7 +53,7 @@ export function Dock() {
             {/* open-app indicator dot */}
             <span
               className={`mt-1 h-1 w-1 rounded-full transition-colors ${
-                isOpen(app.id) ? 'bg-charcoal/70' : 'bg-transparent'
+                isOpen(app) ? 'bg-charcoal/70' : 'bg-transparent'
               }`}
             />
             {/* hover tooltip */}

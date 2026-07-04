@@ -1,16 +1,21 @@
 # Client work content 🌸
 
-This folder powers the **"client work"** folder on the desktop. Each project has
-its own folder here. To add your work, you edit JSON + drop files into `media/`
-— **no code changes needed.**
+Each project's page pulls from its own folder here — edit JSON + drop files
+into `media/`, **no code changes needed.**
 
 ```
 client-work/
-  manifest.json                 ← the list of projects shown in the grid
   <project-slug>/
     index.json                  ← that project's page (text, links, sections)
     media/                      ← drop your images/videos here
 ```
+
+These pages aren't in their own desktop folder — each one opens from where it
+already lives: **the dock icon** for that organization (Dippin' Daisys,
+Purdue Brand Studio, Northeast School of Dance, Purdue Pre-Pharmacy Club), or
+an item inside the **"personal projects"** folder (Personal Project). See the
+`projectSlug` field on dock apps / folder items in `src/content.ts` — that's
+what points a dock icon or folder item at a project slug here.
 
 ## Adding media to a project
 
@@ -20,7 +25,7 @@ client-work/
 
 ## Section types (mix and match per project)
 
-Each section has a `type`, a `title`, and `items`:
+Each section has a `type` and a `title`.
 
 - **`"gallery"`** — your own designs / mockups / photos / video. The main event.
   `items`: `{ "src": "media/mockup1.png", "caption": "optional" }`
@@ -29,10 +34,11 @@ Each section has a `type`, a `title`, and `items`:
 - **`"grid"`** — Instagram-profile-style grid of square thumbnails (for feed posts).
   `items`: `{ "src": "media/post1.jpg", "caption": "optional" }`
 
-- **`"stories"`** — vertical Stories/Reels shown inside a **phone frame** you can
-  scroll through.
-  `items`: `{ "src": "media/story1.mp4", "poster": "media/story1-cover.jpg" }`
-  (image stories: just `src`)
+- **`"stories"`** — Stories/Reels shown as a **row of phone mockups**, one per
+  group, each with a caption underneath (like flipping through a camera roll).
+  `groups`: `{ "caption": "Just Add Water", "items": [{ "src": "media/jaw-1.jpg" }, ...] }`
+  Each group's `items` scroll vertically inside that one phone.
+  (a `.mp4`/`.mov` src plays inline in the phone)
 
 - **`"embeds"`** — **real, live** Instagram posts/reels via Instagram's official
   embed (pulls the actual post).
@@ -45,6 +51,6 @@ These open in a new tab — they never take over your own content.
 
 ```json
 "links": [
-  { "label": "View full site", "url": "https://dippindaisies.com" }
+  { "label": "View full site", "url": "https://dippindaisys.com" }
 ]
 ```

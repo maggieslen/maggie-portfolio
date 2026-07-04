@@ -2,7 +2,6 @@ import { folders } from '../content'
 import { ItemTile } from './ItemTile'
 import { PhotosAlbum } from './PhotosAlbum'
 import { AboutMe } from './AboutMe'
-import { ClientWorkGrid } from './ClientWorkGrid'
 
 /** The contents shown inside an opened folder window. */
 export function FolderWindow({ refId }: { refId: string }) {
@@ -14,9 +13,6 @@ export function FolderWindow({ refId }: { refId: string }) {
 
   // The about folder shows the headshot + links.
   if (folder.id === 'about') return <AboutMe />
-
-  // The client-work folder shows the project grid.
-  if (folder.id === 'clientwork') return <ClientWorkGrid />
 
   return (
     <div className="p-5">

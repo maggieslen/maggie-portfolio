@@ -19,14 +19,16 @@ export interface DesktopPosition {
 export interface FolderItem {
   id: string
   title: string
-  /** How to render this item. */
-  kind: 'image' | 'note' | 'link'
+  /** How to render this item. "project" opens a rich project page. */
+  kind: 'image' | 'note' | 'link' | 'project'
   /** Public image path, e.g. "photos/beach.jpg" (file lives in /public). Optional. */
   image?: string
   /** Short caption / write-up. */
   description?: string
   /** External link (for kind: 'link', or an optional link on any item). */
   href?: string
+  /** For kind: 'project' — the slug under /public/client-work/<slug>/. */
+  projectSlug?: string
 }
 
 /** A desktop folder (photos!, ugc content, about me!, personal projects). */
@@ -53,4 +55,9 @@ export interface AppProject {
   image?: string
   /** Tint used for the app window header + placeholder art. */
   accent: string
+  /**
+   * If set, clicking this dock app opens the rich project page at
+   * /public/client-work/<projectSlug>/ instead of the plain AppWindow.
+   */
+  projectSlug?: string
 }

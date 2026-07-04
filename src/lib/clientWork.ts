@@ -31,10 +31,19 @@ export interface CwItem {
 
 export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds'
 
+/** One phone mockup's worth of Stories/Reels frames, with a caption below it. */
+export interface CwStoryGroup {
+  caption?: string
+  items: CwItem[]
+}
+
 export interface CwSection {
   type: CwSectionType
   title: string
-  items: CwItem[]
+  /** Used by gallery / grid / embeds sections. */
+  items?: CwItem[]
+  /** Used by "stories" sections — one phone mockup per group. */
+  groups?: CwStoryGroup[]
 }
 
 export interface CwProject {

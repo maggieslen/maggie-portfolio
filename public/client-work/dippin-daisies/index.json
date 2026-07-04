@@ -15,29 +15,32 @@
     },
     {
       "type": "stories",
-      "title": "Just Add Water",
-      "items": [
-        { "src": "media/jaw-1.jpg" },
-        { "src": "media/jaw-2.jpg" },
-        { "src": "media/jaw-3.jpg" },
-        { "src": "media/jaw-4.jpg" }
-      ]
-    },
-    {
-      "type": "stories",
-      "title": "Spring Soirée",
-      "items": [
-        { "src": "media/ss-1.jpg" },
-        { "src": "media/ss-2.jpg" },
-        { "src": "media/ss-3.jpg" },
-        { "src": "media/ss-4.jpg" }
-      ]
-    },
-    {
-      "type": "stories",
-      "title": "Aesthetic Reel",
-      "items": [
-        { "src": "media/reel-aesthetic.mp4" }
+      "title": "Stories & Reels",
+      "groups": [
+        {
+          "caption": "Just Add Water",
+          "items": [
+            { "src": "media/jaw-1.jpg" },
+            { "src": "media/jaw-2.jpg" },
+            { "src": "media/jaw-3.jpg" },
+            { "src": "media/jaw-4.jpg" }
+          ]
+        },
+        {
+          "caption": "Spring Soirée",
+          "items": [
+            { "src": "media/ss-1.jpg" },
+            { "src": "media/ss-2.jpg" },
+            { "src": "media/ss-3.jpg" },
+            { "src": "media/ss-4.jpg" }
+          ]
+        },
+        {
+          "caption": "Aesthetic Reel",
+          "items": [
+            { "src": "media/reel-aesthetic.mp4" }
+          ]
+        }
       ]
     }
   ]

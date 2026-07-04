@@ -1,8 +1,11 @@
 import type { FolderItem } from '../types'
 import { asset } from '../lib/asset'
+import { useWindowStore } from '../store/windowStore'
 
 /** Renders one item inside an opened folder. */
 export function ItemTile({ item, accent }: { item: FolderItem; accent: string }) {
+  const openWindow = useWindowStore((s) => s.openWindow)
+
   // Text-only note card
   if (item.kind === 'note') {
     return (
@@ -27,7 +30,7 @@ export function ItemTile({ item, accent }: { item: FolderItem; accent: string })
     )
   }
 
-  // Media / link tile
+  // Media / link / project tile
   const tile = (
     <div className="group flex flex-col">
       <div
@@ -44,7 +47,7 @@ export function ItemTile({ item, accent }: { item: FolderItem; accent: string })
           />
         ) : (
           <span className="text-3xl opacity-70">
-            {item.kind === 'link' ? '🔗' : '📷'}
+            {item.kind === 'link' ? '🔗' : item.kind === 'project' ? '🗂️' : '📷'}
           </span>
         )}
       </div>
@@ -60,6 +63,18 @@ export function ItemTile({ item, accent }: { item: FolderItem; accent: string })
       </div>
     </div>
   )
+
+  if (item.kind === 'project' && item.projectSlug) {
+    return (
+      <button
+        type="button"
+        onClick={() => openWindow('project', item.projectSlug!, item.title)}
+        className="block text-left transition-opacity hover:opacity-95"
+      >
+        {tile}
+      </button>
+    )
+  }
 
   if (item.href) {
     return (
