@@ -3,7 +3,8 @@
   "tagline": "Life at Purdue — brand & social content",
   "description": "Social content created with Purdue Brand Studio — static feed posts and reels for \"Life at Purdue,\" telling everyday campus stories. A few pieces below haven't gone live yet. (Placeholder copy — edit anytime.)",
   "links": [
-    { "label": "Life at Purdue", "url": "https://www.instagram.com/lifeatpurdue/" }
+    { "label": "Life at Purdue", "url": "https://www.instagram.com/lifeatpurdue/" },
+    { "label": "Boiler Ambassadors", "url": "https://www.instagram.com/boilerambassadors/" }
   ],
   "sections": [
     {
