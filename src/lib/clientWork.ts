@@ -2,18 +2,6 @@ import { asset } from './asset'
 
 /* Types for the /public/client-work data files. */
 
-export interface CwProjectEntry {
-  slug: string
-  name: string
-  blurb: string
-  accent?: string
-  cover?: string
-}
-
-export interface CwManifest {
-  projects: CwProjectEntry[]
-}
-
 export interface CwLink {
   label: string
   url: string
@@ -29,7 +17,7 @@ export interface CwItem {
   url?: string
 }
 
-export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds'
+export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile'
 
 /** One phone mockup's worth of Stories/Reels frames, with a caption below it. */
 export interface CwStoryGroup {
@@ -37,13 +25,34 @@ export interface CwStoryGroup {
   items: CwItem[]
 }
 
+/** A highlight bubble on an Instagram-style profile card. */
+export interface CwHighlight {
+  label: string
+  /** Optional image (relative to the project folder); shows a plain circle without one. */
+  image?: string
+}
+
+/** Data for an Instagram-desktop-style profile card ("profile" section type). */
+export interface CwProfile {
+  /** Public path from the site root, e.g. "app-icons/dippin-daisys.png" (NOT project-relative). */
+  avatar?: string
+  username: string
+  displayName?: string
+  stats: { posts: string; followers: string; following: string }
+  bio?: string[]
+  link?: string
+  highlights?: CwHighlight[]
+}
+
 export interface CwSection {
   type: CwSectionType
   title: string
-  /** Used by gallery / grid / embeds sections. */
+  /** Used by gallery / grid / embeds sections, and as the grid under a profile card. */
   items?: CwItem[]
   /** Used by "stories" sections — one phone mockup per group. */
   groups?: CwStoryGroup[]
+  /** Used by "profile" sections. */
+  profile?: CwProfile
 }
 
 export interface CwProject {

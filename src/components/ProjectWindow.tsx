@@ -2,6 +2,7 @@ import { useJson } from '../lib/useJson'
 import { cwMedia, igEmbedUrl, isVideo } from '../lib/clientWork'
 import type { CwItem, CwProject, CwSection } from '../lib/clientWork'
 import { StoriesRow } from './StoriesFrame'
+import { IgProfileCard } from './IgProfileCard'
 
 /** A dedicated project page (fullscreen). Your own media is the focus. */
 export function ProjectWindow({ refId }: { refId: string }) {
@@ -53,7 +54,9 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
   const isEmpty =
     section.type === 'stories'
       ? !section.groups?.length && !section.items?.length
-      : !section.items?.length
+      : section.type === 'profile'
+        ? !section.profile
+        : !section.items?.length
 
   return (
     <section>
@@ -65,6 +68,8 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
           slug={slug}
           groups={section.groups ?? [{ items: section.items ?? [] }]}
         />
+      ) : section.type === 'profile' ? (
+        <IgProfileCard slug={slug} profile={section.profile!} items={section.items ?? []} />
       ) : section.type === 'grid' ? (
         <IgGrid slug={slug} items={section.items ?? []} />
       ) : section.type === 'embeds' ? (
@@ -137,6 +142,7 @@ function Placeholder({ type }: { type: string }) {
     grid: 'Add feed posts (square images) to show an Instagram-profile-style grid.',
     stories: 'Add Stories/Reels groups — each becomes its own phone mockup with a caption below.',
     embeds: 'Add public Instagram post/reel URLs to embed the real posts.',
+    profile: 'Add a "profile" object (username, stats, bio, highlights) to show an Instagram-style profile card.',
   }
   return (
     <div className="grid place-items-center rounded-2xl border-2 border-dashed border-charcoal/15 bg-blush-soft/30 px-6 py-10 text-center">

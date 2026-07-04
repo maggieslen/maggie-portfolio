@@ -44,6 +44,16 @@ Each section has a `type` and a `title`.
   embed (pulls the actual post).
   `items`: `{ "url": "https://www.instagram.com/p/XXXXXXXXX/" }`
 
+- **`"profile"`** — a coded Instagram-desktop-style profile card (avatar, stats,
+  bio, highlights, post grid) styled in the site's own brand colors — not a
+  screenshot. `profile`: `{ "avatar": "app-icons/xyz.png", "username": "...",
+  "displayName": "...", "stats": { "posts": "4,860", "followers": "387K",
+  "following": "942" }, "bio": ["line one", "line two"], "link": "site.com",
+  "highlights": [{ "label": "..." }] }`. Note: `avatar` is a path from the
+  **site root** (e.g. an existing dock icon in `app-icons/`), not
+  project-relative like other media. The post grid below the card uses this
+  section's own `items` (same shape as `"grid"`).
+
 ## Links (site / deck)
 
 `index.json` → `links`: shown as buttons (e.g. "View full site", "View deck").

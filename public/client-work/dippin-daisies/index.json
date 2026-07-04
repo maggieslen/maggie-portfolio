@@ -7,10 +7,33 @@
   ],
   "sections": [
     {
-      "type": "gallery",
+      "type": "profile",
       "title": "The Feed",
+      "profile": {
+        "avatar": "app-icons/dippin-daisys.png",
+        "username": "dippindaisys",
+        "displayName": "Dippin' Daisys",
+        "stats": { "posts": "4,860", "followers": "387K", "following": "942" },
+        "bio": ["♡ MAKING WAVES ♡", "Hand Sewn + Sustainably Made", "Shop our latest drop here 🌞"],
+        "link": "dippindaisys.com",
+        "highlights": [
+          { "label": "côte d'azur" },
+          { "label": "mallorca" },
+          { "label": "club ibiza" },
+          { "label": "MSW '26" },
+          { "label": "you in DD" }
+        ]
+      },
       "items": [
-        { "src": "media/profile-layout.jpg", "caption": "Profile + feed layout" }
+        { "src": "media/jaw-1.jpg" },
+        { "src": "media/ss-2.jpg" },
+        { "src": "media/jaw-3.jpg" },
+        { "src": "media/ss-1.jpg" },
+        { "src": "media/jaw-2.jpg" },
+        { "src": "media/ss-3.jpg" },
+        { "src": "media/jaw-4.jpg" },
+        { "src": "media/ss-4.jpg" },
+        { "src": "media/jaw-2.jpg" }
       ]
     },
     {

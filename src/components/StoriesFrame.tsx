@@ -68,7 +68,7 @@ export function StoriesRow({
   groups: CwStoryGroup[]
 }) {
   return (
-    <div className="rounded-[28px] bg-blush-soft/40 px-6 py-8 sm:px-10">
+    <div className="rounded-[28px] bg-white px-6 py-8 shadow-[0_2px_16px_rgba(0,0,0,0.05)] ring-1 ring-black/5 sm:px-10">
       <div className="flex flex-wrap items-start justify-center gap-x-8 gap-y-10">
         {groups.map((g, i) => (
           <div key={i} className="flex flex-col items-center">
