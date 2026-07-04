@@ -165,6 +165,16 @@ export function StoriesRow({
                 {g.caption}
               </p>
             )}
+            {g.url && (
+              <a
+                href={g.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-1 text-[12px] font-medium text-[#a85d72] hover:underline"
+              >
+                View on Instagram ↗
+              </a>
+            )}
           </div>
         ))}
       </div>

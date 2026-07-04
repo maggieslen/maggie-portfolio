@@ -1,26 +1,55 @@
 {
   "name": "Purdue Brand Studio",
   "tagline": "Life at Purdue — brand & social content",
-  "description": "Social content created with Purdue Brand Studio — static feed posts and reels for \"Life at Purdue,\" telling everyday campus stories. (Placeholder copy — edit anytime.)",
-  "links": [],
+  "description": "Social content created with Purdue Brand Studio — static feed posts and reels for \"Life at Purdue,\" telling everyday campus stories. A few pieces below haven't gone live yet. (Placeholder copy — edit anytime.)",
+  "links": [
+    { "label": "Life at Purdue", "url": "https://www.instagram.com/lifeatpurdue/" }
+  ],
   "sections": [
     {
-      "type": "embeds",
+      "type": "grid",
       "title": "Static Posts",
       "items": [
-        { "url": "https://www.instagram.com/p/DYNfrQkgUsy/", "caption": "What's it like at Purdue" },
-        { "url": "https://www.instagram.com/p/DYVAd08FiaC/", "caption": "The biggest Chipotle fanbase" },
-        { "url": "https://www.instagram.com/p/DVWGbUjDiUc/", "caption": "It's just a" }
+        { "src": "media/whats-it-like.jpg", "caption": "What's it like at Purdue", "url": "https://www.instagram.com/p/DYNfrQkgUsy/" },
+        { "src": "media/chipotle.jpg", "caption": "The Biggest Chipotle Fanbase", "url": "https://www.instagram.com/p/DYVAd08FiaC/" },
+        { "src": "media/its-just-a.jpg", "caption": "It's Just A...", "url": "https://www.instagram.com/p/DVWGbUjDiUc/" },
+        { "src": "media/weekend-menu.jpg", "caption": "Purdue Weekend Menu" },
+        { "src": "media/dorm-essentials.jpg", "caption": "Dorm Essentials" },
+        { "src": "media/postcard.jpg", "caption": "Postcards From Purdue" }
       ]
     },
     {
-      "type": "embeds",
+      "type": "stories",
       "title": "Reels",
-      "items": [
-        { "url": "https://www.instagram.com/reel/DSKrifxDmqg/", "caption": "Season's Greetings" },
-        { "url": "https://www.instagram.com/reel/DSDtJ7VkpQB/", "caption": "Best Study Spot on Campus" },
-        { "url": "https://www.instagram.com/reel/DQH2Z8vAST0/", "caption": "Send This to a Boilermaker" },
-        { "url": "https://www.instagram.com/reel/DPSXYFTDttY/", "caption": "Purdue by Night" }
+      "groups": [
+        {
+          "caption": "Season's Greetings",
+          "url": "https://www.instagram.com/reel/DSKrifxDmqg/",
+          "items": [{ "src": "media/seasons-greetings.mp4" }]
+        },
+        {
+          "caption": "Best Study Spot on Campus",
+          "url": "https://www.instagram.com/reel/DSDtJ7VkpQB/",
+          "items": [{ "src": "media/best-study-spot.mp4" }]
+        },
+        {
+          "caption": "Send This to a Boilermaker",
+          "url": "https://www.instagram.com/reel/DQH2Z8vAST0/",
+          "items": [{ "src": "media/send-to-boilermaker.mp4" }]
+        },
+        {
+          "caption": "Purdue by Night",
+          "url": "https://www.instagram.com/reel/DPSXYFTDttY/",
+          "items": [{ "src": "media/purdue-by-night.mp4" }]
+        },
+        {
+          "caption": "Dear Future Boilermakers",
+          "items": [{ "src": "media/dear-future-boilermakers.mp4" }]
+        },
+        {
+          "caption": "Choose Purdue",
+          "items": [{ "src": "media/choose-purdue.mp4" }]
+        }
       ]
     }
   ]

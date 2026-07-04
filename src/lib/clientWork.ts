@@ -23,6 +23,8 @@ export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile
 export interface CwStoryGroup {
   caption?: string
   items: CwItem[]
+  /** If set (a published post), shows a small "View on Instagram" link below the caption. */
+  url?: string
 }
 
 /** A highlight bubble on an Instagram-style profile card. */

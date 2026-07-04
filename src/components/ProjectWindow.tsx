@@ -109,11 +109,26 @@ function Gallery({ slug, items }: { slug: string; items: CwItem[] }) {
 function IgGrid({ slug, items }: { slug: string; items: CwItem[] }) {
   return (
     <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-      {items.map((it, i) => (
-        <div key={i} className="aspect-square overflow-hidden rounded-lg ring-1 ring-black/5">
-          <img src={cwMedia(slug, it.src!)} alt={it.caption || ''} className="h-full w-full object-cover" />
-        </div>
-      ))}
+      {items.map((it, i) => {
+        const tile = (
+          <div className="group aspect-square overflow-hidden rounded-lg ring-1 ring-black/5">
+            <img
+              src={cwMedia(slug, it.src!)}
+              alt={it.caption || ''}
+              className="h-full w-full object-cover transition group-hover:scale-105"
+            />
+          </div>
+        )
+        return it.url ? (
+          <a key={i} href={it.url} target="_blank" rel="noreferrer" title={it.caption}>
+            {tile}
+          </a>
+        ) : (
+          <div key={i} title={it.caption}>
+            {tile}
+          </div>
+        )
+      })}
     </div>
   )
 }

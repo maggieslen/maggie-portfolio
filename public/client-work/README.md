@@ -32,13 +32,19 @@ Each section has a `type` and a `title`.
   (a `.mp4`/`.mov` src renders as a video)
 
 - **`"grid"`** — Instagram-profile-style grid of square thumbnails (for feed posts).
-  `items`: `{ "src": "media/post1.jpg", "caption": "optional" }`
+  `items`: `{ "src": "media/post1.jpg", "caption": "optional" }`. If a post has
+  already gone live, add `"url": "https://www.instagram.com/p/XXXXXXXXX/"` and
+  its tile opens the real post in a new tab; leave `url` off for unpublished
+  work and it just displays the image.
 
 - **`"stories"`** — Stories/Reels shown as a **row of phone mockups**, one per
   group, each with a caption underneath (like flipping through a camera roll).
   `groups`: `{ "caption": "Just Add Water", "items": [{ "src": "media/jaw-1.jpg" }, ...] }`
   Each group's `items` scroll vertically inside that one phone.
-  (a `.mp4`/`.mov` src plays inline in the phone)
+  (a `.mp4`/`.mov` src plays inline in the phone, muted by default with a
+  tap-to-unmute speaker icon). Add `"url"` to a group (a real reel/post link)
+  to show a small "View on Instagram" link below its caption — omit it for
+  reels/posts that haven't gone live yet.
 
 - **`"embeds"`** — **real, live** Instagram posts/reels via Instagram's official
   embed (pulls the actual post).
