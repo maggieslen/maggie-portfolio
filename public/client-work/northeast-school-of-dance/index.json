@@ -1,0 +1,18 @@
+{
+  "name": "Northeast School of Dance",
+  "tagline": "Social media content",
+  "description": "Placeholder — the social content you created for Northeast School of Dance.",
+  "links": [],
+  "sections": [
+    {
+      "type": "grid",
+      "title": "Feed",
+      "items": []
+    },
+    {
+      "type": "stories",
+      "title": "Stories & Reels",
+      "items": []
+    }
+  ]
+}

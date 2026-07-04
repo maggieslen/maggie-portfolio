@@ -1,0 +1,39 @@
+{
+  "projects": [
+    {
+      "slug": "dippin-daisies",
+      "name": "Dippin' Daisies",
+      "blurb": "Social media + brand design",
+      "accent": "#e7c4cb",
+      "cover": ""
+    },
+    {
+      "slug": "purdue-brand-studio",
+      "name": "Purdue Brand Studio",
+      "blurb": "Brand & visual design",
+      "accent": "#cbb58a",
+      "cover": ""
+    },
+    {
+      "slug": "northeast-school-of-dance",
+      "name": "Northeast School of Dance",
+      "blurb": "Social media content",
+      "accent": "#d99aa6",
+      "cover": ""
+    },
+    {
+      "slug": "purdue-pre-pharmacy-club",
+      "name": "Purdue Pre-Pharmacy Club",
+      "blurb": "Club branding & social",
+      "accent": "#aebca2",
+      "cover": ""
+    },
+    {
+      "slug": "personal-project",
+      "name": "Personal Project",
+      "blurb": "A personal creative project",
+      "accent": "#c8d8e6",
+      "cover": ""
+    }
+  ]
+}

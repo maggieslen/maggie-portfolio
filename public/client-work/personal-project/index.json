@@ -1,0 +1,13 @@
+{
+  "name": "Personal Project",
+  "tagline": "A personal creative project",
+  "description": "Placeholder — describe this personal project: the idea, what you made, and why.",
+  "links": [],
+  "sections": [
+    {
+      "type": "gallery",
+      "title": "Selected Work",
+      "items": []
+    }
+  ]
+}

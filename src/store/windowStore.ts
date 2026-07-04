@@ -10,14 +10,16 @@ import { create } from 'zustand'
  * close it.
  * ------------------------------------------------------------------ */
 
-export type WindowKind = 'folder' | 'app' | 'music'
+export type WindowKind = 'folder' | 'app' | 'music' | 'project'
 
 export interface OpenWindow {
   /** Unique id for this specific open window. */
   id: string
   kind: WindowKind
-  /** The folder id or app id this window is showing. */
+  /** The folder id, app id, or project slug this window is showing. */
   refId: string
+  /** Optional display title (e.g. a project name) for the title bar. */
+  title?: string
   /** Stacking order — higher is closer to the front. */
   zIndex: number
 }
@@ -25,7 +27,7 @@ export interface OpenWindow {
 interface WindowState {
   windows: OpenWindow[]
   topZ: number
-  openWindow: (kind: WindowKind, refId: string) => void
+  openWindow: (kind: WindowKind, refId: string, title?: string) => void
   closeWindow: (id: string) => void
   focusWindow: (id: string) => void
 }
@@ -36,7 +38,7 @@ export const useWindowStore = create<WindowState>((set, get) => ({
   windows: [],
   topZ: BASE_Z,
 
-  openWindow: (kind, refId) => {
+  openWindow: (kind, refId, title) => {
     // If this folder/app is already open, just bring it to the front.
     const existing = get().windows.find(
       (w) => w.kind === kind && w.refId === refId,
@@ -50,7 +52,7 @@ export const useWindowStore = create<WindowState>((set, get) => ({
       topZ: zIndex,
       windows: [
         ...s.windows,
-        { id: `${kind}-${refId}-${Date.now()}`, kind, refId, zIndex },
+        { id: `${kind}-${refId}-${Date.now()}`, kind, refId, title, zIndex },
       ],
     }))
   },

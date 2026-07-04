@@ -6,9 +6,11 @@ import { useWindowStore } from '../store/windowStore'
 import { apps, folders } from '../content'
 
 function titleFor(win: OpenWindow): string {
+  if (win.title) return win.title
   if (win.kind === 'folder')
     return folders.find((f) => f.id === win.refId)?.label ?? 'Folder'
   if (win.kind === 'music') return 'Music'
+  if (win.kind === 'project') return 'Project'
   return apps.find((a) => a.id === win.refId)?.name ?? 'App'
 }
 

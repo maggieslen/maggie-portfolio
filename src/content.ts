@@ -85,6 +85,15 @@ export const folders: Folder[] = [
       { id: 'pr3', title: 'Experiment', kind: 'link', description: 'Link to a repo or live demo.', href: '#' },
     ],
   },
+  {
+    // Client / brand work. Its projects live in /public/client-work/* (each with
+    // an index.json + media/ folder) — see ClientWorkGrid + ProjectWindow.
+    id: 'clientwork',
+    label: 'client work',
+    position: { top: 250, left: 585 },
+    accent: '#d99aa6',
+    items: [],
+  },
 ]
 
 /* ------------------------------------------------------------------ *

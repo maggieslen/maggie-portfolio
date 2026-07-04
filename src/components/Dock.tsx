@@ -15,6 +15,13 @@ export function Dock() {
   const isOpen = (id: string) =>
     windows.some((w) => w.kind === 'app' && w.refId === id)
 
+  // Fullscreen windows (apps, music, projects) cover the desktop — hide the
+  // dock behind them, like macOS does in fullscreen.
+  const fullscreenOpen = windows.some(
+    (w) => w.kind === 'app' || w.kind === 'music' || w.kind === 'project',
+  )
+  if (fullscreenOpen) return null
+
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-3 z-[9000] flex justify-center px-4">
       <div className="pointer-events-auto flex items-end gap-3 rounded-[22px] border border-white/60 bg-dock/50 px-3.5 py-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.14)] backdrop-blur-md">

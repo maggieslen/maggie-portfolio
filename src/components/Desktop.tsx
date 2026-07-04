@@ -8,6 +8,7 @@ import { Window } from './Window'
 import { FolderWindow } from './FolderWindow'
 import { AppWindow } from './AppWindow'
 import { MusicWindow } from './MusicWindow'
+import { ProjectWindow } from './ProjectWindow'
 import { CameraWidget } from './widgets/CameraWidget'
 import { PostcardWidget } from './widgets/PostcardWidget'
 import { PolaroidStack } from './widgets/PolaroidStack'
@@ -39,12 +40,16 @@ export function Desktop() {
             key={win.id}
             win={win}
             index={index}
-            fullscreen={win.kind === 'app' || win.kind === 'music'}
+            fullscreen={
+              win.kind === 'app' || win.kind === 'music' || win.kind === 'project'
+            }
           >
             {win.kind === 'folder' ? (
               <FolderWindow refId={win.refId} />
             ) : win.kind === 'music' ? (
               <MusicWindow />
+            ) : win.kind === 'project' ? (
+              <ProjectWindow refId={win.refId} />
             ) : (
               <AppWindow refId={win.refId} />
             )}

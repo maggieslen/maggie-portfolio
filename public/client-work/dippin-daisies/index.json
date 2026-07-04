@@ -1,0 +1,30 @@
+{
+  "name": "Dippin' Daisies",
+  "tagline": "Social media + brand design",
+  "description": "Placeholder — a short intro to the Dippin' Daisies work: your role, what you created, and the goal. Your own curated media is the focus of this page; the live site link sits off to the side.",
+  "links": [
+    { "label": "View full site", "url": "#" }
+  ],
+  "sections": [
+    {
+      "type": "gallery",
+      "title": "Design & Mockups",
+      "items": []
+    },
+    {
+      "type": "grid",
+      "title": "Feed",
+      "items": []
+    },
+    {
+      "type": "stories",
+      "title": "Stories & Reels",
+      "items": []
+    },
+    {
+      "type": "embeds",
+      "title": "Published on Instagram",
+      "items": []
+    }
+  ]
+}
