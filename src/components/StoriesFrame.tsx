@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { cwMedia, isVideo } from '../lib/clientWork'
 import type { CwItem, CwStoryGroup } from '../lib/clientWork'
 
@@ -19,10 +19,28 @@ export function StoriesFrame({
 }) {
   const [index, setIndex] = useState(0)
   const [muted, setMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const current = items[index]
 
   function go(delta: number) {
     setIndex((i) => Math.min(items.length - 1, Math.max(0, i + delta)))
+  }
+
+  // Toggling the `muted` property alone doesn't reliably resume audio on a
+  // video that started muted for autoplay (a well-known Safari/iOS quirk) —
+  // re-calling .play() inside the same click handler forces it to actually
+  // start outputting sound.
+  function toggleMute() {
+    setMuted((wasMuted) => {
+      const next = !wasMuted
+      const v = videoRef.current
+      if (v) {
+        v.muted = next
+        v.volume = 1
+        if (!next) v.play().catch(() => {})
+      }
+      return next
+    })
   }
 
   return (
@@ -48,6 +66,7 @@ export function StoriesFrame({
             {isVideo(current.src) ? (
               <video
                 key={current.src}
+                ref={videoRef}
                 src={cwMedia(slug, current.src!)}
                 muted={muted}
                 loop
@@ -70,7 +89,7 @@ export function StoriesFrame({
             <button
               type="button"
               aria-label={muted ? 'Unmute' : 'Mute'}
-              onClick={() => setMuted((m) => !m)}
+              onClick={toggleMute}
               className="absolute right-2 top-8 z-20 grid h-7 w-7 place-items-center rounded-full bg-black/45 text-white backdrop-blur-sm"
             >
               {muted ? <SpeakerOffIcon /> : <SpeakerOnIcon />}
