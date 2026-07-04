@@ -1,6 +1,7 @@
 import { useJson } from '../lib/useJson'
 import { cwMedia, isVideo } from '../lib/clientWork'
 import type { CwProject, CwSection } from '../lib/clientWork'
+import { StoriesFrame } from './StoriesFrame'
 
 /** A dedicated project page (fullscreen). Your own media is the focus. */
 export function ProjectWindow({ refId }: { refId: string }) {
@@ -54,6 +55,8 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
       <h2 className="mb-4 font-heading text-2xl text-charcoal">{section.title}</h2>
       {section.items.length === 0 ? (
         <Placeholder type={section.type} />
+      ) : section.type === 'stories' ? (
+        <StoriesFrame slug={slug} items={section.items} />
       ) : section.type === 'grid' ? (
         <IgGrid slug={slug} section={section} />
       ) : (
@@ -64,10 +67,16 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
 }
 
 function Gallery({ slug, section }: { slug: string; section: CwSection }) {
+  const single = section.items.length === 1
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div className={single ? '' : 'grid grid-cols-1 gap-4 sm:grid-cols-2'}>
       {section.items.map((it, i) => (
-        <figure key={i} className="overflow-hidden rounded-xl bg-white ring-1 ring-black/5">
+        <figure
+          key={i}
+          className={`overflow-hidden rounded-xl bg-white ring-1 ring-black/5 ${
+            single ? 'max-w-[360px]' : ''
+          }`}
+        >
           {isVideo(it.src) ? (
             <video src={cwMedia(slug, it.src!)} controls className="w-full" />
           ) : (

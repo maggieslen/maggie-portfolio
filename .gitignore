@@ -21,6 +21,9 @@ pnpm-debug.log*
 /elements/
 /about me/
 /photos/
+/dippin' daisys/
+/northeast school of dance/
+/purdue brand studio/
 
 # local Claude Code settings (keep launch.json, ignore machine-local prefs)
 .claude/settings.local.json

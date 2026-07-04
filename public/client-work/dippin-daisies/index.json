@@ -1,30 +1,44 @@
 {
-  "name": "Dippin' Daisies",
+  "name": "Dippin' Daisys",
   "tagline": "Social media + brand design",
-  "description": "Placeholder — a short intro to the Dippin' Daisies work: your role, what you created, and the goal. Your own curated media is the focus of this page; the live site link sits off to the side.",
+  "description": "Social-media design for Dippin' Daisys — a sunny, playful swimwear brand (♡ making waves ♡). I designed the feed layout, story campaigns, and a reel built around the brand's hand-sewn, beachy aesthetic. (Placeholder copy — edit anytime.)",
   "links": [
-    { "label": "View full site", "url": "#" }
+    { "label": "View full site", "url": "https://dippindaisys.com" }
   ],
   "sections": [
     {
       "type": "gallery",
-      "title": "Design & Mockups",
-      "items": []
-    },
-    {
-      "type": "grid",
-      "title": "Feed",
-      "items": []
+      "title": "The Feed",
+      "items": [
+        { "src": "media/profile-layout.jpg", "caption": "Profile + feed layout" }
+      ]
     },
     {
       "type": "stories",
-      "title": "Stories & Reels",
-      "items": []
+      "title": "Just Add Water",
+      "items": [
+        { "src": "media/jaw-1.jpg" },
+        { "src": "media/jaw-2.jpg" },
+        { "src": "media/jaw-3.jpg" },
+        { "src": "media/jaw-4.jpg" }
+      ]
     },
     {
-      "type": "embeds",
-      "title": "Published on Instagram",
-      "items": []
+      "type": "stories",
+      "title": "Spring Soirée",
+      "items": [
+        { "src": "media/ss-1.jpg" },
+        { "src": "media/ss-2.jpg" },
+        { "src": "media/ss-3.jpg" },
+        { "src": "media/ss-4.jpg" }
+      ]
+    },
+    {
+      "type": "stories",
+      "title": "Aesthetic Reel",
+      "items": [
+        { "src": "media/reel-aesthetic.mp4" }
+      ]
     }
   ]
 }
