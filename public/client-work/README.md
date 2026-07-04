@@ -40,7 +40,10 @@ Each section has a `type` and a `title`.
   continue on to the next post, one continuous swipe through everything, no
   new tab. If a post has already gone live, add
   `"url": "https://www.instagram.com/p/XXXXXXXXX/"` and the lightbox shows a
-  "View on Instagram" link for it; leave `url` off for unpublished work.
+  "View on Instagram" link for it; leave `url` off for unpublished work. If a
+  design of yours wasn't published as-is but *inspired* a post someone else
+  designed/posted, use `"inspiredUrl"` instead of `"url"` — the lightbox shows
+  "Inspired this Instagram post" so it's clear you didn't design the live one.
 
 - **`"stories"`** — Stories/Reels shown as a **row of phone mockups**, one per
   group, each with a caption underneath (like flipping through a camera roll).

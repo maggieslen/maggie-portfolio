@@ -27,7 +27,8 @@
         },
         {
           "slides": ["media/weekend-menu-1.jpg", "media/weekend-menu-2.jpg", "media/weekend-menu-3.jpg", "media/weekend-menu-4.jpg"],
-          "caption": "Purdue Weekend Menu"
+          "caption": "Purdue Weekend Menu",
+          "inspiredUrl": "https://www.instagram.com/p/DXMYd6IDxOb/"
         },
         {
           "slides": ["media/chipotle-1.jpg", "media/chipotle-2.jpg"],

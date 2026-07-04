@@ -20,8 +20,14 @@ export interface CwItem {
   /** poster image for a video story */
   poster?: string
   caption?: string
-  /** for embeds: a public Instagram post/reel URL */
+  /** for embeds, or a published post: its public Instagram URL. */
   url?: string
+  /**
+   * Set this instead of `url` when this design wasn't the one published —
+   * it just inspired a later post (designed/posted by someone else). Shows
+   * a "Inspired this Instagram post" link instead of "View on Instagram".
+   */
+  inspiredUrl?: string
 }
 
 /** All slides for a grid post, whether it's a single image or a carousel. */

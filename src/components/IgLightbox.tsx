@@ -135,7 +135,7 @@ export function IgLightbox({
           )}
         </div>
 
-        {(post.caption || post.url) && (
+        {(post.caption || post.url || post.inspiredUrl) && (
           <div className="mt-4 flex flex-col items-center gap-1 text-center">
             {post.caption && <p className="text-[15px] text-white/90">{post.caption}</p>}
             {post.url && (
@@ -146,6 +146,16 @@ export function IgLightbox({
                 className="text-[13px] font-medium text-white/60 hover:text-white hover:underline"
               >
                 View on Instagram ↗
+              </a>
+            )}
+            {post.inspiredUrl && (
+              <a
+                href={post.inspiredUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[13px] font-medium text-white/60 hover:text-white hover:underline"
+              >
+                Inspired this Instagram post ↗
               </a>
             )}
           </div>
