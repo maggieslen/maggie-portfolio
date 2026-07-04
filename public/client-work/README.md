@@ -31,11 +31,12 @@ Each section has a `type` and a `title`.
   `items`: `{ "src": "media/mockup1.png", "caption": "optional" }`
   (a `.mp4`/`.mov` src renders as a video)
 
-- **`"grid"`** — Instagram-profile-style grid of square thumbnails (for feed posts).
-  `items`: `{ "src": "media/post1.jpg", "caption": "optional" }`. If a post has
-  already gone live, add `"url": "https://www.instagram.com/p/XXXXXXXXX/"` and
-  its tile opens the real post in a new tab; leave `url` off for unpublished
-  work and it just displays the image.
+- **`"grid"`** — Instagram-feed-style grid of 3:4 thumbnails (for feed posts).
+  `items`: `{ "src": "media/post1.jpg", "caption": "optional" }`. Clicking any
+  tile opens a full-screen lightbox — click the arrows (or use ← / → / Esc) to
+  browse every post right there, no new tab. If a post has already gone live,
+  add `"url": "https://www.instagram.com/p/XXXXXXXXX/"` and the lightbox shows
+  a "View on Instagram" link for it; leave `url` off for unpublished work.
 
 - **`"stories"`** — Stories/Reels shown as a **row of phone mockups**, one per
   group, each with a caption underneath (like flipping through a camera roll).

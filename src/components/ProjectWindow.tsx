@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { useJson } from '../lib/useJson'
 import { cwMedia, igEmbedUrl, isVideo } from '../lib/clientWork'
 import type { CwItem, CwProject, CwSection } from '../lib/clientWork'
 import { StoriesRow } from './StoriesFrame'
 import { IgProfileCard } from './IgProfileCard'
+import { IgLightbox } from './IgLightbox'
 
 /** A dedicated project page (fullscreen). Your own media is the focus. */
 export function ProjectWindow({ refId }: { refId: string }) {
@@ -107,29 +109,40 @@ function Gallery({ slug, items }: { slug: string; items: CwItem[] }) {
 }
 
 function IgGrid({ slug, items }: { slug: string; items: CwItem[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
   return (
-    <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-      {items.map((it, i) => {
-        const tile = (
-          <div className="group aspect-square overflow-hidden rounded-lg ring-1 ring-black/5">
+    <>
+      <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+        {items.map((it, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => setOpenIndex(i)}
+            title={it.caption}
+            className="group aspect-[3/4] overflow-hidden rounded-lg ring-1 ring-black/5"
+          >
             <img
               src={cwMedia(slug, it.src!)}
               alt={it.caption || ''}
               className="h-full w-full object-cover transition group-hover:scale-105"
             />
-          </div>
-        )
-        return it.url ? (
-          <a key={i} href={it.url} target="_blank" rel="noreferrer" title={it.caption}>
-            {tile}
-          </a>
-        ) : (
-          <div key={i} title={it.caption}>
-            {tile}
-          </div>
-        )
-      })}
-    </div>
+          </button>
+        ))}
+      </div>
+
+      {openIndex !== null && (
+        <IgLightbox
+          slug={slug}
+          items={items}
+          index={openIndex}
+          onIndexChange={(updater) =>
+            setOpenIndex((i) => (typeof updater === 'function' ? updater(i ?? 0) : updater))
+          }
+          onClose={() => setOpenIndex(null)}
+        />
+      )}
+    </>
   )
 }
 
