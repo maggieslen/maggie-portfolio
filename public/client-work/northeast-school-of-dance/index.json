@@ -1,18 +1,20 @@
 {
   "name": "Northeast School of Dance",
-  "tagline": "Social media content",
-  "description": "Placeholder — the social content you created for Northeast School of Dance.",
+  "tagline": "Merch + social design",
+  "description": "Merch design for Northeast School of Dance — t-shirt front & back across three colorways. (Placeholder copy — edit anytime. Add feed posts or stories below whenever you'd like.)",
   "links": [],
   "sections": [
     {
-      "type": "grid",
-      "title": "Feed",
-      "items": []
-    },
-    {
-      "type": "stories",
-      "title": "Stories & Reels",
-      "items": []
+      "type": "gallery",
+      "title": "T-Shirt Designs",
+      "items": [
+        { "src": "media/grey-front.png", "caption": "Grey — front" },
+        { "src": "media/grey-back.png", "caption": "Grey — back" },
+        { "src": "media/pink-front.png", "caption": "Pink — front" },
+        { "src": "media/pink-back.png", "caption": "Pink — back" },
+        { "src": "media/white-front.png", "caption": "White — front" },
+        { "src": "media/white-back.png", "caption": "White — back" }
+      ]
     }
   ]
 }

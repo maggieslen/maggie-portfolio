@@ -54,3 +54,9 @@ export function cwMedia(slug: string, src: string): string {
 export function isVideo(src?: string): boolean {
   return !!src && /\.(mp4|mov|webm|m4v)$/i.test(src)
 }
+
+/** Turn a normal Instagram post/reel URL into its official embed URL. */
+export function igEmbedUrl(url: string): string {
+  const clean = url.split('?')[0].replace(/\/+$/, '')
+  return `${clean}/embed`
+}

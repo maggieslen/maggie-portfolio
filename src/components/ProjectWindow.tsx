@@ -1,5 +1,5 @@
 import { useJson } from '../lib/useJson'
-import { cwMedia, isVideo } from '../lib/clientWork'
+import { cwMedia, igEmbedUrl, isVideo } from '../lib/clientWork'
 import type { CwProject, CwSection } from '../lib/clientWork'
 import { StoriesFrame } from './StoriesFrame'
 
@@ -59,6 +59,8 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
         <StoriesFrame slug={slug} items={section.items} />
       ) : section.type === 'grid' ? (
         <IgGrid slug={slug} section={section} />
+      ) : section.type === 'embeds' ? (
+        <IgEmbed section={section} />
       ) : (
         <Gallery slug={slug} section={section} />
       )}
@@ -97,6 +99,24 @@ function IgGrid({ slug, section }: { slug: string; section: CwSection }) {
       {section.items.map((it, i) => (
         <div key={i} className="aspect-square overflow-hidden rounded-lg ring-1 ring-black/5">
           <img src={cwMedia(slug, it.src!)} alt={it.caption || ''} className="h-full w-full object-cover" />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function IgEmbed({ section }: { section: CwSection }) {
+  return (
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {section.items.map((it, i) => (
+        <div key={i} className="overflow-hidden rounded-xl bg-white ring-1 ring-black/5">
+          <iframe
+            src={igEmbedUrl(it.url!)}
+            title={it.url}
+            loading="lazy"
+            scrolling="no"
+            className="h-[620px] w-full"
+          />
         </div>
       ))}
     </div>
