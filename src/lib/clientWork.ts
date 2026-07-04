@@ -10,11 +10,23 @@ export interface CwLink {
 export interface CwItem {
   /** media path relative to the project folder, e.g. "media/mockup1.png" */
   src?: string
+  /**
+   * For a multi-slide carousel post: every slide's path, in order. When set,
+   * this takes priority over `src` — the grid cover is `slides[0]`, and the
+   * lightbox lets you click/swipe through all of them before moving on to
+   * the next post.
+   */
+  slides?: string[]
   /** poster image for a video story */
   poster?: string
   caption?: string
   /** for embeds: a public Instagram post/reel URL */
   url?: string
+}
+
+/** All slides for a grid post, whether it's a single image or a carousel. */
+export function cwSlides(item: CwItem): string[] {
+  return item.slides && item.slides.length > 0 ? item.slides : [item.src!]
 }
 
 export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile'

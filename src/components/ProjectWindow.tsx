@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useJson } from '../lib/useJson'
-import { cwMedia, igEmbedUrl, isVideo } from '../lib/clientWork'
+import { cwMedia, cwSlides, igEmbedUrl, isVideo } from '../lib/clientWork'
 import type { CwItem, CwProject, CwSection } from '../lib/clientWork'
 import { StoriesRow } from './StoriesFrame'
 import { IgProfileCard } from './IgProfileCard'
@@ -120,13 +120,18 @@ function IgGrid({ slug, items }: { slug: string; items: CwItem[] }) {
             type="button"
             onClick={() => setOpenIndex(i)}
             title={it.caption}
-            className="group aspect-[3/4] overflow-hidden rounded-lg ring-1 ring-black/5"
+            className="group relative aspect-[3/4] overflow-hidden rounded-lg ring-1 ring-black/5"
           >
             <img
-              src={cwMedia(slug, it.src!)}
+              src={cwMedia(slug, cwSlides(it)[0])}
               alt={it.caption || ''}
               className="h-full w-full object-cover transition group-hover:scale-105"
             />
+            {cwSlides(it).length > 1 && (
+              <span className="absolute right-1.5 top-1.5 rounded bg-black/50 px-1 text-[10px] font-medium text-white">
+                1/{cwSlides(it).length}
+              </span>
+            )}
           </button>
         ))}
       </div>
@@ -135,10 +140,7 @@ function IgGrid({ slug, items }: { slug: string; items: CwItem[] }) {
         <IgLightbox
           slug={slug}
           items={items}
-          index={openIndex}
-          onIndexChange={(updater) =>
-            setOpenIndex((i) => (typeof updater === 'function' ? updater(i ?? 0) : updater))
-          }
+          startIndex={openIndex}
           onClose={() => setOpenIndex(null)}
         />
       )}

@@ -32,11 +32,15 @@ Each section has a `type` and a `title`.
   (a `.mp4`/`.mov` src renders as a video)
 
 - **`"grid"`** — Instagram-feed-style grid of 3:4 thumbnails (for feed posts).
-  `items`: `{ "src": "media/post1.jpg", "caption": "optional" }`. Clicking any
-  tile opens a full-screen lightbox — click the arrows (or use ← / → / Esc) to
-  browse every post right there, no new tab. If a post has already gone live,
-  add `"url": "https://www.instagram.com/p/XXXXXXXXX/"` and the lightbox shows
-  a "View on Instagram" link for it; leave `url` off for unpublished work.
+  `items`: `{ "src": "media/post1.jpg", "caption": "optional" }` for a
+  single-image post, or `{ "slides": ["media/post1-1.jpg", "media/post1-2.jpg", ...], "caption": "optional" }`
+  for a multi-slide carousel post (the grid tile shows `slides[0]` as the
+  cover, with a "1/4" badge). Clicking any tile opens a full-screen lightbox —
+  the arrows (or ← / → / Esc) first page through that post's own slides, then
+  continue on to the next post, one continuous swipe through everything, no
+  new tab. If a post has already gone live, add
+  `"url": "https://www.instagram.com/p/XXXXXXXXX/"` and the lightbox shows a
+  "View on Instagram" link for it; leave `url` off for unpublished work.
 
 - **`"stories"`** — Stories/Reels shown as a **row of phone mockups**, one per
   group, each with a caption underneath (like flipping through a camera roll).
