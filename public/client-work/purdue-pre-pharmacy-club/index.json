@@ -1,18 +1,26 @@
 {
   "name": "Purdue Pre-Pharmacy Club",
   "tagline": "Club branding & social",
-  "description": "Placeholder — the branding and social content you created for the Purdue Pre-Pharmacy Club.",
+  "description": "Social content for the Purdue Pre-Pharmacy Club — event recaps and community posts, from card-making with Letters of Love to bracelet-making and blanket drives with the Linus Project. (Placeholder copy — edit anytime.)",
   "links": [],
   "sections": [
     {
-      "type": "gallery",
-      "title": "Selected Work",
-      "items": []
+      "type": "embeds",
+      "title": "Static Posts",
+      "items": [
+        { "url": "https://www.instagram.com/p/DUoefM1EWpe/", "caption": "PPC x LOL Card Making Event" },
+        { "url": "https://www.instagram.com/p/DXo3PShCG1T/", "caption": "Cookies & Crafts" },
+        { "url": "https://www.instagram.com/p/DWe4SkLEUTs/", "caption": "Cards for Admitted Students" },
+        { "url": "https://www.instagram.com/p/DUBI4WtkQRn/", "caption": "Linus Project Blanket Making" },
+        { "url": "https://www.instagram.com/p/DOmTLaRkQp3/", "caption": "Bracelet Making" }
+      ]
     },
     {
-      "type": "grid",
-      "title": "Feed",
-      "items": []
+      "type": "embeds",
+      "title": "Reels",
+      "items": [
+        { "url": "https://www.instagram.com/reel/DN3vfEM4tv1/", "caption": "Pharmacy at Purdue" }
+      ]
     }
   ]
 }

@@ -39,13 +39,26 @@ export function IgProfileCard({
 
           <div className="min-w-0 flex-1 text-center sm:text-left">
             <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
-              <h3 className="text-lg font-semibold text-charcoal">{profile.username}</h3>
-              <button
-                type="button"
+              {profile.instagramUrl ? (
+                <a
+                  href={profile.instagramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-lg font-semibold text-charcoal hover:underline"
+                >
+                  {profile.username}
+                </a>
+              ) : (
+                <h3 className="text-lg font-semibold text-charcoal">{profile.username}</h3>
+              )}
+              <a
+                href={profile.instagramUrl || '#'}
+                target="_blank"
+                rel="noreferrer"
                 className="rounded-lg bg-garden-bloom px-4 py-1.5 text-[13px] font-medium text-white transition hover:brightness-105"
               >
                 Follow
-              </button>
+              </a>
               <button
                 type="button"
                 className="rounded-lg bg-champagne-cream/50 px-4 py-1.5 text-[13px] font-medium text-charcoal transition hover:bg-champagne-cream/70"

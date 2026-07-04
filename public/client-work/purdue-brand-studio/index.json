@@ -1,13 +1,27 @@
 {
   "name": "Purdue Brand Studio",
-  "tagline": "Brand & visual design",
-  "description": "Placeholder — your role at Purdue Brand Studio and the work you created.",
+  "tagline": "Life at Purdue — brand & social content",
+  "description": "Social content created with Purdue Brand Studio — static feed posts and reels for \"Life at Purdue,\" telling everyday campus stories. (Placeholder copy — edit anytime.)",
   "links": [],
   "sections": [
     {
-      "type": "gallery",
-      "title": "Selected Work",
-      "items": []
+      "type": "embeds",
+      "title": "Static Posts",
+      "items": [
+        { "url": "https://www.instagram.com/p/DYNfrQkgUsy/", "caption": "What's it like at Purdue" },
+        { "url": "https://www.instagram.com/p/DYVAd08FiaC/", "caption": "The biggest Chipotle fanbase" },
+        { "url": "https://www.instagram.com/p/DVWGbUjDiUc/", "caption": "It's just a" }
+      ]
+    },
+    {
+      "type": "embeds",
+      "title": "Reels",
+      "items": [
+        { "url": "https://www.instagram.com/reel/DSKrifxDmqg/", "caption": "Season's Greetings" },
+        { "url": "https://www.instagram.com/reel/DSDtJ7VkpQB/", "caption": "Best Study Spot on Campus" },
+        { "url": "https://www.instagram.com/reel/DQH2Z8vAST0/", "caption": "Send This to a Boilermaker" },
+        { "url": "https://www.instagram.com/reel/DPSXYFTDttY/", "caption": "Purdue by Night" }
+      ]
     }
   ]
 }

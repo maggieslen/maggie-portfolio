@@ -42,6 +42,8 @@ export interface CwProfile {
   bio?: string[]
   link?: string
   highlights?: CwHighlight[]
+  /** The real Instagram profile URL — makes the username open it in a new tab. */
+  instagramUrl?: string
 }
 
 export interface CwSection {

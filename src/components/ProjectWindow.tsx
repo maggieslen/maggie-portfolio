@@ -120,16 +120,21 @@ function IgGrid({ slug, items }: { slug: string; items: CwItem[] }) {
 
 function IgEmbed({ items }: { items: CwItem[] }) {
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((it, i) => (
-        <div key={i} className="overflow-hidden rounded-xl bg-white ring-1 ring-black/5">
-          <iframe
-            src={igEmbedUrl(it.url!)}
-            title={it.url}
-            loading="lazy"
-            scrolling="no"
-            className="h-[620px] w-full"
-          />
+        <div key={i}>
+          {it.caption && (
+            <p className="mb-2 text-[13px] font-medium text-charcoal/60">{it.caption}</p>
+          )}
+          <div className="overflow-hidden rounded-xl bg-white ring-1 ring-black/5">
+            <iframe
+              src={igEmbedUrl(it.url!)}
+              title={it.caption || it.url}
+              loading="lazy"
+              scrolling="no"
+              className="h-[620px] w-full"
+            />
+          </div>
         </div>
       ))}
     </div>

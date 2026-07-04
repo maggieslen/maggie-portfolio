@@ -3,7 +3,8 @@
   "tagline": "Social media + brand design",
   "description": "Social-media design for Dippin' Daisys — a sunny, playful swimwear brand (♡ making waves ♡). I designed the feed layout, story campaigns, and a reel built around the brand's hand-sewn, beachy aesthetic. (Placeholder copy — edit anytime.)",
   "links": [
-    { "label": "View full site", "url": "https://dippindaisys.com" }
+    { "label": "View full site", "url": "https://dippindaisys.com" },
+    { "label": "Instagram", "url": "https://www.instagram.com/dippindaisys/" }
   ],
   "sections": [
     {
@@ -16,6 +17,7 @@
         "stats": { "posts": "4,860", "followers": "387K", "following": "942" },
         "bio": ["♡ MAKING WAVES ♡", "Hand Sewn + Sustainably Made", "Shop our latest drop here 🌞"],
         "link": "dippindaisys.com",
+        "instagramUrl": "https://www.instagram.com/dippindaisys/",
         "highlights": [
           { "label": "côte d'azur" },
           { "label": "mallorca" },
@@ -25,15 +27,15 @@
         ]
       },
       "items": [
-        { "src": "media/jaw-1.jpg" },
-        { "src": "media/ss-2.jpg" },
-        { "src": "media/jaw-3.jpg" },
-        { "src": "media/ss-1.jpg" },
-        { "src": "media/jaw-2.jpg" },
-        { "src": "media/ss-3.jpg" },
-        { "src": "media/jaw-4.jpg" },
-        { "src": "media/ss-4.jpg" },
-        { "src": "media/jaw-2.jpg" }
+        { "src": "media/feed-1.jpg" },
+        { "src": "media/feed-2.jpg" },
+        { "src": "media/feed-3.jpg" },
+        { "src": "media/feed-4.jpg" },
+        { "src": "media/feed-5.jpg" },
+        { "src": "media/feed-6.jpg" },
+        { "src": "media/feed-7.jpg" },
+        { "src": "media/feed-8.jpg" },
+        { "src": "media/feed-9.jpg" }
       ]
     },
     {
@@ -50,18 +52,18 @@
           ]
         },
         {
+          "caption": "Aesthetic Reel",
+          "items": [
+            { "src": "media/reel-aesthetic.mp4" }
+          ]
+        },
+        {
           "caption": "Spring Soirée",
           "items": [
             { "src": "media/ss-1.jpg" },
             { "src": "media/ss-2.jpg" },
             { "src": "media/ss-3.jpg" },
             { "src": "media/ss-4.jpg" }
-          ]
-        },
-        {
-          "caption": "Aesthetic Reel",
-          "items": [
-            { "src": "media/reel-aesthetic.mp4" }
           ]
         }
       ]
