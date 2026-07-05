@@ -16,7 +16,7 @@ export function CardGrid({ slug, cards }: { slug: string; cards: CwCard[] }) {
             type="button"
             onClick={() => setOpenIndex(i)}
             title={card.title}
-            className="group overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black/5 transition hover:-translate-y-0.5 hover:shadow-lg"
+            className="group overflow-hidden rounded-lg transition hover:-translate-y-0.5"
           >
             <img
               src={cwMedia(slug, card.front)}

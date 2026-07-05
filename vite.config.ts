@@ -9,4 +9,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: '/maggie-portfolio/',
   plugins: [react(), tailwindcss()],
+  server: {
+    port: Number(process.env.PORT) || 5173,
+    strictPort: false,
+  },
 })
