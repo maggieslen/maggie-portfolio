@@ -1,19 +1,19 @@
 {
   "name": "Northeast School of Dance",
-  "tagline": "Merch + social design",
-  "description": "Merch design for Northeast School of Dance — t-shirt front & back across three colorways. (Placeholder copy — edit anytime. Add feed posts or stories below whenever you'd like.)",
-  "links": [],
+  "tagline": "Merch + prop design",
+  "description": "I'm not part of running or posting to Northeast School of Dance's social pages — I help behind the scenes with t-shirt designs, dance performance props, and mixing some of their music. Shown below: t-shirt designs across three colorways, mocked up on real shirts.",
+  "links": [
+    { "label": "Instagram", "url": "https://www.instagram.com/northeastschoolofdance/" },
+    { "label": "Facebook", "url": "https://www.facebook.com/p/Northeast-School-of-Dance-100057201468470/" }
+  ],
   "sections": [
     {
       "type": "gallery",
       "title": "T-Shirt Designs",
       "items": [
-        { "src": "media/grey-front.png", "caption": "Grey — front" },
-        { "src": "media/grey-back.png", "caption": "Grey — back" },
-        { "src": "media/pink-front.png", "caption": "Pink — front" },
-        { "src": "media/pink-back.png", "caption": "Pink — back" },
-        { "src": "media/white-front.png", "caption": "White — front" },
-        { "src": "media/white-back.png", "caption": "White — back" }
+        { "src": "media/grey-shirt.jpg", "caption": "Grey — front & back" },
+        { "src": "media/pink-shirt.jpg", "caption": "Pink — front & back" },
+        { "src": "media/white-shirt.jpg", "caption": "White — front & back" }
       ]
     }
   ]

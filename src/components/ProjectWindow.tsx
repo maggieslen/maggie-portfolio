@@ -84,15 +84,12 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
 }
 
 function Gallery({ slug, items }: { slug: string; items: CwItem[] }) {
-  const single = items.length === 1
   return (
-    <div className={single ? '' : 'grid grid-cols-1 gap-4 sm:grid-cols-2'}>
+    <div className="space-y-6">
       {items.map((it, i) => (
         <figure
           key={i}
-          className={`overflow-hidden rounded-xl bg-white ring-1 ring-black/5 ${
-            single ? 'max-w-[360px]' : ''
-          }`}
+          className="mx-auto max-w-2xl overflow-hidden rounded-xl bg-white ring-1 ring-black/5"
         >
           {isVideo(it.src) ? (
             <video src={cwMedia(slug, it.src!)} controls className="w-full" />
