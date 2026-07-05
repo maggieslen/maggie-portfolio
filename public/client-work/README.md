@@ -54,6 +54,11 @@ Each section has a `type` and a `title`.
   to show a small "View on Instagram" link below its caption — omit it for
   reels/posts that haven't gone live yet.
 
+- **`"cards"`** — a grid of greeting-card covers; click one to open it like the
+  real thing (click again to close it). `cards`: `{ "title": "...", "front": "media/card1-front.jpg", "inside": "media/card1-inside.jpg" }`.
+  Front and inside can be any aspect ratio (portrait, landscape, whatever the
+  real card is) — the viewer sizes itself to fit each image.
+
 - **`"embeds"`** — **real, live** Instagram posts/reels via Instagram's official
   embed (pulls the actual post).
   `items`: `{ "url": "https://www.instagram.com/p/XXXXXXXXX/" }`

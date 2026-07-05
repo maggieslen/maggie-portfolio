@@ -35,7 +35,14 @@ export function cwSlides(item: CwItem): string[] {
   return item.slides && item.slides.length > 0 ? item.slides : [item.src!]
 }
 
-export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile'
+export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile' | 'cards'
+
+/** A greeting card — front + inside, opened like the real thing. */
+export interface CwCard {
+  title: string
+  front: string
+  inside: string
+}
 
 /** One phone mockup's worth of Stories/Reels frames, with a caption below it. */
 export interface CwStoryGroup {
@@ -75,6 +82,8 @@ export interface CwSection {
   groups?: CwStoryGroup[]
   /** Used by "profile" sections. */
   profile?: CwProfile
+  /** Used by "cards" sections. */
+  cards?: CwCard[]
 }
 
 export interface CwProject {

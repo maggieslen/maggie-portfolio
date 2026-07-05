@@ -1,0 +1,46 @@
+{
+  "name": "Letters of Love",
+  "tagline": "Handmade card design",
+  "description": "I design handmade cards for Letters of Love, a nonprofit that sends handwritten notes of encouragement to people who need them. Click a card below to open it, just like the real thing. (Placeholder copy — edit anytime.)",
+  "links": [
+    { "label": "Letters of Love Global", "url": "https://www.lettersofloveglobal.com/" }
+  ],
+  "sections": [
+    {
+      "type": "cards",
+      "title": "Cards",
+      "cards": [
+        {
+          "title": "Sealed With Love and a Little Postage",
+          "front": "media/sealed-with-love-front.jpg",
+          "inside": "media/sealed-with-love-inside.jpg"
+        },
+        {
+          "title": "Sending Love",
+          "front": "media/sending-love-front.jpg",
+          "inside": "media/sending-love-inside.jpg"
+        },
+        {
+          "title": "You Are Bloom-tiful",
+          "front": "media/bloom-tiful-front.jpg",
+          "inside": "media/bloom-tiful-inside.jpg"
+        },
+        {
+          "title": "You're Ink-credible",
+          "front": "media/ink-credible-front.jpg",
+          "inside": "media/ink-credible-inside.jpg"
+        },
+        {
+          "title": "You're Simply Tulip-tastic",
+          "front": "media/tulip-tastic-front.jpg",
+          "inside": "media/tulip-tastic-inside.jpg"
+        },
+        {
+          "title": "You're the Sweetest",
+          "front": "media/the-sweetest-front.jpg",
+          "inside": "media/the-sweetest-inside.jpg"
+        }
+      ]
+    }
+  ]
+}

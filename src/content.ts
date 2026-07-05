@@ -129,6 +129,7 @@ export const apps: AppProject[] = [
     description:
       'Placeholder — describe your involvement and impact, and link the organization.',
     liveUrl: '#',
+    projectSlug: 'letters-of-love',
   },
   {
     id: 'dream-girl',
