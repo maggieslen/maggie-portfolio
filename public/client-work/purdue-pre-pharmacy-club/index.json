@@ -32,6 +32,10 @@
           "src": "media/bracelet-making.jpg",
           "caption": "Bracelet Making",
           "url": "https://www.instagram.com/p/DOmTLaRkQp3/"
+        },
+        {
+          "slides": ["media/october-event-calendar-1.jpg", "media/october-event-calendar-2.jpg", "media/october-event-calendar-3.jpg", "media/october-event-calendar-4.jpg"],
+          "caption": "October Event Calendar"
         }
       ]
     },
