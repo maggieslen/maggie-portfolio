@@ -217,9 +217,16 @@ export const music = {
  * DECORATIVE WIDGETS  (not folders — just personality)
  * ------------------------------------------------------------------ */
 export const widgets = {
-  // Sony point-and-shoot (transparent PNG) with a real photo on its screen.
+  // Sony point-and-shoot (transparent PNGs) with a real photo on its screen.
+  // Click its ▶ playback button to cycle through them, like flipping through
+  // shots on the camera's screen.
   camera: {
-    image: 'elements/sony-camera.png',
+    images: [
+      'elements/sony-camera-1.png',
+      'elements/sony-camera-2.png',
+      'elements/sony-camera-3.png',
+      'elements/sony-camera-4.png',
+    ],
   },
   // "You are so loved" hand-drawn card (cropped from the uploaded art).
   postcard: {
