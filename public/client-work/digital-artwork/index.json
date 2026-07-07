@@ -1,0 +1,16 @@
+{
+  "name": "Digital Artwork",
+  "tagline": "Original illustrations & digital paintings",
+  "description": "A few personal digital art pieces. (Placeholder copy — edit anytime.)",
+  "links": [],
+  "sections": [
+    {
+      "type": "gallery",
+      "title": "Selected Work",
+      "items": [
+        { "src": "media/purdue-bell-tower.jpg", "caption": "Purdue Bell Tower" },
+        { "src": "media/you-are-so-loved.jpg", "caption": "You Are So Loved" }
+      ]
+    }
+  ]
+}
