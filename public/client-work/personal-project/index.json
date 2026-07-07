@@ -31,10 +31,6 @@
       "title": "Reels",
       "groups": [
         {
-          "caption": "Day in My Life",
-          "items": [{ "src": "media/ditl.mp4" }]
-        },
-        {
           "caption": "Homecoming",
           "items": [{ "src": "media/hoco.mp4" }]
         },
