@@ -1,13 +1,52 @@
 {
-  "name": "Personal Project",
-  "tagline": "A personal creative project",
-  "description": "Placeholder — describe this personal project: the idea, what you made, and why.",
+  "name": "My Instagram",
+  "tagline": "Personal content — stories & reels",
+  "description": "A look at my own social media — stories from trips and milestones, plus short-form reels. (Placeholder copy — edit anytime.)",
   "links": [],
   "sections": [
     {
-      "type": "gallery",
-      "title": "Selected Work",
-      "items": []
+      "type": "stories",
+      "title": "Stories",
+      "groups": [
+        {
+          "caption": "Graduation",
+          "items": [{ "src": "media/graduation.jpg" }]
+        },
+        {
+          "caption": "Senior Year",
+          "items": [{ "src": "media/senior-year.mp4" }]
+        },
+        {
+          "caption": "Val di Sole",
+          "items": [{ "src": "media/val-di-sole.jpg" }]
+        },
+        {
+          "caption": "Venice, Italy",
+          "items": [{ "src": "media/venice.jpg" }]
+        }
+      ]
+    },
+    {
+      "type": "stories",
+      "title": "Reels",
+      "groups": [
+        {
+          "caption": "Day in My Life",
+          "items": [{ "src": "media/ditl.mp4" }]
+        },
+        {
+          "caption": "Homecoming",
+          "items": [{ "src": "media/hoco.mp4" }]
+        },
+        {
+          "caption": "Look at My Life",
+          "items": [{ "src": "media/look-at-my-life.mp4" }]
+        },
+        {
+          "caption": "Germany & Switzerland",
+          "items": [{ "src": "media/germany-switzerland.mp4" }]
+        }
+      ]
     }
   ]
 }

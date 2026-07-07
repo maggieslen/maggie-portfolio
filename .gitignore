@@ -26,6 +26,7 @@ pnpm-debug.log*
 /purdue brand studio/
 /letters of love/
 /purdue pre-pharmacy club/
+/personal projects/
 
 # local Claude Code settings (keep launch.json, ignore machine-local prefs)
 .claude/settings.local.json
