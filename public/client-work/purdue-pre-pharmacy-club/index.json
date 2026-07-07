@@ -19,6 +19,10 @@
           "url": "https://www.instagram.com/p/DXo3PShCG1T/"
         },
         {
+          "slides": ["media/october-event-calendar-1.jpg", "media/october-event-calendar-2.jpg", "media/october-event-calendar-3.jpg", "media/october-event-calendar-4.jpg"],
+          "caption": "October Event Calendar"
+        },
+        {
           "src": "media/cards-to-admitted-students.jpg",
           "caption": "Cards for Admitted Students",
           "url": "https://www.instagram.com/p/DWe4SkLEUTs/"
@@ -32,10 +36,6 @@
           "src": "media/bracelet-making.jpg",
           "caption": "Bracelet Making",
           "url": "https://www.instagram.com/p/DOmTLaRkQp3/"
-        },
-        {
-          "slides": ["media/october-event-calendar-1.jpg", "media/october-event-calendar-2.jpg", "media/october-event-calendar-3.jpg", "media/october-event-calendar-4.jpg"],
-          "caption": "October Event Calendar"
         }
       ]
     },
