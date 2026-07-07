@@ -28,7 +28,7 @@ export const folders: Folder[] = [
     // 📸 Your photography. `description` is the caption shown in the album —
     // edit these freely. Drop new files in public/photos and add a row.
     items: [
-      { id: 'ph-colden-candid', title: 'Colden', kind: 'image', image: 'photos/colden-candid.jpg', description: 'good one, colden' },
+      { id: 'ph-colden-candid', title: 'Colden', kind: 'image', image: 'photos/colden-candid-cover.jpg', description: 'good one, colden' },
       { id: 'ph-italy', title: 'Italy', kind: 'image', image: 'photos/italy-flower-stand.jpg', description: 'flower stand in italy 🌸' },
       { id: 'ph-haley-liv', title: 'Haley & Liv', kind: 'image', image: 'photos/haley-liv.jpg', description: 'backstage hugs 🩰' },
       { id: 'ph-whisper', title: 'A Quiet Moment', kind: 'image', image: 'photos/erica-ian-whisper.jpg', description: 'a quiet moment' },
@@ -38,14 +38,14 @@ export const folders: Folder[] = [
       { id: 'ph-koehlers', title: 'The Koehlers', kind: 'image', image: 'photos/the-koehlers.jpg', description: 'the koehlers' },
       { id: 'ph-hovde', title: 'Hovde Hall', kind: 'image', image: 'photos/purdue-hovde-hall.jpg', description: 'hovde hall at golden hour' },
       { id: 'ph-trevi', title: 'Trevi Fountain', kind: 'image', image: 'photos/trevi-fountain.jpg', description: 'trevi fountain at night' },
-      { id: 'ph-boys', title: 'The Boys', kind: 'image', image: 'photos/boys-couch.jpg', description: 'the boys 🛋️' },
-      { id: 'ph-sarah-norah', title: 'Sarah & Norah', kind: 'image', image: 'photos/sarah-norah.jpg', description: 'sarah & norah 🩷' },
+      { id: 'ph-boys', title: 'The Boys', kind: 'image', image: 'photos/boys-couch-cover.jpg', description: 'the boys 🛋️' },
+      { id: 'ph-sarah-norah', title: 'Sarah & Norah', kind: 'image', image: 'photos/sarah-norah-cover.jpg', description: 'sarah & norah 🩷' },
       { id: 'ph-cali', title: 'California', kind: 'image', image: 'photos/california-beach.jpg', description: 'california coast ☀️' },
       { id: 'ph-semi', title: 'DU Semi', kind: 'image', image: 'photos/du-semi.jpg', description: 'du semi-formal' },
       { id: 'ph-fountain', title: 'Engineering Fountain', kind: 'image', image: 'photos/purdue-engineering-fountain.jpg', description: 'engineering fountain 💦' },
-      { id: 'ph-bell-tower-blossoms', title: 'Bell Tower', kind: 'image', image: 'photos/purdue-bell-tower-blossoms.jpg', description: 'bell tower through the blossoms 🌸' },
-      { id: 'ph-camden', title: 'Camden', kind: 'image', image: 'photos/camden-candid.jpg', description: 'candid on court' },
-      { id: 'ph-brody', title: 'Brody', kind: 'image', image: 'photos/brody-forehand.jpg', description: 'match point 🎾' },
+      { id: 'ph-bell-tower-blossoms', title: 'Bell Tower', kind: 'image', image: 'photos/purdue-bell-tower-blossoms-cover.jpg', description: 'bell tower through the blossoms 🌸' },
+      { id: 'ph-camden', title: 'Camden', kind: 'image', image: 'photos/camden-candid-cover.jpg', description: 'candid on court' },
+      { id: 'ph-brody', title: 'Brody', kind: 'image', image: 'photos/brody-forehand-cover.jpg', description: 'match point 🎾' },
       { id: 'ph-talan', title: 'Talan', kind: 'image', image: 'photos/talan-serve.jpg', description: 'Snider tennis 🎾' },
       { id: 'ph-fountain-trees', title: 'Engineering Mall', kind: 'image', image: 'photos/engineering-fountain-trees.jpg', description: 'engineering mall walkway' },
       { id: 'ph-pier', title: 'Pier at Sunset', kind: 'image', image: 'photos/pier-sunset.jpg', description: 'pier at sunset 🌅' },
