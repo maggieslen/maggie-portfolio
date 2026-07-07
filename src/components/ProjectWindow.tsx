@@ -45,12 +45,33 @@ export function ProjectWindow({ refId }: { refId: string }) {
       </header>
 
       <div className="mt-10 space-y-12">
-        {data.sections.map((s, i) => (
-          <Section key={i} slug={slug} section={s} />
-        ))}
+        {groupSections(data.sections).map((row, i) =>
+          row.length === 1 ? (
+            <Section key={i} slug={slug} section={row[0]} />
+          ) : (
+            <div key={i} className="flex flex-col gap-8 lg:flex-row lg:items-start">
+              <div className="min-w-0 flex-1">
+                <Section slug={slug} section={row[0]} />
+              </div>
+              <div className="mx-auto lg:mx-0 lg:shrink-0">
+                <Section slug={slug} section={row[1]} />
+              </div>
+            </div>
+          ),
+        )}
       </div>
     </div>
   )
+}
+
+/** Groups each "side" section together with the section right before it, so they render side by side instead of stacked. */
+function groupSections(sections: CwSection[]): CwSection[][] {
+  const rows: CwSection[][] = []
+  for (const s of sections) {
+    if (s.layout === 'side' && rows.length > 0) rows[rows.length - 1].push(s)
+    else rows.push([s])
+  }
+  return rows
 }
 
 function Section({ slug, section }: { slug: string; section: CwSection }) {

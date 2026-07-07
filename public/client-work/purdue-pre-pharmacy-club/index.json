@@ -5,21 +5,46 @@
   "links": [],
   "sections": [
     {
-      "type": "embeds",
+      "type": "grid",
       "title": "Static Posts",
       "items": [
-        { "url": "https://www.instagram.com/p/DUoefM1EWpe/", "caption": "PPC x LOL Card Making Event" },
-        { "url": "https://www.instagram.com/p/DXo3PShCG1T/", "caption": "Cookies & Crafts" },
-        { "url": "https://www.instagram.com/p/DWe4SkLEUTs/", "caption": "Cards for Admitted Students" },
-        { "url": "https://www.instagram.com/p/DUBI4WtkQRn/", "caption": "Linus Project Blanket Making" },
-        { "url": "https://www.instagram.com/p/DOmTLaRkQp3/", "caption": "Bracelet Making" }
+        {
+          "src": "media/ppc-x-letters-of-love.jpg",
+          "caption": "PPC x LOL Card Making Event",
+          "url": "https://www.instagram.com/p/DUoefM1EWpe/"
+        },
+        {
+          "src": "media/cookies-and-crafts.jpg",
+          "caption": "Cookies & Crafts",
+          "url": "https://www.instagram.com/p/DXo3PShCG1T/"
+        },
+        {
+          "src": "media/cards-to-admitted-students.jpg",
+          "caption": "Cards for Admitted Students",
+          "url": "https://www.instagram.com/p/DWe4SkLEUTs/"
+        },
+        {
+          "slides": ["media/blanket-making-recap-1.jpg", "media/blanket-making-recap-2.jpg", "media/blanket-making-recap-3.jpg"],
+          "caption": "Linus Project Blanket Making",
+          "url": "https://www.instagram.com/p/DUBI4WtkQRn/"
+        },
+        {
+          "src": "media/bracelet-making.jpg",
+          "caption": "Bracelet Making",
+          "url": "https://www.instagram.com/p/DOmTLaRkQp3/"
+        }
       ]
     },
     {
-      "type": "embeds",
+      "type": "stories",
       "title": "Reels",
-      "items": [
-        { "url": "https://www.instagram.com/reel/DN3vfEM4tv1/", "caption": "Pharmacy at Purdue" }
+      "layout": "side",
+      "groups": [
+        {
+          "caption": "Pharmacy at Purdue",
+          "url": "https://www.instagram.com/reel/DN3vfEM4tv1/",
+          "items": [{ "src": "media/pharmacy-at-purdue.mp4" }]
+        }
       ]
     }
   ]

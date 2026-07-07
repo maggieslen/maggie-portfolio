@@ -76,6 +76,8 @@ export interface CwProfile {
 export interface CwSection {
   type: CwSectionType
   title: string
+  /** When set to "side", this section sits beside the previous one (a narrow sidebar) instead of stacking below it full-width. */
+  layout?: 'side'
   /** Used by gallery / grid / embeds sections, and as the grid under a profile card. */
   items?: CwItem[]
   /** Used by "stories" sections — one phone mockup per group. */

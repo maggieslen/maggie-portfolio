@@ -25,6 +25,7 @@ pnpm-debug.log*
 /northeast school of dance/
 /purdue brand studio/
 /letters of love/
+/purdue pre-pharmacy club/
 
 # local Claude Code settings (keep launch.json, ignore machine-local prefs)
 .claude/settings.local.json
