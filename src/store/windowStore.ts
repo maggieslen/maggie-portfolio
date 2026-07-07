@@ -29,6 +29,7 @@ interface WindowState {
   topZ: number
   openWindow: (kind: WindowKind, refId: string, title?: string) => void
   closeWindow: (id: string) => void
+  closeAllWindows: () => void
   focusWindow: (id: string) => void
 }
 
@@ -59,6 +60,8 @@ export const useWindowStore = create<WindowState>((set, get) => ({
 
   closeWindow: (id) =>
     set((s) => ({ windows: s.windows.filter((w) => w.id !== id) })),
+
+  closeAllWindows: () => set({ windows: [] }),
 
   focusWindow: (id) =>
     set((s) => {

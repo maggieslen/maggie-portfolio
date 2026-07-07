@@ -4,8 +4,6 @@ import { AnimatePresence, motion } from 'motion/react'
 import { SITE_TITLE } from '../content'
 import { useWindowStore } from '../store/windowStore'
 
-const REPO = 'https://github.com/maggieslen/maggie-portfolio'
-
 function formatClock(d: Date): string {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   const months = [
@@ -23,6 +21,7 @@ export function MenuBar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const barRef = useRef<HTMLDivElement>(null)
   const openWindow = useWindowStore((s) => s.openWindow)
+  const closeAllWindows = useWindowStore((s) => s.closeAllWindows)
 
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 15_000)
@@ -51,12 +50,14 @@ export function MenuBar() {
     >
       {/* left: app title + menus */}
       <div className="flex items-center gap-0.5">
-        <Menu label={SITE_TITLE} bold menuKey="title" openMenu={openMenu} onToggle={toggle} onHover={hover}>
-          <DropItem onClick={() => { openWindow('folder', 'about'); close() }}>About this portfolio</DropItem>
-          <DropItem href={REPO}>View the code ↗</DropItem>
-          <Divider />
-          <DropNote>Made with 🩷 in a browser</DropNote>
-        </Menu>
+        <button
+          type="button"
+          onClick={closeAllWindows}
+          title="Back to home"
+          className="rounded px-2 py-0.5 font-semibold hover:bg-black/5"
+        >
+          {SITE_TITLE}
+        </button>
 
         <Menu label="File" menuKey="file" openMenu={openMenu} onToggle={toggle} onHover={hover}>
           <DropItem onClick={close}>New Idea 💡</DropItem>

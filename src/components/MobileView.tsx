@@ -26,7 +26,9 @@ export function MobileView() {
   return (
     <div className="min-h-screen w-full overflow-y-auto bg-blush">
       <header className="sticky top-0 z-10 border-b border-black/5 bg-cream/90 px-4 py-3 backdrop-blur">
-        <h1 className="font-heading text-xl text-charcoal">{SITE_TITLE}</h1>
+        <button type="button" onClick={() => setOpen(null)} title="Back to home">
+          <h1 className="font-heading text-xl text-charcoal">{SITE_TITLE}</h1>
+        </button>
       </header>
 
       <div className="px-4 py-5">
