@@ -152,7 +152,7 @@ export const apps: AppProject[] = [
   },
   {
     id: 'dippin-daisys',
-    name: "Dippin' Daisy's",
+    name: 'Dippin Daisys',
     icon: 'app-icons/dippin-daisys.png',
     tagline: 'Brand',
     accent: '#cbb58a',
