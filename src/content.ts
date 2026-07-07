@@ -227,7 +227,7 @@ export const widgets = {
   },
   // iPod image + what shows on its little screen.
   ipod: {
-    image: 'elements/ipod.png',
+    image: 'elements/music-widget.png',
     track: 'Someday, Someday',
     artist: 'BANNERS',
     album: 'Where the Shadow Ends',
