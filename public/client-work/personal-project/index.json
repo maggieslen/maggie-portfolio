@@ -9,12 +9,16 @@
       "title": "Stories",
       "groups": [
         {
+          "caption": "Senior Year",
+          "items": [{ "src": "media/senior-year.mp4" }]
+        },
+        {
           "caption": "Graduation",
           "items": [{ "src": "media/graduation.jpg" }]
         },
         {
-          "caption": "Senior Year",
-          "items": [{ "src": "media/senior-year.mp4" }]
+          "caption": "Verona, Italy",
+          "items": [{ "src": "media/verona.jpg" }]
         },
         {
           "caption": "Val di Sole",
@@ -23,10 +27,6 @@
         {
           "caption": "Venice, Italy",
           "items": [{ "src": "media/venice.jpg" }]
-        },
-        {
-          "caption": "Verona, Italy",
-          "items": [{ "src": "media/verona.jpg" }]
         }
       ]
     },
