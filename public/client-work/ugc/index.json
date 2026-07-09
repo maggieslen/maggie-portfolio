@@ -1,0 +1,37 @@
+{
+  "name": "UGC Content",
+  "tagline": "User-generated content & brand partnerships",
+  "description": "Short-form content I create for brands — intro below, then a few sample pieces. (Placeholder copy — edit anytime.)",
+  "links": [],
+  "sections": [
+    {
+      "type": "creator",
+      "title": "About Me",
+      "creator": {
+        "photo": "media/maggie-headshot.jpg",
+        "name": "Maggie Slen",
+        "tagline": "UGC creator & content strategist",
+        "links": [{ "label": "Email Me", "url": "mailto:maggie.slen42@gmail.com" }]
+      }
+    },
+    {
+      "type": "gallery",
+      "title": "Intro",
+      "items": [{ "src": "media/ugc-intro.mp4", "caption": "Hi, I'm Maggie!" }]
+    },
+    {
+      "type": "stories",
+      "title": "Sample Content",
+      "groups": [
+        {
+          "caption": "Day in My Life",
+          "items": [{ "src": "media/ditl.mp4" }]
+        },
+        {
+          "caption": "Princess Polly Tops",
+          "items": [{ "src": "media/princess-polly-tops.mp4" }]
+        }
+      ]
+    }
+  ]
+}

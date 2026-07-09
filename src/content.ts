@@ -57,10 +57,13 @@ export const folders: Folder[] = [
     position: { top: 120, right: 30 },
     accent: '#d99aa6',
     items: [
-      { id: 'u1', title: 'Skincare reel', kind: 'link', description: 'Short-form video — add your link.', href: '#' },
-      { id: 'u2', title: 'GRWM', kind: 'link', description: 'Get-ready-with-me collab.', href: '#' },
-      { id: 'u3', title: 'Cafe review', kind: 'link', description: 'Brand partnership sample.', href: '#' },
-      { id: 'u4', title: 'Haul video', kind: 'link', description: 'Try-on haul.', href: '#' },
+      {
+        id: 'ugc-project',
+        title: 'UGC Portfolio',
+        kind: 'project',
+        projectSlug: 'ugc',
+        description: 'Headshot, intro video, and sample brand content.',
+      },
     ],
   },
   {

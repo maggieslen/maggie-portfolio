@@ -35,7 +35,7 @@ export function cwSlides(item: CwItem): string[] {
   return item.slides && item.slides.length > 0 ? item.slides : [item.src!]
 }
 
-export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile' | 'cards'
+export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile' | 'cards' | 'creator'
 
 /** A greeting card — front + inside, opened like the real thing. */
 export interface CwCard {
@@ -57,6 +57,16 @@ export interface CwHighlight {
   label: string
   /** Optional image (relative to the project folder); shows a plain circle without one. */
   image?: string
+}
+
+/** A headshot + contact-info block ("creator" section type) — like a mini media-kit intro. */
+export interface CwCreator {
+  /** Photo, relative to the project folder, e.g. "media/headshot.jpg" */
+  photo: string
+  name: string
+  tagline?: string
+  /** Contact buttons, e.g. {label:"Email Me", url:"mailto:..."} */
+  links?: CwLink[]
 }
 
 /** Data for an Instagram-desktop-style profile card ("profile" section type). */
@@ -86,6 +96,8 @@ export interface CwSection {
   profile?: CwProfile
   /** Used by "cards" sections. */
   cards?: CwCard[]
+  /** Used by "creator" sections. */
+  creator?: CwCreator
 }
 
 export interface CwProject {

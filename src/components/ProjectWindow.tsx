@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useJson } from '../lib/useJson'
 import { cwMedia, cwSlides, igEmbedUrl, isVideo } from '../lib/clientWork'
-import type { CwItem, CwProject, CwSection } from '../lib/clientWork'
+import type { CwCreator, CwItem, CwProject, CwSection } from '../lib/clientWork'
 import { StoriesRow } from './StoriesFrame'
 import { IgProfileCard } from './IgProfileCard'
 import { IgLightbox } from './IgLightbox'
@@ -82,7 +82,9 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
         ? !section.profile
         : section.type === 'cards'
           ? !section.cards?.length
-          : !section.items?.length
+          : section.type === 'creator'
+            ? !section.creator
+            : !section.items?.length
 
   return (
     <section>
@@ -98,6 +100,8 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
         <IgProfileCard slug={slug} profile={section.profile!} items={section.items ?? []} />
       ) : section.type === 'cards' ? (
         <CardGrid slug={slug} cards={section.cards ?? []} />
+      ) : section.type === 'creator' ? (
+        <CreatorCard slug={slug} creator={section.creator!} />
       ) : section.type === 'grid' ? (
         <IgGrid slug={slug} items={section.items ?? []} />
       ) : section.type === 'embeds' ? (
@@ -106,6 +110,37 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
         <Gallery slug={slug} items={section.items ?? []} />
       )}
     </section>
+  )
+}
+
+function CreatorCard({ slug, creator }: { slug: string; creator: CwCreator }) {
+  return (
+    <div className="flex flex-col items-center gap-6 rounded-2xl bg-white p-6 ring-1 ring-black/5 sm:flex-row sm:items-start sm:p-8">
+      <img
+        src={cwMedia(slug, creator.photo)}
+        alt={creator.name}
+        className="h-36 w-36 shrink-0 rounded-full object-cover ring-1 ring-black/5"
+      />
+      <div className="text-center sm:text-left">
+        <h3 className="font-heading text-2xl text-charcoal">{creator.name}</h3>
+        {creator.tagline && <p className="mt-1 text-charcoal/60">{creator.tagline}</p>}
+        {creator.links?.length ? (
+          <div className="mt-4 flex flex-wrap justify-center gap-3 sm:justify-start">
+            {creator.links.map((l) => (
+              <a
+                key={l.label}
+                href={l.url}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-garden-bloom px-4 py-2 text-sm font-medium text-white transition hover:brightness-105"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </div>
   )
 }
 
@@ -202,6 +237,7 @@ function Placeholder({ type }: { type: string }) {
     embeds: 'Add public Instagram post/reel URLs to embed the real posts.',
     profile: 'Add a "profile" object (username, stats, bio, highlights) to show an Instagram-style profile card.',
     cards: 'Add "cards" (title, front, inside) to show a grid of cards you can click open, like the real thing.',
+    creator: 'Add a "creator" object (photo, name, tagline, contact links) to show a headshot + contact-info intro card.',
   }
   return (
     <div className="grid place-items-center rounded-2xl border-2 border-dashed border-charcoal/15 bg-blush-soft/30 px-6 py-10 text-center">
