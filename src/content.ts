@@ -123,15 +123,33 @@ export const folders: Folder[] = [
  * ------------------------------------------------------------------ */
 export const apps: AppProject[] = [
   {
-    id: 'northeast-dance',
-    name: 'Northeast School of Dance',
-    icon: 'app-icons/northeast-school-of-dance.png',
-    tagline: 'Dance',
-    accent: '#e7c4cb',
-    description:
-      'Placeholder — add your role (dancer / instructor), what you did, highlights, and a link to the studio.',
+    id: 'purdue',
+    name: 'Purdue Brand Studio',
+    icon: 'app-icons/Purdue.png',
+    tagline: 'Brand Studio',
+    accent: '#cbb58a',
+    description: 'Placeholder — your role at Purdue Brand Studio and the work you did.',
     liveUrl: '#',
-    projectSlug: 'northeast-school-of-dance',
+    projectSlug: 'purdue-brand-studio',
+  },
+  {
+    id: 'dippin-daisys',
+    name: 'Dippin Daisys',
+    icon: 'app-icons/dippin-daisys.png',
+    tagline: 'Brand',
+    accent: '#cbb58a',
+    description: 'Placeholder — your role / collaboration details go here.',
+    liveUrl: '#',
+    projectSlug: 'dippin-daisies',
+  },
+  {
+    id: 'dream-girl',
+    name: 'Dream Girl',
+    icon: 'app-icons/dream-girl.png',
+    tagline: 'Brand',
+    accent: '#c8d8e6',
+    description: 'Placeholder — your role / collaboration details go here.',
+    liveUrl: '#',
   },
   {
     id: 'letters-of-love',
@@ -145,25 +163,6 @@ export const apps: AppProject[] = [
     projectSlug: 'letters-of-love',
   },
   {
-    id: 'dream-girl',
-    name: 'Dream Girl',
-    icon: 'app-icons/dream-girl.png',
-    tagline: 'Brand',
-    accent: '#c8d8e6',
-    description: 'Placeholder — your role / collaboration details go here.',
-    liveUrl: '#',
-  },
-  {
-    id: 'dippin-daisys',
-    name: 'Dippin Daisys',
-    icon: 'app-icons/dippin-daisys.png',
-    tagline: 'Brand',
-    accent: '#cbb58a',
-    description: 'Placeholder — your role / collaboration details go here.',
-    liveUrl: '#',
-    projectSlug: 'dippin-daisies',
-  },
-  {
     id: 'purdue-pharmacy',
     name: 'Purdue Pre-Pharmacy Club',
     icon: 'app-icons/purdue-pre-pharmacy-club.png',
@@ -174,14 +173,15 @@ export const apps: AppProject[] = [
     projectSlug: 'purdue-pre-pharmacy-club',
   },
   {
-    id: 'purdue',
-    name: 'Purdue Brand Studio',
-    icon: 'app-icons/Purdue.png',
-    tagline: 'Brand Studio',
-    accent: '#cbb58a',
-    description: 'Placeholder — your role at Purdue Brand Studio and the work you did.',
+    id: 'northeast-dance',
+    name: 'Northeast School of Dance',
+    icon: 'app-icons/northeast-school-of-dance.png',
+    tagline: 'Dance',
+    accent: '#e7c4cb',
+    description:
+      'Placeholder — add your role (dancer / instructor), what you did, highlights, and a link to the studio.',
     liveUrl: '#',
-    projectSlug: 'purdue-brand-studio',
+    projectSlug: 'northeast-school-of-dance',
   },
 ]
 
@@ -196,10 +196,9 @@ export const about = {
     'Hi, I’m Maggie! Placeholder intro — a few warm sentences about who you are, what you love creating, and what you’re looking for. Edit me in src/content.ts.',
   links: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/maggie-slen', icon: '💼' },
-    { label: 'Instagram', href: 'https://www.instagram.com/maggie.slen/', icon: '📸' },
-    { label: 'Email', href: 'mailto:maggie.slen42@gmail.com', icon: '✉️' },
-    { label: 'Purdue Email', href: 'mailto:mslen@purdue.edu', icon: '🎓' },
     { label: 'Resume', href: '#', icon: '📄' },
+    { label: 'Email', href: 'mailto:maggie.slen42@gmail.com', icon: '✉️' },
+    { label: 'Instagram', href: 'https://www.instagram.com/maggie.slen/', icon: '📸' },
   ],
 }
 
