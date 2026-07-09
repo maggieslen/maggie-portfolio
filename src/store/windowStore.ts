@@ -33,6 +33,16 @@ interface WindowState {
   focusWindow: (id: string) => void
 }
 
+/** Apps, the music player, and projects fill the screen — so does the photos! folder (its shared-album grid wants the extra room). Everything else stays a small draggable window. */
+export function isFullscreenWindow(win: OpenWindow): boolean {
+  return (
+    win.kind === 'app' ||
+    win.kind === 'music' ||
+    win.kind === 'project' ||
+    (win.kind === 'folder' && win.refId === 'photos')
+  )
+}
+
 const BASE_Z = 10
 
 export const useWindowStore = create<WindowState>((set, get) => ({

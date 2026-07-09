@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 import { apps } from '../content'
 import { asset } from '../lib/asset'
-import { useWindowStore } from '../store/windowStore'
+import { isFullscreenWindow, useWindowStore } from '../store/windowStore'
 
 /**
  * The bottom dock. Each flagship "app" (organization) is a rounded
@@ -19,11 +19,9 @@ export function Dock() {
         (w.kind === 'project' && w.refId === app.projectSlug),
     )
 
-  // Fullscreen windows (apps, music, projects) cover the desktop — hide the
-  // dock behind them, like macOS does in fullscreen.
-  const fullscreenOpen = windows.some(
-    (w) => w.kind === 'app' || w.kind === 'music' || w.kind === 'project',
-  )
+  // Fullscreen windows cover the desktop — hide the dock behind them, like
+  // macOS does in fullscreen.
+  const fullscreenOpen = windows.some(isFullscreenWindow)
   if (fullscreenOpen) return null
 
   return (

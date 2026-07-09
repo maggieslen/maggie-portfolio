@@ -1,6 +1,6 @@
 import { AnimatePresence } from 'motion/react'
 import { folders } from '../content'
-import { useWindowStore } from '../store/windowStore'
+import { isFullscreenWindow, useWindowStore } from '../store/windowStore'
 import { MenuBar } from './MenuBar'
 import { FolderIcon } from './FolderIcon'
 import { Dock } from './Dock'
@@ -40,9 +40,7 @@ export function Desktop() {
             key={win.id}
             win={win}
             index={index}
-            fullscreen={
-              win.kind === 'app' || win.kind === 'music' || win.kind === 'project'
-            }
+            fullscreen={isFullscreenWindow(win)}
           >
             {win.kind === 'folder' ? (
               <FolderWindow refId={win.refId} />
