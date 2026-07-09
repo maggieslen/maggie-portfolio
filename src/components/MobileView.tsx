@@ -35,21 +35,26 @@ export function MobileView() {
         {/* folders */}
         <p className={sectionLabel}>Folders</p>
         <ul className="space-y-2.5">
-          {folders.map((f) => (
-            <li key={f.id}>
-              <button
-                type="button"
-                onClick={() => setOpen({ kind: 'folder', id: f.id, label: f.label })}
-                className={card}
-              >
-                <FolderGlyph size={44} />
-                <div>
-                  <p className="text-[15px] font-medium text-charcoal">{f.label}</p>
-                  <p className="text-xs text-charcoal/50">{f.items.length} items</p>
-                </div>
-              </button>
-            </li>
-          ))}
+          {folders.map((f) => {
+            // A folder holding just one project skips straight to it — no
+            // point making someone open the folder just to tap its only tile.
+            const onlyItem = f.items.length === 1 ? f.items[0] : null
+            const openThis = () =>
+              onlyItem?.kind === 'project' && onlyItem.projectSlug
+                ? setOpen({ kind: 'project', id: onlyItem.projectSlug, label: onlyItem.title })
+                : setOpen({ kind: 'folder', id: f.id, label: f.label })
+            return (
+              <li key={f.id}>
+                <button type="button" onClick={openThis} className={card}>
+                  <FolderGlyph size={44} />
+                  <div>
+                    <p className="text-[15px] font-medium text-charcoal">{f.label}</p>
+                    <p className="text-xs text-charcoal/50">{f.items.length} items</p>
+                  </div>
+                </button>
+              </li>
+            )
+          })}
         </ul>
 
         {/* apps */}
