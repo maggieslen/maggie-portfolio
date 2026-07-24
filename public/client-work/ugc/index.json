@@ -20,6 +20,20 @@
       "items": [{ "src": "media/ugc-intro.mp4", "caption": "Hi, I'm Maggie!" }]
     },
     {
+      "type": "grid",
+      "title": "Static Posts",
+      "items": [
+        {
+          "slides": ["media/athena-club-1.jpg", "media/athena-club-2.jpg", "media/athena-club-3.jpg", "media/athena-club-4.jpg"],
+          "caption": "Athena Club"
+        },
+        {
+          "slides": ["media/glossier-1.jpg", "media/glossier-2.jpg"],
+          "caption": "Glossier"
+        }
+      ]
+    },
+    {
       "type": "stories",
       "title": "Sample Content",
       "groups": [
@@ -30,6 +44,10 @@
         {
           "caption": "Princess Polly Tops",
           "items": [{ "src": "media/princess-polly-tops.mp4" }]
+        },
+        {
+          "caption": "Daisy's New Fav Toy",
+          "items": [{ "src": "media/daisy-new-fav-toy.mp4" }]
         }
       ]
     }
