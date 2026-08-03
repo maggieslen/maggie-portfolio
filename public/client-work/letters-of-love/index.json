@@ -7,38 +7,20 @@
   ],
   "sections": [
     {
-      "type": "cards",
-      "title": "Cards",
-      "cards": [
+      "type": "grid",
+      "title": "Static Posts",
+      "items": [
         {
-          "title": "Sealed With Love and a Little Postage",
-          "front": "media/sealed-with-love-front.jpg",
-          "inside": "media/sealed-with-love-inside.jpg"
+          "src": "media/youre-invited.jpg",
+          "caption": "You're Invited"
         },
         {
-          "title": "Sending Love",
-          "front": "media/sending-love-front.jpg",
-          "inside": "media/sending-love-inside.jpg"
+          "src": "media/crossword.jpg",
+          "caption": "Crossword"
         },
         {
-          "title": "You Are Bloom-tiful",
-          "front": "media/bloom-tiful-front.jpg",
-          "inside": "media/bloom-tiful-inside.jpg"
-        },
-        {
-          "title": "You're Ink-credible",
-          "front": "media/ink-credible-front.jpg",
-          "inside": "media/ink-credible-inside.jpg"
-        },
-        {
-          "title": "You're Simply Tulip-tastic",
-          "front": "media/tulip-tastic-front.jpg",
-          "inside": "media/tulip-tastic-inside.jpg"
-        },
-        {
-          "title": "You're the Sweetest",
-          "front": "media/the-sweetest-front.jpg",
-          "inside": "media/the-sweetest-inside.jpg"
+          "src": "media/stacked-letters.jpg",
+          "caption": "Stacked Letters"
         }
       ]
     }
