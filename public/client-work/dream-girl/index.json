@@ -1,0 +1,38 @@
+{
+  "name": "Dream Girl",
+  "tagline": "Brand & social content",
+  "description": "Social content created for Dream Girl — reels built around the brand's dreamy, aesthetic world. (Placeholder copy — edit anytime.)",
+  "links": [],
+  "sections": [
+    {
+      "type": "stories",
+      "title": "Reels",
+      "groups": [
+        {
+          "caption": "Nouna Shrug",
+          "items": [{ "src": "media/nouna-shrug.mp4" }]
+        },
+        {
+          "caption": "Angle Isle Dress",
+          "items": [{ "src": "media/angle-isle-dress.mp4" }]
+        },
+        {
+          "caption": "Ponchos",
+          "items": [{ "src": "media/ponchos.mp4" }]
+        },
+        {
+          "caption": "Room Vision",
+          "items": [{ "src": "media/room-vision.mp4" }]
+        },
+        {
+          "caption": "This Dream Girl Is Going To",
+          "items": [{ "src": "media/this-dream-girl-is-going-to.mp4" }]
+        },
+        {
+          "caption": "Greece",
+          "items": [{ "src": "media/greece.mp4" }]
+        }
+      ]
+    }
+  ]
+}

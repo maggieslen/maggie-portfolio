@@ -150,6 +150,7 @@ export const apps: AppProject[] = [
     accent: '#c8d8e6',
     description: 'Placeholder — your role / collaboration details go here.',
     liveUrl: '#',
+    projectSlug: 'dream-girl',
   },
   {
     id: 'letters-of-love',
