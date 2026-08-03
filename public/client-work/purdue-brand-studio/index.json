@@ -60,6 +60,18 @@
           "items": [{ "src": "media/choose-purdue.mp4" }]
         },
         {
+          "caption": "Homesick for a Place",
+          "items": [{ "src": "media/homesick-for-a-place.mp4" }]
+        },
+        {
+          "caption": "Purdue Era",
+          "items": [{ "src": "media/purdue-era.mp4" }]
+        },
+        {
+          "caption": "Purdue Football",
+          "items": [{ "src": "media/purdue-football.mp4" }]
+        },
+        {
           "caption": "Season's Greetings",
           "url": "https://www.instagram.com/reel/DSKrifxDmqg/",
           "items": [{ "src": "media/seasons-greetings.mp4" }]
@@ -73,18 +85,6 @@
           "caption": "Send This to a Boilermaker",
           "url": "https://www.instagram.com/reel/DQH2Z8vAST0/",
           "items": [{ "src": "media/send-to-boilermaker.mp4" }]
-        },
-        {
-          "caption": "Homesick for a Place",
-          "items": [{ "src": "media/homesick-for-a-place.mp4" }]
-        },
-        {
-          "caption": "Purdue Era",
-          "items": [{ "src": "media/purdue-era.mp4" }]
-        },
-        {
-          "caption": "Purdue Football",
-          "items": [{ "src": "media/purdue-football.mp4" }]
         }
       ]
     }
