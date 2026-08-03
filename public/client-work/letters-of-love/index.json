@@ -11,12 +11,12 @@
       "title": "Static Posts",
       "items": [
         {
-          "src": "media/youre-invited.jpg",
-          "caption": "You're Invited"
-        },
-        {
           "src": "media/crossword.jpg",
           "caption": "Crossword"
+        },
+        {
+          "src": "media/youre-invited.jpg",
+          "caption": "You're Invited"
         },
         {
           "src": "media/stacked-letters.jpg",
