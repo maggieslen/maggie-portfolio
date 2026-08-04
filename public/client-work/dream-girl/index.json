@@ -2,7 +2,9 @@
   "name": "Dream Girl",
   "tagline": "Brand & social content",
   "description": "Social content created for Dream Girl — reels built around the brand's dreamy, aesthetic world. (Placeholder copy — edit anytime.)",
-  "links": [],
+  "links": [
+    { "label": "Dream Girl", "url": "https://dreamgirl.world/" }
+  ],
   "sections": [
     {
       "type": "stories",
