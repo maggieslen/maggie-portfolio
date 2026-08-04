@@ -50,6 +50,12 @@ export interface CwStoryGroup {
   items: CwItem[]
   /** If set (a published post), shows a small "View on Instagram" link below the caption. */
   url?: string
+  /**
+   * Use instead of `url` when a reel is posted on more than one platform —
+   * one "View on {label}" link per entry, e.g.
+   * [{ label: "Instagram", url: "..." }, { label: "TikTok", url: "..." }].
+   */
+  links?: CwLink[]
 }
 
 /** A highlight bubble on an Instagram-style profile card. */

@@ -165,15 +165,31 @@ export function StoriesRow({
                 {g.caption}
               </p>
             )}
-            {g.url && (
-              <a
-                href={g.url}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-1 text-[12px] font-medium text-[#a85d72] hover:underline"
-              >
-                View on Instagram ↗
-              </a>
+            {g.links && g.links.length > 0 ? (
+              <div className="mt-1 flex items-center gap-3">
+                {g.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[12px] font-medium text-[#a85d72] hover:underline"
+                  >
+                    View on {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            ) : (
+              g.url && (
+                <a
+                  href={g.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-1 text-[12px] font-medium text-[#a85d72] hover:underline"
+                >
+                  View on Instagram ↗
+                </a>
+              )
             )}
           </div>
         ))}
