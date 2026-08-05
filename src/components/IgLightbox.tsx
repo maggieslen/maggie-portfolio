@@ -135,18 +135,34 @@ export function IgLightbox({
           )}
         </div>
 
-        {(post.caption || post.url || post.inspiredUrl) && (
+        {(post.caption || post.url || post.inspiredUrl || (post.links && post.links.length > 0)) && (
           <div className="mt-4 flex flex-col items-center gap-1 text-center">
             {post.caption && <p className="text-[15px] text-white/90">{post.caption}</p>}
-            {post.url && (
-              <a
-                href={post.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[13px] font-medium text-white/60 hover:text-white hover:underline"
-              >
-                View on Instagram ↗
-              </a>
+            {post.links && post.links.length > 0 ? (
+              <div className="flex items-center gap-3">
+                {post.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[13px] font-medium text-white/60 hover:text-white hover:underline"
+                  >
+                    View on {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            ) : (
+              post.url && (
+                <a
+                  href={post.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[13px] font-medium text-white/60 hover:text-white hover:underline"
+                >
+                  View on Instagram ↗
+                </a>
+              )
             )}
             {post.inspiredUrl && (
               <a

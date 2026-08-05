@@ -28,6 +28,12 @@ export interface CwItem {
    * a "Inspired this Instagram post" link instead of "View on Instagram".
    */
   inspiredUrl?: string
+  /**
+   * Use instead of `url` when a post is published on more than one platform —
+   * one "View on {label}" link per entry, e.g.
+   * [{ label: "Instagram", url: "..." }, { label: "TikTok", url: "..." }].
+   */
+  links?: CwLink[]
 }
 
 /** All slides for a grid post, whether it's a single image or a carousel. */

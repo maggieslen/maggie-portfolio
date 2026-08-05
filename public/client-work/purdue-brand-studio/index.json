@@ -18,12 +18,16 @@
         },
         {
           "slides": ["media/dorm-essentials-1.jpg", "media/dorm-essentials-2.jpg", "media/dorm-essentials-3.jpg", "media/dorm-essentials-4.jpg", "media/dorm-essentials-5.jpg"],
-          "caption": "Dorm Essentials"
+          "caption": "Dorm Essentials",
+          "url": "https://www.instagram.com/p/Dbn8ch-FkFY/"
         },
         {
           "slides": ["media/its-just-a-1.jpg", "media/its-just-a-2.jpg", "media/its-just-a-3.jpg", "media/its-just-a-4.jpg", "media/its-just-a-5.jpg", "media/its-just-a-6.jpg"],
           "caption": "It's Just A...",
-          "url": "https://www.instagram.com/p/DVWGbUjDiUc/"
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/p/DVWGbUjDiUc/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/t/ZTAp34dPe/" }
+          ]
         },
         {
           "slides": ["media/weekend-menu-1.jpg", "media/weekend-menu-2.jpg", "media/weekend-menu-3.jpg", "media/weekend-menu-4.jpg"],
@@ -61,8 +65,11 @@
         },
         {
           "caption": "Homesick for a Place",
-          "url": "https://www.instagram.com/reel/Dak__RnO-0S/",
-          "items": [{ "src": "media/homesick-for-a-place.mp4" }]
+          "items": [{ "src": "media/homesick-for-a-place.mp4" }],
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/reel/Dak__RnO-0S/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/t/ZTAp38XN8/" }
+          ]
         },
         {
           "caption": "Purdue Era",
@@ -85,8 +92,11 @@
         },
         {
           "caption": "Send This to a Boilermaker",
-          "url": "https://www.instagram.com/reel/DQH2Z8vAST0/",
-          "items": [{ "src": "media/send-to-boilermaker.mp4" }]
+          "items": [{ "src": "media/send-to-boilermaker.mp4" }],
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/reel/DQH2Z8vAST0/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/t/ZTAp3An7r/" }
+          ]
         }
       ]
     }
