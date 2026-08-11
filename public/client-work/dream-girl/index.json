@@ -9,6 +9,7 @@
     {
       "type": "stories",
       "title": "Reels",
+      "columns": 3,
       "groups": [
         {
           "caption": "Nouna Shrug",

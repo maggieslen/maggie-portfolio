@@ -104,6 +104,12 @@ export interface CwSection {
   items?: CwItem[]
   /** Used by "stories" sections — one phone mockup per group. */
   groups?: CwStoryGroup[]
+  /**
+   * "stories" sections only. Locks the row to exactly this many phone
+   * mockups per line (instead of wrapping responsively based on how wide
+   * the window happens to be).
+   */
+  columns?: number
   /** Used by "profile" sections. */
   profile?: CwProfile
   /** Used by "cards" sections. */

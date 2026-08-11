@@ -95,6 +95,7 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
         <StoriesRow
           slug={slug}
           groups={section.groups ?? [{ items: section.items ?? [] }]}
+          columns={section.columns}
         />
       ) : section.type === 'profile' ? (
         <IgProfileCard slug={slug} profile={section.profile!} items={section.items ?? []} />

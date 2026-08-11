@@ -150,13 +150,28 @@ function SpeakerOffIcon() {
 export function StoriesRow({
   slug,
   groups,
+  columns,
 }: {
   slug: string
   groups: CwStoryGroup[]
+  /** Lock the row to exactly this many mockups per line instead of wrapping responsively. */
+  columns?: number
 }) {
   return (
     <div className="rounded-[28px] bg-white px-6 py-8 shadow-[0_2px_16px_rgba(0,0,0,0.05)] ring-1 ring-black/5 sm:px-10">
-      <div className="flex flex-wrap items-start justify-center gap-x-8 gap-y-10">
+      <div className={columns ? 'overflow-x-auto' : undefined}>
+      <div
+        className={
+          columns
+            ? 'grid gap-x-8 gap-y-10'
+            : 'flex flex-wrap items-start justify-center gap-x-8 gap-y-10'
+        }
+        style={
+          columns
+            ? { gridTemplateColumns: `repeat(${columns}, 210px)`, width: 'max-content', margin: '0 auto' }
+            : undefined
+        }
+      >
         {groups.map((g, i) => (
           <div key={i} className="flex flex-col items-center">
             <StoriesFrame slug={slug} items={g.items} />
@@ -193,6 +208,7 @@ export function StoriesRow({
             )}
           </div>
         ))}
+      </div>
       </div>
     </div>
   )
