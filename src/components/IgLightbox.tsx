@@ -139,7 +139,7 @@ export function IgLightbox({
           <div className="mt-4 flex flex-col items-center gap-1 text-center">
             {post.caption && <p className="text-[15px] text-white/90">{post.caption}</p>}
             {post.links && post.links.length > 0 ? (
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col items-center gap-0.5">
                 {post.links.map((link) => (
                   <a
                     key={link.label}

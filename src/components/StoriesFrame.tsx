@@ -181,7 +181,7 @@ export function StoriesRow({
               </p>
             )}
             {g.links && g.links.length > 0 ? (
-              <div className="mt-1 flex items-center gap-3">
+              <div className="mt-1 flex flex-col items-center gap-0.5">
                 {g.links.map((link) => (
                   <a
                     key={link.label}
