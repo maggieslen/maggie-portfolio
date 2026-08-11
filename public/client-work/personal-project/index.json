@@ -40,7 +40,10 @@
         },
         {
           "caption": "Look at My Life",
-          "items": [{ "src": "media/look-at-my-life.mp4" }]
+          "items": [{ "src": "media/look-at-my-life.mp4" }],
+          "links": [
+            { "label": "TikTok", "url": "https://www.tiktok.com/@maggie.slen/video/7656305609465253133" }
+          ]
         },
         {
           "caption": "Italy Exchange Year",
