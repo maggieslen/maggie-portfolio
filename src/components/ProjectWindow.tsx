@@ -84,7 +84,9 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
           ? !section.cards?.length
           : section.type === 'creator'
             ? !section.creator
-            : !section.items?.length
+            : section.type === 'canva'
+              ? !section.embedUrl
+              : !section.items?.length
 
   return (
     <section>
@@ -107,6 +109,8 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
         <IgGrid slug={slug} items={section.items ?? []} />
       ) : section.type === 'embeds' ? (
         <IgEmbed items={section.items ?? []} />
+      ) : section.type === 'canva' ? (
+        <CanvaEmbed url={section.embedUrl!} />
       ) : (
         <Gallery slug={slug} items={section.items ?? []} />
       )}
@@ -230,6 +234,23 @@ function IgEmbed({ items }: { items: CwItem[] }) {
   )
 }
 
+function CanvaEmbed({ url }: { url: string }) {
+  return (
+    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_2px_16px_rgba(0,0,0,0.05)] ring-1 ring-black/5">
+      <div className="relative w-full" style={{ paddingTop: '56.2225%' }}>
+        <iframe
+          src={url}
+          title="Canva design"
+          loading="lazy"
+          allow="fullscreen"
+          allowFullScreen
+          className="absolute inset-0 h-full w-full border-0"
+        />
+      </div>
+    </div>
+  )
+}
+
 function Placeholder({ type }: { type: string }) {
   const hints: Record<string, string> = {
     gallery: "Drop images/videos into this project's media/ folder and list them under this section in index.json.",
@@ -239,6 +260,7 @@ function Placeholder({ type }: { type: string }) {
     profile: 'Add a "profile" object (username, stats, bio, highlights) to show an Instagram-style profile card.',
     cards: 'Add "cards" (title, front, inside) to show a grid of cards you can click open, like the real thing.',
     creator: 'Add a "creator" object (photo, name, tagline, contact links) to show a headshot + contact-info intro card.',
+    canva: 'Add an "embedUrl" — a Canva design/presentation link ending in "?embed" — to show the slides inline.',
   }
   return (
     <div className="grid place-items-center rounded-2xl border-2 border-dashed border-charcoal/15 bg-blush-soft/30 px-6 py-10 text-center">

@@ -41,7 +41,7 @@ export function cwSlides(item: CwItem): string[] {
   return item.slides && item.slides.length > 0 ? item.slides : [item.src!]
 }
 
-export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile' | 'cards' | 'creator'
+export type CwSectionType = 'gallery' | 'grid' | 'stories' | 'embeds' | 'profile' | 'cards' | 'creator' | 'canva'
 
 /** A greeting card — front + inside, opened like the real thing. */
 export interface CwCard {
@@ -116,6 +116,8 @@ export interface CwSection {
   cards?: CwCard[]
   /** Used by "creator" sections. */
   creator?: CwCreator
+  /** Used by "canva" sections — a Canva design/presentation "?embed" URL, shown full-width. */
+  embedUrl?: string
 }
 
 export interface CwProject {
