@@ -30,6 +30,10 @@
         {
           "slides": ["media/glossier-1.jpg", "media/glossier-2.jpg"],
           "caption": "Glossier"
+        },
+        {
+          "slides": ["media/diptyque-1.jpg", "media/diptyque-2.jpg", "media/diptyque-3.jpg"],
+          "caption": "Diptyque"
         }
       ]
     },
