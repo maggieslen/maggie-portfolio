@@ -97,7 +97,19 @@ function PhotoDetail({
         />
         <div className="p-4">
           <div className="flex items-start justify-between gap-3">
-            <p className="text-sm text-charcoal">{photo.description}</p>
+            <div>
+              <p className="text-sm text-charcoal">{photo.description}</p>
+              {photo.href && (
+                <a
+                  href={photo.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-1 inline-block text-[12px] font-medium text-[#8a5b74] hover:underline"
+                >
+                  View on Instagram ↗
+                </a>
+              )}
+            </div>
             <button
               type="button"
               onClick={toggleLike}

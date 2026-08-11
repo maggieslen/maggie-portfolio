@@ -41,7 +41,7 @@ export const folders: Folder[] = [
       { id: 'ph-boys', title: 'The Boys', kind: 'image', image: 'photos/boys-couch-cover.jpg', description: 'the boys 🛋️' },
       { id: 'ph-sarah-norah', title: 'Sarah & Norah', kind: 'image', image: 'photos/sarah-norah-cover.jpg', description: 'sarah & norah 🩷' },
       { id: 'ph-cali', title: 'California', kind: 'image', image: 'photos/california-beach.jpg', description: 'california coast ☀️' },
-      { id: 'ph-semi', title: 'DU Semi', kind: 'image', image: 'photos/du-semi.jpg', description: 'du semi-formal' },
+      { id: 'ph-semi', title: 'DU Semi', kind: 'image', image: 'photos/du-semi.jpg', description: 'du semi-formal', href: 'https://www.instagram.com/p/DQpNPj2gVd-/' },
       { id: 'ph-fountain', title: 'Engineering Fountain', kind: 'image', image: 'photos/purdue-engineering-fountain.jpg', description: 'engineering fountain 💦' },
       { id: 'ph-bell-tower-blossoms', title: 'Bell Tower', kind: 'image', image: 'photos/purdue-bell-tower-blossoms-cover.jpg', description: 'bell tower through the blossoms 🌸' },
       { id: 'ph-camden', title: 'Camden', kind: 'image', image: 'photos/camden-candid-cover.jpg', description: 'candid on court' },
