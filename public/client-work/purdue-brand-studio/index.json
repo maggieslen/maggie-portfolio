@@ -49,6 +49,7 @@
     {
       "type": "stories",
       "title": "Reels",
+      "columns": 3,
       "groups": [
         {
           "caption": "Purdue by Night",
