@@ -82,6 +82,14 @@
           "items": [{ "src": "media/purdue-football.mp4" }]
         },
         {
+          "caption": "BA Hug",
+          "items": [{ "src": "media/ba-hug.mp4" }]
+        },
+        {
+          "caption": "Heads Will Roll",
+          "items": [{ "src": "media/football-heads-will-roll.mp4" }]
+        },
+        {
           "caption": "Season's Greetings",
           "url": "https://www.instagram.com/reel/DSKrifxDmqg/",
           "items": [{ "src": "media/seasons-greetings.mp4" }]
