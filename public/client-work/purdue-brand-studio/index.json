@@ -62,8 +62,11 @@
         },
         {
           "caption": "Choose Purdue",
-          "url": "https://www.instagram.com/reel/DcWvljsouyB/",
-          "items": [{ "src": "media/choose-purdue.mp4" }]
+          "items": [{ "src": "media/choose-purdue.mp4" }],
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/reel/DcWvljsouyB/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/@purdueuniversity/video/7676549027839757581" }
+          ]
         },
         {
           "caption": "Homesick for a Place",
