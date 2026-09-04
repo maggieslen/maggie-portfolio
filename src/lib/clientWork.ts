@@ -118,6 +118,8 @@ export interface CwSection {
   creator?: CwCreator
   /** Used by "canva" sections — a Canva design/presentation "?embed" URL, shown full-width. */
   embedUrl?: string
+  /** "canva" sections only. The regular (non-embed) Canva share link, shown as a link below the embed. */
+  url?: string
 }
 
 export interface CwProject {

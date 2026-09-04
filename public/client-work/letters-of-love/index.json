@@ -4,7 +4,6 @@
   "description": "I design handmade cards for Letters of Love, a nonprofit that sends handwritten notes of encouragement to people who need them. Click a card below to open it, just like the real thing. (Placeholder copy — edit anytime.)",
   "links": [
     { "label": "Letters of Love Global", "url": "https://www.lettersofloveglobal.com/" },
-    { "label": "Digital Assets for Clubs", "url": "https://canva.link/hoy8miz9j3snqyg" },
     { "label": "Download Digital Assets", "url": "https://drive.google.com/drive/folders/1P_47Ew5a9HiQLqmREeIpKP6Q-htgK7gw?usp=drive_link" }
   ],
   "sections": [
@@ -29,7 +28,8 @@
     {
       "type": "canva",
       "title": "Digital Assets for Clubs",
-      "embedUrl": "https://www.canva.com/design/DAHQy4oGHVc/U75Hr5gIKhAiCLTonI7hAA/view?embed"
+      "embedUrl": "https://www.canva.com/design/DAHQy4oGHVc/U75Hr5gIKhAiCLTonI7hAA/view?embed",
+      "url": "https://canva.link/hoy8miz9j3snqyg"
     }
   ]
 }

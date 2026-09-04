@@ -110,7 +110,7 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
       ) : section.type === 'embeds' ? (
         <IgEmbed items={section.items ?? []} />
       ) : section.type === 'canva' ? (
-        <CanvaEmbed url={section.embedUrl!} />
+        <CanvaEmbed embedUrl={section.embedUrl!} url={section.url} />
       ) : (
         <Gallery slug={slug} items={section.items ?? []} />
       )}
@@ -234,19 +234,31 @@ function IgEmbed({ items }: { items: CwItem[] }) {
   )
 }
 
-function CanvaEmbed({ url }: { url: string }) {
+function CanvaEmbed({ embedUrl, url }: { embedUrl: string; url?: string }) {
   return (
-    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_2px_16px_rgba(0,0,0,0.05)] ring-1 ring-black/5">
-      <div className="relative w-full" style={{ paddingTop: '56.2225%' }}>
-        <iframe
-          src={url}
-          title="Canva design"
-          loading="lazy"
-          allow="fullscreen"
-          allowFullScreen
-          className="absolute inset-0 h-full w-full border-0"
-        />
+    <div>
+      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_2px_16px_rgba(0,0,0,0.05)] ring-1 ring-black/5">
+        <div className="relative w-full" style={{ paddingTop: '56.2225%' }}>
+          <iframe
+            src={embedUrl}
+            title="Canva design"
+            loading="lazy"
+            allow="fullscreen"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0"
+          />
+        </div>
       </div>
+      {url && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-block text-[13px] font-medium text-[#a85d72] hover:underline"
+        >
+          Open in Canva ↗
+        </a>
+      )}
     </div>
   )
 }
