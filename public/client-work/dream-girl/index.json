@@ -3,7 +3,9 @@
   "tagline": "Brand & social content",
   "description": "Social content created for Dream Girl — reels built around the brand's dreamy, aesthetic world. (Placeholder copy — edit anytime.)",
   "links": [
-    { "label": "Dream Girl", "url": "https://dreamgirl.world/" }
+    { "label": "Dream Girl", "url": "https://dreamgirl.world/" },
+    { "label": "Instagram", "url": "https://www.instagram.com/dream.girl/" },
+    { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world" }
   ],
   "sections": [
     {
