@@ -52,21 +52,6 @@ export const folders: Folder[] = [
     ],
   },
   {
-    id: 'ugc',
-    label: 'ugc content',
-    position: { top: 120, right: 30 },
-    accent: '#d99aa6',
-    items: [
-      {
-        id: 'ugc-project',
-        title: 'UGC Portfolio',
-        kind: 'project',
-        projectSlug: 'ugc',
-        description: 'Headshot, intro video, and sample brand content.',
-      },
-    ],
-  },
-  {
     id: 'about',
     label: 'about me!',
     position: { top: 405, left: 300 },

@@ -31,7 +31,7 @@ export interface FolderItem {
   projectSlug?: string
 }
 
-/** A desktop folder (photos!, ugc content, about me!, personal projects). */
+/** A desktop folder (photos!, about me!, personal projects). */
 export interface Folder {
   id: string
   /** Text shown under the icon. */

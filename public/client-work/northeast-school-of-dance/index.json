@@ -11,9 +11,9 @@
       "type": "gallery",
       "title": "T-Shirt Designs",
       "items": [
-        { "src": "media/grey-shirt.jpg", "caption": "Grey — front & back" },
-        { "src": "media/pink-shirt.jpg", "caption": "Pink — front & back" },
-        { "src": "media/white-shirt.jpg", "caption": "White — front & back" }
+        { "src": "media/grey-shirt.jpg" },
+        { "src": "media/pink-shirt.jpg" },
+        { "src": "media/white-shirt.jpg" }
       ]
     }
   ]
