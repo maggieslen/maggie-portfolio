@@ -12,34 +12,18 @@
       "columns": 3,
       "groups": [
         {
-          "caption": "Nouna Shrug",
-          "items": [{ "src": "media/nouna-shrug.mp4" }],
-          "links": [
-            { "label": "Instagram", "url": "https://www.instagram.com/reel/DbeV5tVv69H/" },
-            { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7668859049143799054" }
-          ]
-        },
-        {
-          "caption": "Angle Isle Dress",
-          "items": [{ "src": "media/angle-isle-dress.mp4" }],
-          "links": [
-            { "label": "Instagram", "url": "https://www.instagram.com/reel/DajMDTdvJZ7/" },
-            { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7660291006767566093" }
-          ]
-        },
-        {
-          "caption": "Ponchos",
-          "items": [{ "src": "media/ponchos.mp4" }],
-          "links": [
-            { "label": "Instagram", "url": "https://www.instagram.com/reel/DbblPD3PDby/" },
-            { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7668477581594873101" }
-          ]
-        },
-        {
           "caption": "Room Vision",
           "items": [{ "src": "media/room-vision.mp4" }],
           "links": [
             { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7660647587862695182" }
+          ]
+        },
+        {
+          "caption": "Greece",
+          "items": [{ "src": "media/greece.mp4" }],
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/reel/DbrCNaiPB0r/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7670656230616026382" }
           ]
         },
         {
@@ -51,11 +35,23 @@
           ]
         },
         {
-          "caption": "Greece",
-          "items": [{ "src": "media/greece.mp4" }],
+          "caption": "Nouna Shrug",
+          "items": [{ "src": "media/nouna-shrug.mp4" }],
           "links": [
-            { "label": "Instagram", "url": "https://www.instagram.com/reel/DbrCNaiPB0r/" },
-            { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7670656230616026382" }
+            { "label": "Instagram", "url": "https://www.instagram.com/reel/DbeV5tVv69H/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7668859049143799054" }
+          ]
+        },
+        {
+          "caption": "Jo & Kenz Personality",
+          "items": [{ "src": "media/jo-kenz-personality.mp4" }]
+        },
+        {
+          "caption": "Ponchos",
+          "items": [{ "src": "media/ponchos.mp4" }],
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/reel/DbblPD3PDby/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7668477581594873101" }
           ]
         }
       ]

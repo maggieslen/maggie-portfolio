@@ -113,6 +113,11 @@
           ]
         }
       ]
+    },
+    {
+      "type": "gallery",
+      "title": "Brand New Day",
+      "items": [{ "src": "media/brand-new-day.mp4", "caption": "Brand New Day" }]
     }
   ]
 }
