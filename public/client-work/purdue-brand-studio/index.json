@@ -49,7 +49,7 @@
     {
       "type": "gallery",
       "title": "Brand New Day",
-      "items": [{ "src": "media/brand-new-day.mp4" }]
+      "items": [{ "src": "media/brand-new-day.mp4", "url": "https://www.instagram.com/reel/Dc8mEAThMEh/" }]
     },
     {
       "type": "stories",
@@ -97,7 +97,11 @@
         },
         {
           "caption": "Heads Will Roll",
-          "items": [{ "src": "media/football-heads-will-roll.mp4" }]
+          "items": [{ "src": "media/football-heads-will-roll.mp4" }],
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/reel/Dc1nupEhK9m/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/@purdueuniversity/video/7681401439251352845" }
+          ]
         },
         {
           "caption": "Season's Greetings",

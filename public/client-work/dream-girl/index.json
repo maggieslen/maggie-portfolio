@@ -46,7 +46,11 @@
         },
         {
           "caption": "Jo & Kenz Personality",
-          "items": [{ "src": "media/jo-kenz-personality.mp4" }]
+          "items": [{ "src": "media/jo-kenz-personality.mp4" }],
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/reel/Dcq4poyvy4V/" },
+            { "label": "TikTok", "url": "https://www.tiktok.com/@dream.girl_world/video/7679857822636592397" }
+          ]
         },
         {
           "caption": "Ponchos",

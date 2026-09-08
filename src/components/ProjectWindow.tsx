@@ -162,8 +162,36 @@ function Gallery({ slug, items }: { slug: string; items: CwItem[] }) {
           ) : (
             <img src={cwMedia(slug, it.src!)} alt={it.caption || ''} className="w-full" />
           )}
-          {it.caption && (
-            <figcaption className="px-3 py-2 text-[12px] text-charcoal/60">{it.caption}</figcaption>
+          {(it.caption || it.url || (it.links && it.links.length > 0)) && (
+            <figcaption className="px-3 py-2">
+              {it.caption && <p className="text-[12px] text-charcoal/60">{it.caption}</p>}
+              {it.links && it.links.length > 0 ? (
+                <div className="mt-1 flex flex-col gap-0.5">
+                  {it.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[12px] font-medium text-[#a85d72] hover:underline"
+                    >
+                      View on {link.label} ↗
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                it.url && (
+                  <a
+                    href={it.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-1 inline-block text-[12px] font-medium text-[#a85d72] hover:underline"
+                  >
+                    View on Instagram ↗
+                  </a>
+                )
+              )}
+            </figcaption>
           )}
         </figure>
       ))}
