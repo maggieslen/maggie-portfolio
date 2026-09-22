@@ -12,16 +12,16 @@
       "title": "Static Posts",
       "items": [
         {
-          "src": "media/crossword.jpg",
-          "caption": "Crossword"
+          "src": "media/stacked-letters.jpg",
+          "caption": "Stacked Letters"
         },
         {
           "src": "media/youre-invited.jpg",
           "caption": "You're Invited"
         },
         {
-          "src": "media/stacked-letters.jpg",
-          "caption": "Stacked Letters"
+          "src": "media/crossword.jpg",
+          "caption": "Crossword"
         }
       ]
     },
