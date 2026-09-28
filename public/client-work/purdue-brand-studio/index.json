@@ -70,8 +70,9 @@
           "items": [{ "src": "media/purdue-era.mp4" }]
         },
         {
-          "caption": "Purdue Football",
-          "items": [{ "src": "media/purdue-football.mp4" }]
+          "caption": "Btw This Is Purdue",
+          "url": "https://www.instagram.com/reel/DdeKqcvBw0R/",
+          "items": [{ "src": "media/btw-this-is-purdue.mp4" }]
         },
         {
           "caption": "Purdue by Night",
