@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import type { CSSProperties } from 'react'
 import { cwMedia, isVideo } from '../lib/clientWork'
 import type { CwItem, CwStoryGroup } from '../lib/clientWork'
 
@@ -44,7 +45,7 @@ export function StoriesFrame({
   }
 
   return (
-    <div style={{ width }} className="shrink-0 select-none">
+    <div style={{ width: '100%', maxWidth: width }} className="shrink-0 select-none">
       <div className="relative rounded-[2.2rem] bg-neutral-900 p-2 shadow-[0_14px_34px_rgba(0,0,0,0.28)] ring-1 ring-black/30">
         <div className="relative aspect-[9/19.5] overflow-hidden rounded-[1.7rem] bg-black">
           {/* story progress segments — the active one is fully lit */}
@@ -157,23 +158,33 @@ export function StoriesRow({
   /** Lock the row to exactly this many mockups per line instead of wrapping responsively. */
   columns?: number
 }) {
+  // A section with a `mobileLast` group goes 2-up on phones, that group on its own row below.
+  const phoneGrid = !columns && groups.some((g) => g.mobileLast)
   return (
-    <div className="rounded-[28px] bg-white px-6 py-8 shadow-[0_2px_16px_rgba(0,0,0,0.05)] ring-1 ring-black/5 sm:px-10">
-      <div className={columns ? 'overflow-x-auto' : undefined}>
+    <div className="rounded-[28px] bg-white px-3 py-6 shadow-[0_2px_16px_rgba(0,0,0,0.05)] ring-1 ring-black/5 sm:px-10 sm:py-8">
+      {/* Phones never scroll sideways: a fixed column count only kicks in on
+          wide screens; smaller screens get 2 per row, shrunk to fit. */}
       <div
         className={
           columns
-            ? 'grid gap-x-8 gap-y-10'
-            : 'flex flex-wrap items-start justify-center gap-x-8 gap-y-10'
+            ? 'mx-auto grid grid-cols-2 justify-items-center gap-x-3 gap-y-8 sm:gap-x-8 sm:gap-y-10 lg:w-max lg:[grid-template-columns:var(--cols)]'
+            : phoneGrid
+              ? 'grid grid-cols-2 justify-items-center gap-x-3 gap-y-8 sm:gap-x-8 sm:gap-y-10 lg:flex lg:flex-wrap lg:items-start lg:justify-center'
+              : 'flex flex-wrap items-start justify-center gap-x-8 gap-y-10'
         }
-        style={
-          columns
-            ? { gridTemplateColumns: `repeat(${columns}, 210px)`, width: 'max-content', margin: '0 auto' }
-            : undefined
-        }
+        style={columns ? ({ '--cols': `repeat(${columns}, 210px)` } as CSSProperties) : undefined}
       >
         {groups.map((g, i) => (
-          <div key={i} className="flex flex-col items-center">
+          <div
+            key={i}
+            className={`flex flex-col items-center ${
+              g.mobileLast && !columns
+                ? 'max-lg:order-last max-lg:col-span-2 max-lg:w-[calc(50%-0.375rem)] sm:max-lg:w-[calc(50%-1rem)] lg:w-[210px]'
+                : columns || phoneGrid
+                  ? 'w-full lg:w-[210px]'
+                  : 'w-[210px] max-w-full'
+            }`}
+          >
             <StoriesFrame slug={slug} items={g.items} />
             {g.caption && (
               <p className="mt-4 max-w-[200px] text-center font-heading text-lg leading-snug text-charcoal/80">
@@ -208,7 +219,6 @@ export function StoriesRow({
             )}
           </div>
         ))}
-      </div>
       </div>
     </div>
   )

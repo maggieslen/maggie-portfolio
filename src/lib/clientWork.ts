@@ -62,6 +62,8 @@ export interface CwStoryGroup {
    * [{ label: "Instagram", url: "..." }, { label: "TikTok", url: "..." }].
    */
   links?: CwLink[]
+  /** On phones, move this one below the others, centered on its own row. */
+  mobileLast?: boolean
 }
 
 /** A highlight bubble on an Instagram-style profile card. */

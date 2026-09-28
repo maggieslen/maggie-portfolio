@@ -54,6 +54,7 @@
         },
         {
           "caption": "Aesthetic Reel",
+          "mobileLast": true,
           "items": [
             { "src": "media/reel-aesthetic.mp4" }
           ]

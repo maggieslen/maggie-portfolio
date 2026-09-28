@@ -202,6 +202,21 @@ export const music = {
 }
 
 /* ------------------------------------------------------------------ *
+ * PHONE HOME SCREEN  (what visitors see on a phone)
+ * Apps are listed by their `id` from the dock apps above.
+ * ------------------------------------------------------------------ */
+export const mobile = {
+  // Big photo widget at the top (tap it → about me).
+  hero: 'mobile/hero-field.jpg',
+  // The row of four apps under the photo.
+  topRow: ['purdue', 'dippin-daisys', 'dream-girl', 'letters-of-love'],
+  // The apps beside the music widget (Photos is added after these).
+  sideApps: ['purdue-pharmacy', 'northeast-dance'],
+  // Dock icon for "about me".
+  aboutIcon: 'about/headshot.jpg',
+}
+
+/* ------------------------------------------------------------------ *
  * DECORATIVE WIDGETS  (not folders — just personality)
  * ------------------------------------------------------------------ */
 export const widgets = {
@@ -223,7 +238,7 @@ export const widgets = {
   // iPod image + what shows on its little screen.
   ipod: {
     image: 'elements/music-widget.png',
-    track: 'Someday, Someday',
+    track: 'Someone To You',
     artist: 'BANNERS',
     album: 'Where the Shadow Ends',
   },

@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { SITE_TITLE, apps, folders } from '../content'
+import { SITE_TITLE, apps, folders, mobile, widgets } from '../content'
+import type { AppProject, Folder } from '../types'
 import { asset } from '../lib/asset'
-import { FolderGlyph } from './FolderGlyph'
 import { FolderWindow } from './FolderWindow'
 import { AppWindow } from './AppWindow'
 import { MusicWindow } from './MusicWindow'
@@ -10,95 +11,112 @@ import { ProjectWindow } from './ProjectWindow'
 
 type OpenItem = { kind: 'folder' | 'app' | 'music' | 'project'; id: string; label: string }
 
-const sectionLabel =
-  'mb-2 text-[11px] font-semibold uppercase tracking-wide text-charcoal/40'
-const card =
-  'flex w-full items-center gap-3 rounded-2xl bg-white/70 p-3 text-left ring-1 ring-black/5 transition active:scale-[0.99]'
-
 /**
- * Phone / small-tablet layout. The draggable desktop doesn't translate to
- * small screens, so folders, apps, and the music player become tappable rows
- * that open as full-screen sheets.
+ * Phone / small-tablet layout, styled as an iPhone home screen (edit `mobile` in
+ * content.ts): a big photo widget, a grid of app icons, a music
+ * widget, and a dock. Everything opens as a full-screen sheet.
  */
 export function MobileView() {
   const [open, setOpen] = useState<OpenItem | null>(null)
 
+  const openApp = (a: AppProject) =>
+    a.projectSlug
+      ? setOpen({ kind: 'project', id: a.projectSlug, label: a.name })
+      : setOpen({ kind: 'app', id: a.id, label: a.name })
+
+  const openFolder = (f: Folder) => {
+    // A folder holding just one project skips straight to it.
+    const onlyItem = f.items.length === 1 ? f.items[0] : null
+    if (onlyItem?.kind === 'project' && onlyItem.projectSlug)
+      setOpen({ kind: 'project', id: onlyItem.projectSlug, label: onlyItem.title })
+    else setOpen({ kind: 'folder', id: f.id, label: f.label })
+  }
+
+  const appById = (id: string) => apps.find((a) => a.id === id)
+  const folderById = (id: string) => folders.find((f) => f.id === id)
+  const topRow = mobile.topRow.map(appById).filter(Boolean) as AppProject[]
+  const sideApps = mobile.sideApps.map(appById).filter(Boolean) as AppProject[]
+  const photos = folderById('photos')
+  const about = folderById('about')
+  const projects = folderById('projects')
+
   return (
-    <div className="min-h-screen w-full overflow-y-auto bg-blush">
-      <header className="sticky top-0 z-10 border-b border-black/5 bg-cream/90 px-4 py-3 backdrop-blur">
-        <button type="button" onClick={() => setOpen(null)} title="Back to home">
-          <h1 className="font-heading text-xl text-charcoal">{SITE_TITLE}</h1>
-        </button>
-      </header>
+    <div className="mac-scroll h-dvh w-full overflow-y-auto bg-blush">
+      <div className="mx-auto flex min-h-dvh w-full max-w-[440px] flex-col px-4 pb-4">
+        <StatusBar />
 
-      <div className="px-4 py-5">
-        {/* folders */}
-        <p className={sectionLabel}>Folders</p>
-        <ul className="space-y-2.5">
-          {folders.map((f) => {
-            // A folder holding just one project skips straight to it — no
-            // point making someone open the folder just to tap its only tile.
-            const onlyItem = f.items.length === 1 ? f.items[0] : null
-            const openThis = () =>
-              onlyItem?.kind === 'project' && onlyItem.projectSlug
-                ? setOpen({ kind: 'project', id: onlyItem.projectSlug, label: onlyItem.title })
-                : setOpen({ kind: 'folder', id: f.id, label: f.label })
-            return (
-              <li key={f.id}>
-                <button type="button" onClick={openThis} className={card}>
-                  <FolderGlyph size={44} />
-                  <div>
-                    <p className="text-[15px] font-medium text-charcoal">{f.label}</p>
-                    <p className="text-xs text-charcoal/50">{f.items.length} items</p>
-                  </div>
-                </button>
-              </li>
-            )
-          })}
-        </ul>
+        {/* hero photo widget */}
+        <Pop i={0}>
+          <button
+            type="button"
+            onClick={() => about && openFolder(about)}
+            aria-label="About me"
+            className="relative mt-3 block aspect-[1000/550] w-full overflow-hidden rounded-[26px] shadow-[0_6px_20px_rgba(0,0,0,0.12)] active:scale-[0.99]"
+          >
+            <img
+              src={asset(mobile.hero)}
+              alt=""
+              draggable={false}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <span className="absolute inset-x-0 bottom-[7%] text-center font-script whitespace-nowrap text-[clamp(22px,6.8vw,32px)] leading-none text-black drop-shadow-[0_1px_6px_rgba(255,255,255,0.55)]">
+              {SITE_TITLE.replace(/!$/, '')}
+            </span>
+          </button>
+        </Pop>
 
-        {/* apps */}
-        <p className={`${sectionLabel} mt-6`}>Featured</p>
-        <ul className="grid grid-cols-2 gap-2.5">
-          {apps.map((a) => (
-            <li key={a.id}>
-              <button
-                type="button"
-                onClick={() =>
-                  a.projectSlug
-                    ? setOpen({ kind: 'project', id: a.projectSlug, label: a.name })
-                    : setOpen({ kind: 'app', id: a.id, label: a.name })
-                }
-                className="flex w-full items-center gap-2.5 rounded-2xl bg-white/70 p-2.5 text-left ring-1 ring-black/5 transition active:scale-[0.99]"
-              >
-                <img
-                  src={asset(a.icon)}
-                  alt=""
-                  className="h-10 w-10 shrink-0 rounded-[24%] bg-white object-cover ring-1 ring-black/10"
-                />
-                <p className="truncate text-[13px] font-medium text-charcoal">{a.name}</p>
-              </button>
-            </li>
+        {/* the home-screen grid: 4 columns, like iOS */}
+        <div className="mt-5 grid grid-cols-4 gap-x-3 gap-y-4">
+          {topRow.map((a, i) => (
+            <Pop key={a.id} i={i + 1}>
+              <AppIcon label={a.name} onClick={() => openApp(a)}>
+                <img src={asset(a.icon)} alt="" draggable={false} className="h-full w-full object-cover" />
+              </AppIcon>
+            </Pop>
           ))}
-        </ul>
 
-        {/* music */}
-        <p className={`${sectionLabel} mt-6`}>Now playing</p>
-        <button
-          type="button"
-          onClick={() => setOpen({ kind: 'music', id: 'player', label: 'Music' })}
-          className={card}
-        >
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[24%] bg-[linear-gradient(135deg,#e7c4cb,#c8d8e6_55%,#cbb58a)] text-lg ring-1 ring-black/10">
-            🎧
+          {/* music widget (2×2) */}
+          <Pop i={5} className="col-span-2 row-span-2">
+            <MusicWidget onClick={() => setOpen({ kind: 'music', id: 'player', label: 'Music' })} />
+          </Pop>
+
+          {sideApps.map((a, i) => (
+            <Pop key={a.id} i={i + 6}>
+              <AppIcon label={a.name} onClick={() => openApp(a)}>
+                <img src={asset(a.icon)} alt="" draggable={false} className="h-full w-full object-cover" />
+              </AppIcon>
+            </Pop>
+          ))}
+
+          {photos && (
+            <Pop i={8}>
+              <AppIcon label="Photos" onClick={() => openFolder(photos)}>
+                <PhotosGlyph />
+              </AppIcon>
+            </Pop>
+          )}
+        </div>
+
+        {/* dock */}
+        <div className="mt-auto pt-8">
+          <div className="flex justify-center gap-[9%] rounded-[30px] bg-dock/60 px-4 py-3 backdrop-blur-md">
+            {about && (
+              <DockIcon label="About me" onClick={() => openFolder(about)}>
+                <img src={asset(mobile.aboutIcon)} alt="" draggable={false} className="h-full w-full object-cover" />
+              </DockIcon>
+            )}
+            {projects && (
+              <DockIcon label="Personal projects" onClick={() => openFolder(projects)}>
+                <span className="grid h-full w-full place-items-center bg-warm-ivory p-[14%]">
+                  <img src={asset(widgets.folderIcon)} alt="" draggable={false} className="w-full" />
+                </span>
+              </DockIcon>
+            )}
           </div>
-          <div>
-            <p className="text-[15px] font-medium text-charcoal">borrow my headphones 🎧</p>
-            <p className="text-xs text-charcoal/50">my playlist</p>
-          </div>
-        </button>
+        </div>
       </div>
 
+      {/* full-screen sheet for whatever's open */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -109,17 +127,13 @@ export function MobileView() {
             transition={{ type: 'spring', stiffness: 380, damping: 36 }}
           >
             <div className="flex items-center border-b border-black/5 bg-cream px-3 py-3">
-              <button
-                type="button"
-                onClick={() => setOpen(null)}
-                className="text-sm text-[#a85d72]"
-              >
-                ‹ Back
+              <button type="button" onClick={() => setOpen(null)} className="text-sm text-[#a85d72]">
+                ‹ Home
               </button>
               <span className="mx-auto truncate px-2 text-[15px] font-medium text-charcoal">
                 {open.label}
               </span>
-              <span className="w-10" aria-hidden="true" />
+              <span className="w-12" aria-hidden="true" />
             </div>
             <div className="mac-scroll flex-1 overflow-y-auto">
               {open.kind === 'folder' ? (
@@ -135,6 +149,137 @@ export function MobileView() {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  )
+}
+
+/** Staggered "springboard" pop-in, like icons settling after unlock. */
+function Pop({ i, className = '', children }: { i: number; className?: string; children: ReactNode }) {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, scale: 0.85 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ type: 'spring', stiffness: 320, damping: 22, delay: 0.04 * i }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function AppIcon({ label, onClick, children }: { label: string; onClick: () => void; children: ReactNode }) {
+  return (
+    <button type="button" onClick={onClick} className="flex w-full flex-col items-center gap-1.5 active:scale-95 transition">
+      <span className="block aspect-square w-full overflow-hidden rounded-[23%] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.1)] ring-1 ring-black/5">
+        {children}
+      </span>
+      <span className="text-center text-[11px] leading-tight text-charcoal">{label}</span>
+    </button>
+  )
+}
+
+function DockIcon({ label, onClick, children }: { label: string; onClick: () => void; children: ReactNode }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="block aspect-square w-[21%] overflow-hidden rounded-[23%] shadow-[0_2px_8px_rgba(0,0,0,0.12)] ring-1 ring-black/5 transition active:scale-95"
+    >
+      {children}
+    </button>
+  )
+}
+
+/** The 2×2 music widget — a plain grey tile with a now-playing bar; taps through to the playlist. */
+function MusicWidget({ onClick }: { onClick: () => void }) {
+  const { track, artist } = widgets.ipod
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Open music player"
+      className="flex h-full min-h-[150px] w-full flex-col justify-end overflow-hidden rounded-[26px] bg-[#bab1b3] p-4 text-left text-white shadow-[0_6px_20px_rgba(0,0,0,0.08)] transition active:scale-[0.98]"
+    >
+      <span className="block truncate text-[13px] font-semibold">{track}</span>
+      <span className="block truncate text-[11px] text-white/75">{artist}</span>
+
+      {/* progress bar */}
+      <span className="mt-3 block h-1 w-full overflow-hidden rounded-full bg-white/35">
+        <span className="block h-full w-[38%] rounded-full bg-white" />
+      </span>
+      <span className="mt-1 flex justify-between text-[9px] tabular-nums text-white/70">
+        <span>1:12</span>
+        <span>-1:58</span>
+      </span>
+
+      {/* controls */}
+      <span className="mt-1.5 flex items-center justify-center gap-6" aria-hidden="true">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="currentColor">
+          <path d="M10 1v12L2 7zM18 1v12l-8-6z" />
+        </svg>
+        <svg width="16" height="18" viewBox="0 0 16 18" fill="currentColor">
+          <path d="M2 1l13 8-13 8z" />
+        </svg>
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="currentColor">
+          <path d="M2 1v12l8-6zM10 1v12l8-6z" />
+        </svg>
+      </span>
+    </button>
+  )
+}
+
+/** A soft pinwheel of overlapping petals for the Photos icon. */
+function PhotosGlyph() {
+  const colors = ['#f7a531', '#f5d33b', '#a6d14e', '#5dc47b', '#4ab0e0', '#8a7be0', '#c86fd1', '#f0566d']
+  return (
+    <svg viewBox="0 0 100 100" className="h-full w-full bg-white" aria-hidden="true">
+      {colors.map((c, i) => (
+        <ellipse
+          key={c}
+          cx="50"
+          cy="30"
+          rx="11"
+          ry="19"
+          fill={c}
+          opacity="0.82"
+          style={{ mixBlendMode: 'multiply' }}
+          transform={`rotate(${i * 45} 50 50) translate(-6 0)`}
+        />
+      ))}
+    </svg>
+  )
+}
+
+/** Fake iPhone status bar with a live clock. */
+function StatusBar() {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 15_000)
+    return () => clearInterval(id)
+  }, [])
+  const time = `${now.getHours() % 12 || 12}:${now.getMinutes().toString().padStart(2, '0')}`
+
+  return (
+    <div className="flex h-[30px] items-center justify-between pt-3 text-charcoal/55" aria-hidden="true">
+      <span className="w-20 pl-2 text-[15px] font-semibold tabular-nums">{time}</span>
+      <span className="flex w-20 items-center justify-end gap-1.5 pr-1">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor">
+          <rect x="0" y="8" width="3" height="4" rx="1" />
+          <rect x="4.5" y="5.5" width="3" height="6.5" rx="1" />
+          <rect x="9" y="3" width="3" height="9" rx="1" />
+          <rect x="13.5" y="0" width="3" height="12" rx="1" />
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+          <path d="M1.5 4.2a9.5 9.5 0 0 1 13 0M4 6.8a5.8 5.8 0 0 1 8 0" />
+          <circle cx="8" cy="9.8" r="1.2" fill="currentColor" stroke="none" />
+        </svg>
+        <svg width="26" height="12" viewBox="0 0 26 12" fill="none">
+          <rect x="0.75" y="0.75" width="21.5" height="10.5" rx="3" stroke="currentColor" strokeWidth="1.5" />
+          <rect x="2.5" y="2.5" width="6" height="7" rx="1.5" fill="currentColor" />
+          <rect x="23.5" y="4" width="2" height="4" rx="1" fill="currentColor" />
+        </svg>
+      </span>
     </div>
   )
 }
