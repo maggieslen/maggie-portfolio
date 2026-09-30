@@ -39,7 +39,11 @@ export function ItemTile({ item, accent }: { item: FolderItem; accent: string })
           background: `linear-gradient(135deg, ${accent}, #ffffff)`,
         }}
       >
-        {item.image ? (
+        {item.icon ? (
+          <span className="flex h-full w-full items-center justify-center bg-[#f9f1ea] p-[14%]">
+            <img src={asset(item.icon)} alt="" draggable={false} className="max-h-full max-w-full object-contain" />
+          </span>
+        ) : item.image ? (
           <img
             src={asset(item.image)}
             alt={item.title}

@@ -88,6 +88,7 @@ export const folders: Folder[] = [
         title: 'Personal Social Media',
         kind: 'project',
         projectSlug: 'personal-project',
+        icon: 'app-icons/instagram-doodle.png',
         description: 'Stories & reels from my own social media.',
       },
       {
@@ -95,9 +96,9 @@ export const folders: Folder[] = [
         title: 'Digital Artwork',
         kind: 'project',
         projectSlug: 'digital-artwork',
+        icon: 'app-icons/digital-artwork-doodle.png',
         description: 'Original illustrations & digital paintings.',
       },
-      { id: 'pr3', title: 'Experiment', kind: 'link', description: 'Link to a repo or live demo.', href: '#' },
     ],
   },
 ]
@@ -217,8 +218,10 @@ export const mobile = {
   topRow: ['purdue', 'dippin-daisys', 'dream-girl', 'letters-of-love'],
   // The apps beside the music widget (Photos is added after these).
   sideApps: ['purdue-pharmacy', 'northeast-dance'],
-  // Dock icon for "about me".
-  aboutIcon: 'about/headshot.jpg',
+  // Dock icons (hand-drawn doodles, shown on a cream tile).
+  aboutIcon: 'app-icons/about-me-doodle.png',
+  socialIcon: 'app-icons/instagram-doodle.png',
+  artworkIcon: 'app-icons/digital-artwork-doodle.png',
 }
 
 /* ------------------------------------------------------------------ *

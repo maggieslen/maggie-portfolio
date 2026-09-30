@@ -29,6 +29,8 @@ export interface FolderItem {
   href?: string
   /** For kind: 'project' — the slug under /public/client-work/<slug>/. */
   projectSlug?: string
+  /** A drawn app icon (transparent PNG), shown whole on a cream tile instead of `image`. */
+  icon?: string
 }
 
 /** A desktop folder (photos!, about me!, personal projects). */
