@@ -90,7 +90,9 @@ function Section({ slug, section }: { slug: string; section: CwSection }) {
 
   return (
     <section>
-      <h2 className="mb-4 font-heading text-2xl text-charcoal">{section.title}</h2>
+      {section.title && (
+        <h2 className="mb-4 font-heading text-2xl text-charcoal">{section.title}</h2>
+      )}
       {isEmpty ? (
         <Placeholder type={section.type} />
       ) : section.type === 'stories' ? (

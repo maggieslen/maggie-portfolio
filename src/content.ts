@@ -89,7 +89,6 @@ export const folders: Folder[] = [
         kind: 'project',
         projectSlug: 'personal-project',
         icon: 'app-icons/instagram-doodle.png',
-        description: 'Stories & reels from my own social media.',
       },
       {
         id: 'digital-artwork',
@@ -97,7 +96,6 @@ export const folders: Folder[] = [
         kind: 'project',
         projectSlug: 'digital-artwork',
         icon: 'app-icons/digital-artwork-doodle.png',
-        description: 'Original illustrations & digital paintings.',
       },
     ],
   },

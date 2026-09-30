@@ -1,15 +1,14 @@
 {
   "name": "Digital Artwork",
   "tagline": "Original illustrations & digital paintings",
-  "description": "just some doodles i love",
   "links": [],
   "sections": [
     {
       "type": "gallery",
-      "title": "Selected Work",
+      "title": "",
       "items": [
-        { "src": "media/purdue-bell-tower.jpg", "caption": "Purdue Bell Tower" },
-        { "src": "media/you-are-so-loved.jpg", "caption": "You Are So Loved" }
+        { "src": "media/purdue-bell-tower.jpg" },
+        { "src": "media/you-are-so-loved.jpg" }
       ]
     }
   ]
