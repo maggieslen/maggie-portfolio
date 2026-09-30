@@ -38,7 +38,7 @@ export const folders: Folder[] = [
       { id: 'ph-heads-will-roll', title: 'Heads Will Roll', kind: 'image', image: 'photos/heads-will-roll.jpg', description: 'the whole crew after the show' },
       { id: 'ph-walking', title: 'Erica & Ian', kind: 'image', image: 'photos/erica-ian-walking.jpg', description: 'erica & ian 🤍' },
       { id: 'ph-koehlers', title: 'The Koehlers', kind: 'image', image: 'photos/the-koehlers.jpg', description: 'the koehlers' },
-      { id: 'ph-hovde', title: 'Hovde Hall', kind: 'image', image: 'photos/purdue-hovde-hall.jpg', description: 'hovde hall at golden hour' },
+      { id: 'ph-fountain-bell-tower', title: 'Engineering Fountain x Bell Tower', kind: 'image', image: 'photos/engineering-fountain-bell-tower.jpg', description: 'engineering fountain x bell tower 🌸' },
       { id: 'ph-trevi', title: 'Trevi Fountain', kind: 'image', image: 'photos/trevi-fountain.jpg', description: 'trevi fountain at night' },
       { id: 'ph-boys', title: 'The Boys', kind: 'image', image: 'photos/boys-couch-cover.jpg', description: 'the boys 🛋️' },
       { id: 'ph-sarah-norah', title: 'Sarah & Norah', kind: 'image', image: 'photos/sarah-norah-cover.jpg', description: 'sarah & norah 🩷' },
