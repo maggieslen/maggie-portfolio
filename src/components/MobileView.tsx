@@ -115,8 +115,8 @@ export function MobileView() {
               </DockIcon>
             )}
             <DockIcon
-              label="My Instagram"
-              onClick={() => setOpen({ kind: 'project', id: 'personal-project', label: 'My Instagram' })}
+              label="Personal Social Media"
+              onClick={() => setOpen({ kind: 'project', id: 'personal-project', label: 'Personal Social Media' })}
             >
               <InstagramGlyph />
             </DockIcon>
@@ -243,41 +243,101 @@ function MusicWidget({ onClick }: { onClick: () => void }) {
   )
 }
 
-/** Instagram-style camera outline, dusty pink on cream. */
+const CRAYON = '#ff9fb9'
+const CREAM = '#f9f1ea'
+
+/**
+ * SVG filter that makes flat shapes look drawn in crayon: wobbly edges plus
+ * a grainy, patchy fill. `id` must be unique on the page.
+ */
+function CrayonFilter({ id }: { id: string }) {
+  return (
+    <filter id={id} x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="4" result="wobble" />
+      <feDisplacementMap in="SourceGraphic" in2="wobble" scale="3.2" result="shape" />
+      <feTurbulence type="fractalNoise" baseFrequency="0.32" numOctaves="2" seed="9" result="grain" />
+      <feColorMatrix
+        in="grain"
+        type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.9 1.85"
+        result="grainAlpha"
+      />
+      <feComposite in="shape" in2="grainAlpha" operator="in" />
+    </filter>
+  )
+}
+
+/** Scribbled diagonal strokes, for a hand-coloured fill inside a clip path. */
+function Scribble({ clip, angle = -35 }: { clip: string; angle?: number }) {
+  return (
+    <g clipPath={`url(#${clip})`}>
+      <g transform={`rotate(${angle} 50 50)`} stroke={CRAYON} strokeWidth="4.6" strokeLinecap="round">
+        {Array.from({ length: 30 }, (_, k) => {
+          const y = -10 + k * 4
+          return <path key={k} d={`M-10 ${y} Q50 ${y + (k % 2 ? 1.6 : -1.6)} 110 ${y + 0.8}`} />
+        })}
+      </g>
+    </g>
+  )
+}
+
+/** Hand-drawn (crayon) Instagram-style camera, pink on cream. */
 function InstagramGlyph() {
   return (
-    <svg viewBox="0 0 100 100" className="h-full w-full bg-[#f9f1ea]" aria-hidden="true">
-      <g fill="none" stroke="#e2b1b1" strokeWidth="5.5">
-        <rect x="22" y="22" width="56" height="56" rx="16" />
-        <circle cx="50" cy="50" r="12.5" />
+    <svg viewBox="0 0 100 100" className="h-full w-full" style={{ background: CREAM }} aria-hidden="true">
+      <defs>
+        <CrayonFilter id="crayon-ig" />
+        <clipPath id="ig-body">
+          <rect x="24" y="24" width="52" height="52" rx="14" />
+        </clipPath>
+      </defs>
+      <g filter="url(#crayon-ig)">
+        {/* outer sketched outline */}
+        <rect x="15" y="15" width="70" height="70" rx="19" fill="none" stroke={CRAYON} strokeWidth="2.6" />
+        {/* coloured-in camera body */}
+        <Scribble clip="ig-body" />
+        {/* lens: cream ring, then coloured centre */}
+        <circle cx="50" cy="50" r="15.5" fill={CREAM} />
+        <circle cx="50" cy="50" r="10.5" fill={CRAYON} opacity="0.9" />
+        {/* viewfinder dot */}
+        <circle cx="66" cy="34" r="4.2" fill={CREAM} stroke={CRAYON} strokeWidth="1.6" />
       </g>
-      <circle cx="65.5" cy="34.5" r="3.6" fill="#e2b1b1" />
     </svg>
   )
 }
 
-/** Hand-drawn-style artist's palette with two brushes, deep red on soft pink. */
+/** Hand-drawn (crayon) artist's palette with two brushes, pink on cream. */
 function PaletteGlyph() {
+  const body =
+    'M24 62C12 52 16 34 34 28c18-6 40-2 46 10 4 8-2 12-8 12s-8 4-5 8c3 5-3 10-15 11-12 1-22-2-28-7z'
   return (
-    <svg viewBox="2 7 100 100" className="h-full w-full bg-[#fcd5dc]" aria-hidden="true">
-      <g fill="none" stroke="#8e1b1b" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        {/* palette body (with thumb notch) + its thickness */}
-        <path d="M24 62C12 52 16 34 34 28c18-6 40-2 46 10 4 8-2 12-8 12s-8 4-5 8c3 5-3 10-15 11-12 1-22-2-28-7z" />
-        <path d="M21 64c8 8 22 10 35 8 8-1 13-4 14-8" />
-        <ellipse cx="67" cy="39" rx="5.5" ry="4" />
-        {/* paint wells */}
-        <ellipse cx="27" cy="50" rx="3.6" ry="3" />
-        <ellipse cx="32" cy="39" rx="3.8" ry="3" />
-        <ellipse cx="43" cy="33" rx="4" ry="3" />
-        <ellipse cx="55" cy="31.5" rx="3.6" ry="2.8" />
-        <ellipse cx="36" cy="59" rx="3.8" ry="3" />
-        <ellipse cx="49" cy="61" rx="3.6" ry="2.8" />
+    <svg viewBox="2 5 100 100" className="h-full w-full" style={{ background: CREAM }} aria-hidden="true">
+      <defs>
+        <CrayonFilter id="crayon-pal" />
+        <clipPath id="pal-body">
+          <path d={body} />
+        </clipPath>
+      </defs>
+      <g filter="url(#crayon-pal)">
+        {/* coloured-in palette + a sketched outline */}
+        <Scribble clip="pal-body" angle={-25} />
+        <path d={body} fill="none" stroke={CRAYON} strokeWidth="2.4" strokeLinejoin="round" />
+        {/* thumb hole + paint wells, left uncoloured */}
+        <g fill={CREAM} stroke={CRAYON} strokeWidth="1.4">
+          <ellipse cx="67" cy="39" rx="5.5" ry="4" />
+          <ellipse cx="27" cy="50" rx="3.6" ry="3" />
+          <ellipse cx="32" cy="39" rx="3.8" ry="3" />
+          <ellipse cx="43" cy="33" rx="4" ry="3" />
+          <ellipse cx="55" cy="31.5" rx="3.6" ry="2.8" />
+          <ellipse cx="36" cy="59" rx="3.8" ry="3" />
+          <ellipse cx="49" cy="61" rx="3.6" ry="2.8" />
+        </g>
         {/* two brushes */}
         {[0, 6].map((dy) => (
-          <g key={dy} transform={`translate(${56 + dy} ${80 + dy * 0.3}) rotate(-32)`}>
-            <rect x="0" y="-1.8" width="36" height="3.6" rx="1.8" />
-            <rect x="-7" y="-2.4" width="7" height="4.8" rx="1" />
-            <path d="M-7-2.4c-6-.5-10 1.5-14 4.5 5 .5 9-.3 14-2.1" />
+          <g key={dy} transform={`translate(${56 + dy} ${80 + dy * 0.3}) rotate(-32)`} fill={CRAYON}>
+            <rect x="0" y="-1.9" width="36" height="3.8" rx="1.9" />
+            <rect x="-7" y="-2.5" width="7" height="5" rx="1" fill={CREAM} stroke={CRAYON} strokeWidth="1.4" />
+            <path d="M-7-2.4c-6-.5-10 1.5-14 4.5 5 .5 9-.3 14-2.1z" />
           </g>
         ))}
       </g>
