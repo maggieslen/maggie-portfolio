@@ -207,7 +207,7 @@ function DockIcon({ label, onClick, children }: { label: string; onClick: () => 
 
 /** The 2×2 music widget — a plain grey tile with a now-playing bar; taps through to the playlist. */
 function MusicWidget({ onClick }: { onClick: () => void }) {
-  const { track, artist } = widgets.ipod
+  const { cover, track, artist } = widgets.ipod
   return (
     <button
       type="button"
@@ -215,6 +215,15 @@ function MusicWidget({ onClick }: { onClick: () => void }) {
       aria-label="Open music player"
       className="flex h-full min-h-[150px] w-full flex-col justify-end overflow-hidden rounded-[26px] bg-[#bab1b3] p-4 text-left text-white shadow-[0_6px_20px_rgba(0,0,0,0.08)] transition active:scale-[0.98]"
     >
+      {/* cover fills whatever space is left, without making the widget taller */}
+      <span className="relative mb-2.5 block min-h-0 flex-1">
+        <img
+          src={asset(cover)}
+          alt=""
+          draggable={false}
+          className="absolute left-0 top-0 aspect-square h-full max-h-[120px] rounded-xl bg-[#f9f1ea] object-contain p-[5%] shadow-md"
+        />
+      </span>
       <span className="block truncate text-[13px] font-semibold">{track}</span>
       <span className="block truncate text-[11px] text-white/75">{artist}</span>
 

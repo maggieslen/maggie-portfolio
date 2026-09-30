@@ -246,6 +246,8 @@ export const widgets = {
   // iPod image + what shows on its little screen.
   ipod: {
     image: 'elements/music-widget.png',
+    // Hand-drawn playlist cover shown on the player (desktop + phone).
+    cover: 'elements/album-cover.png',
     track: 'Someone To You',
     artist: 'BANNERS',
     album: 'Where the Shadow Ends',
