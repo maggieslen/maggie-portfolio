@@ -22,8 +22,10 @@ export const SITE_TITLE = "Maggie's Portfolio!"
 export const folders: Folder[] = [
   {
     id: 'photos',
-    label: 'photos!',
-    position: { top: 70, right: 150 },
+    label: 'my fav shots',
+    description:
+      'forever capturing the things i find pretty, featuring some of my favorite people and places.',
+    position: { top: 70, right: 60 },
     accent: '#e7c4cb',
     // 📸 Your photography. `description` is the caption shown in the album —
     // edit these freely. Drop new files in public/photos and add a row.
@@ -71,7 +73,7 @@ export const folders: Folder[] = [
         description:
           'A few sentences about your focus — content creation, design, coding, photography… whatever you want to lead with.',
       },
-      { id: 'a3', title: 'Resume', kind: 'link', description: 'Link your resume / CV.', href: '#' },
+      { id: 'a3', title: 'Resume', kind: 'link', description: 'My resume (PDF).', href: 'about/maggie-slen-resume.pdf' },
       { id: 'a4', title: 'Say hi', kind: 'link', description: 'Email or contact link.', href: 'mailto:maggie.slen42@gmail.com' },
     ],
   },
@@ -182,7 +184,7 @@ export const about = {
     'Hi, I’m Maggie! Placeholder intro — a few warm sentences about who you are, what you love creating, and what you’re looking for. Edit me in src/content.ts.',
   links: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/maggie-slen', icon: '💼' },
-    { label: 'Resume', href: '#', icon: '📄' },
+    { label: 'Resume', href: 'about/maggie-slen-resume.pdf', icon: '📄' },
     { label: 'Email', href: 'mailto:maggie.slen42@gmail.com', icon: '✉️' },
     { label: 'Instagram', href: 'https://www.instagram.com/maggie.slen/', icon: '📸' },
   ],

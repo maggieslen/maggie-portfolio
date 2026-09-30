@@ -17,7 +17,12 @@ export function PhotosAlbum({ folder }: { folder: Folder }) {
           <h2 className="font-heading text-xl leading-tight text-charcoal">
             {folder.label}
           </h2>
-          <p className="text-xs text-charcoal/50">
+          {folder.description && (
+            <p className="mt-1 max-w-xl text-[13px] leading-relaxed text-charcoal/75">
+              {folder.description}
+            </p>
+          )}
+          <p className="mt-1 text-xs text-charcoal/50">
             {photos.length} photos · shared album
           </p>
         </div>

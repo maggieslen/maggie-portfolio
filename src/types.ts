@@ -36,6 +36,8 @@ export interface Folder {
   id: string
   /** Text shown under the icon. */
   label: string
+  /** Optional blurb shown at the top once the folder is open. */
+  description?: string
   position: DesktopPosition
   /** A tint used for placeholder tiles inside this folder. */
   accent: string

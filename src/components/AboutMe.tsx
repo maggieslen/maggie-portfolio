@@ -24,7 +24,7 @@ export function AboutMe() {
         {about.links.map((l) => (
           <a
             key={l.label}
-            href={l.href}
+            href={/^(https?:|mailto:|#)/.test(l.href) ? l.href : asset(l.href)}
             target={l.href.startsWith('mailto') ? undefined : '_blank'}
             rel="noreferrer"
             className="flex items-center gap-2 rounded-xl bg-blush-soft/60 px-3 py-2.5 text-[13px] font-medium text-charcoal ring-1 ring-black/5 transition hover:bg-blush-soft"

@@ -42,7 +42,9 @@ export function MobileView() {
 
   return (
     <div className="mac-scroll h-dvh w-full overflow-y-auto bg-blush">
-      <div className="mx-auto flex min-h-dvh w-full max-w-[440px] flex-col px-4 pb-4">
+      {/* Width is capped by screen height too, so the whole home screen fits
+          without scrolling (everything scales with width). */}
+      <div className="mx-auto flex min-h-dvh w-full max-w-[min(440px,calc((100dvh-245px)/1.15))] flex-col px-4 pb-3">
         <StatusBar />
 
         {/* hero photo widget */}
@@ -51,7 +53,7 @@ export function MobileView() {
             type="button"
             onClick={() => about && openFolder(about)}
             aria-label="About me"
-            className="relative mt-3 block aspect-[1000/550] w-full overflow-hidden rounded-[26px] shadow-[0_6px_20px_rgba(0,0,0,0.12)] active:scale-[0.99]"
+            className="@container relative mt-2 block aspect-[1000/520] w-full overflow-hidden rounded-[26px] shadow-[0_6px_20px_rgba(0,0,0,0.12)] active:scale-[0.99]"
           >
             <img
               src={asset(mobile.hero)}
@@ -59,14 +61,14 @@ export function MobileView() {
               draggable={false}
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <span className="absolute inset-x-0 bottom-[7%] text-center font-script whitespace-nowrap text-[clamp(22px,6.8vw,32px)] leading-none text-black drop-shadow-[0_1px_6px_rgba(255,255,255,0.55)]">
+            <span className="absolute inset-x-0 bottom-[7%] text-center font-script whitespace-nowrap text-[clamp(16px,6cqw,26px)] leading-none text-black drop-shadow-[0_1px_6px_rgba(255,255,255,0.55)]">
               {SITE_TITLE.replace(/!$/, '')}
             </span>
           </button>
         </Pop>
 
         {/* the home-screen grid: 4 columns, like iOS */}
-        <div className="mt-5 grid grid-cols-4 gap-x-3 gap-y-4">
+        <div className="mt-3 grid grid-cols-4 gap-x-3 gap-y-2.5">
           {topRow.map((a, i) => (
             <Pop key={a.id} i={i + 1}>
               <AppIcon label={a.name} onClick={() => openApp(a)}>
@@ -90,7 +92,7 @@ export function MobileView() {
 
           {photos && (
             <Pop i={8}>
-              <AppIcon label="Photos" onClick={() => openFolder(photos)}>
+              <AppIcon label={photos.label} onClick={() => openFolder(photos)}>
                 <PhotosGlyph />
               </AppIcon>
             </Pop>
@@ -98,8 +100,8 @@ export function MobileView() {
         </div>
 
         {/* dock */}
-        <div className="mt-auto pt-8">
-          <div className="flex justify-center gap-[9%] rounded-[30px] bg-dock/60 px-4 py-3 backdrop-blur-md">
+        <div className="mt-auto pt-3">
+          <div className="flex justify-center gap-[9%] rounded-[28px] bg-dock/60 px-4 py-2.5 backdrop-blur-md">
             {about && (
               <DockIcon label="About me" onClick={() => openFolder(about)}>
                 <img src={asset(mobile.aboutIcon)} alt="" draggable={false} className="h-full w-full object-cover" />
@@ -169,11 +171,11 @@ function Pop({ i, className = '', children }: { i: number; className?: string; c
 
 function AppIcon({ label, onClick, children }: { label: string; onClick: () => void; children: ReactNode }) {
   return (
-    <button type="button" onClick={onClick} className="flex w-full flex-col items-center gap-1.5 active:scale-95 transition">
+    <button type="button" onClick={onClick} className="flex w-full flex-col items-center gap-1 active:scale-95 transition">
       <span className="block aspect-square w-full overflow-hidden rounded-[23%] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.1)] ring-1 ring-black/5">
         {children}
       </span>
-      <span className="text-center text-[11px] leading-tight text-charcoal">{label}</span>
+      <span className="text-center text-[10.5px] leading-tight text-charcoal">{label}</span>
     </button>
   )
 }
@@ -261,7 +263,7 @@ function StatusBar() {
   const time = `${now.getHours() % 12 || 12}:${now.getMinutes().toString().padStart(2, '0')}`
 
   return (
-    <div className="flex h-[30px] items-center justify-between pt-3 text-charcoal/55" aria-hidden="true">
+    <div className="flex h-[26px] items-center justify-between pt-2 text-charcoal/55" aria-hidden="true">
       <span className="w-20 pl-2 text-[15px] font-semibold tabular-nums">{time}</span>
       <span className="flex w-20 items-center justify-end gap-1.5 pr-1">
         <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor">
