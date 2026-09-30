@@ -100,7 +100,7 @@ export function MobileView() {
 
           {photos && (
             <Pop i={8}>
-              <AppIcon label={photos.label} onClick={() => openFolder(photos)}>
+              <AppIcon label="Photos" onClick={() => openFolder(photos)}>
                 <PhotosGlyph />
               </AppIcon>
             </Pop>
@@ -183,7 +183,7 @@ function AppIcon({ label, onClick, children }: { label: string; onClick: () => v
       <span className="block aspect-square w-full overflow-hidden rounded-[23%] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.1)] ring-1 ring-black/5">
         {children}
       </span>
-      <span className="text-center text-[10.5px] leading-tight text-charcoal">{label}</span>
+      <span className="text-center text-[9px] leading-tight text-charcoal">{label}</span>
     </button>
   )
 }
