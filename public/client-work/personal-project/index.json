@@ -8,24 +8,24 @@
       "title": "Stories",
       "groups": [
         {
-          "caption": "Senior Year",
-          "items": [{ "src": "media/senior-year.mp4" }]
-        },
-        {
-          "caption": "Graduation",
-          "items": [{ "src": "media/graduation.jpg" }]
-        },
-        {
-          "caption": "Verona",
-          "items": [{ "src": "media/verona.jpg" }]
+          "caption": "Venice",
+          "items": [{ "src": "media/venice.jpg" }]
         },
         {
           "caption": "Val di Sole",
           "items": [{ "src": "media/val-di-sole.jpg" }]
         },
         {
-          "caption": "Venice",
-          "items": [{ "src": "media/venice.jpg" }]
+          "caption": "Verona",
+          "items": [{ "src": "media/verona.jpg" }]
+        },
+        {
+          "caption": "Senior Year",
+          "items": [{ "src": "media/senior-year.mp4" }]
+        },
+        {
+          "caption": "Graduation",
+          "items": [{ "src": "media/graduation.jpg" }]
         }
       ]
     },
