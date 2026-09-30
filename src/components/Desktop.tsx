@@ -41,6 +41,8 @@ export function Desktop() {
             win={win}
             index={index}
             fullscreen={isFullscreenWindow(win)}
+            // The about me window is roomier so the links show without scrolling.
+            size={win.kind === 'folder' && win.refId === 'about' ? { width: 720, height: 600 } : undefined}
           >
             {win.kind === 'folder' ? (
               <FolderWindow refId={win.refId} />

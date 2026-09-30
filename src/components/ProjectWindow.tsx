@@ -23,7 +23,7 @@ export function ProjectWindow({ refId }: { refId: string }) {
         <h1 className="font-heading text-4xl leading-tight text-charcoal">{data.name}</h1>
         <p className="mt-1 text-charcoal/55">{data.tagline}</p>
         {data.description && (
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-charcoal/80">
+          <p className="mt-4 text-[15px] leading-relaxed text-charcoal/80">
             {data.description}
           </p>
         )}

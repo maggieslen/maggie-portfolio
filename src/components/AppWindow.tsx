@@ -31,7 +31,7 @@ export function AppWindow({ refId }: { refId: string }) {
         />
       )}
 
-      <p className="mt-7 max-w-2xl text-[15px] leading-relaxed text-charcoal/80">
+      <p className="mt-7 text-[15px] leading-relaxed text-charcoal/80">
         {app.description}
       </p>
 

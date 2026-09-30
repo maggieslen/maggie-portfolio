@@ -1,10 +1,10 @@
 {
   "name": "Dippin' Daisys",
-  "tagline": "Social media + brand design",
-  "description": "Social-media design for Dippin' Daisys — a sunny, playful swimwear brand (♡ making waves ♡). I designed the feed layout, story campaigns, and a reel built around the brand's hand-sewn, beachy aesthetic. (Placeholder copy — edit anytime.)",
+  "tagline": "Mock Campaign",
+  "description": "i created this mock campaign as a creative exploration of one of my favorite swimwear brands, inspired by the way dippin’ daisys turns playful colors and patterns into fully realized worlds. i created two story sets, a mock instagram feed, and short-form content, with each concept built around the personality of a different collection. i especially loved designing the stories and finding little visual details that brought each concept to life while still feeling true to the dippin’ daisys brand.",
   "links": [
     { "label": "Mock Campaign", "url": "https://maggieslen.my.canva.site/dippin-daisys" },
-    { "label": "View full site", "url": "https://dippindaisys.com" },
+    { "label": "Dippin’ Daisys", "url": "https://dippindaisys.com" },
     { "label": "Instagram", "url": "https://www.instagram.com/dippindaisys/" }
   ],
   "sections": [

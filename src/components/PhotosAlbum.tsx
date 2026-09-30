@@ -18,7 +18,7 @@ export function PhotosAlbum({ folder }: { folder: Folder }) {
             {folder.label}
           </h2>
           {folder.description && (
-            <p className="mt-1 max-w-xl text-[13px] leading-relaxed text-charcoal/75">
+            <p className="mt-1 text-[13px] leading-relaxed text-charcoal/75">
               {folder.description}
             </p>
           )}

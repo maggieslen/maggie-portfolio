@@ -4,7 +4,7 @@ import { asset } from '../lib/asset'
 /** Contents of the "about me!" folder — headshot, intro, and links. */
 export function AboutMe() {
   return (
-    <div className="p-6">
+    <div className="px-4 py-5">
       <div className="flex flex-col items-center text-center">
         <img
           src={asset(about.headshot)}
@@ -15,9 +15,11 @@ export function AboutMe() {
         <h2 className="mt-3 font-heading text-2xl leading-tight text-charcoal">
           {about.name}
         </h2>
-        <p className="mt-2 max-w-md text-[13px] leading-relaxed text-charcoal/75">
-          {about.intro}
-        </p>
+        <div className="mt-2 space-y-2.5 text-[13px] leading-relaxed text-charcoal/75">
+          {about.intro.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-2.5">
