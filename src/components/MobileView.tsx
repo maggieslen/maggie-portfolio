@@ -11,13 +11,21 @@ import { ProjectWindow } from './ProjectWindow'
 
 type OpenItem = { kind: 'folder' | 'app' | 'music' | 'project'; id: string; label: string }
 
+let greeted = false
+
 /**
  * Phone / small-tablet layout, styled as an iPhone home screen (edit `mobile` in
  * content.ts): a big photo widget, a grid of app icons, a music
  * widget, and a dock. Everything opens as a full-screen sheet.
  */
 export function MobileView() {
-  const [open, setOpen] = useState<OpenItem | null>(null)
+  // Start with "about me!" open so it greets people on first load.
+  const [open, setOpen] = useState<OpenItem | null>(() => {
+    if (greeted) return null
+    greeted = true
+    const about = folders.find((f) => f.id === 'about')
+    return about ? { kind: 'folder', id: about.id, label: about.label } : null
+  })
 
   const openApp = (a: AppProject) =>
     a.projectSlug

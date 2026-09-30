@@ -85,7 +85,7 @@ export const folders: Folder[] = [
     items: [
       {
         id: 'personal-project',
-        title: 'My Instagram',
+        title: 'Personal Social Media',
         kind: 'project',
         projectSlug: 'personal-project',
         description: 'Stories & reels from my own social media.',

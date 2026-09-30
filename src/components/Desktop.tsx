@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { AnimatePresence } from 'motion/react'
 import { folders } from '../content'
 import { isFullscreenWindow, useWindowStore } from '../store/windowStore'
@@ -14,9 +15,19 @@ import { PostcardWidget } from './widgets/PostcardWidget'
 import { PolaroidStack } from './widgets/PolaroidStack'
 import { IpodWidget } from './widgets/IpodWidget'
 
+// Open "about me!" once per visit, so it greets people on first load.
+let greeted = false
+
 /** The full-screen macOS-style desktop. */
 export function Desktop() {
   const windows = useWindowStore((s) => s.windows)
+  const openWindow = useWindowStore((s) => s.openWindow)
+
+  useEffect(() => {
+    if (greeted) return
+    greeted = true
+    openWindow('folder', 'about')
+  }, [openWindow])
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-blush">
