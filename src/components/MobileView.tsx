@@ -46,7 +46,6 @@ export function MobileView() {
   const sideApps = mobile.sideApps.map(appById).filter(Boolean) as AppProject[]
   const photos = folderById('photos')
   const about = folderById('about')
-  const projects = folderById('projects')
 
   return (
     <div className="mac-scroll h-dvh w-full overflow-y-auto bg-blush">
@@ -115,13 +114,18 @@ export function MobileView() {
                 <img src={asset(mobile.aboutIcon)} alt="" draggable={false} className="h-full w-full object-cover" />
               </DockIcon>
             )}
-            {projects && (
-              <DockIcon label="Personal projects" onClick={() => openFolder(projects)}>
-                <span className="grid h-full w-full place-items-center bg-warm-ivory p-[14%]">
-                  <img src={asset(widgets.folderIcon)} alt="" draggable={false} className="w-full" />
-                </span>
-              </DockIcon>
-            )}
+            <DockIcon
+              label="My Instagram"
+              onClick={() => setOpen({ kind: 'project', id: 'personal-project', label: 'My Instagram' })}
+            >
+              <InstagramGlyph />
+            </DockIcon>
+            <DockIcon
+              label="Digital Artwork"
+              onClick={() => setOpen({ kind: 'project', id: 'digital-artwork', label: 'Digital Artwork' })}
+            >
+              <PaletteGlyph />
+            </DockIcon>
           </div>
         </div>
       </div>
@@ -236,6 +240,48 @@ function MusicWidget({ onClick }: { onClick: () => void }) {
         </svg>
       </span>
     </button>
+  )
+}
+
+/** Instagram-style camera outline, dusty pink on cream. */
+function InstagramGlyph() {
+  return (
+    <svg viewBox="0 0 100 100" className="h-full w-full bg-[#f9f1ea]" aria-hidden="true">
+      <g fill="none" stroke="#e2b1b1" strokeWidth="5.5">
+        <rect x="22" y="22" width="56" height="56" rx="16" />
+        <circle cx="50" cy="50" r="12.5" />
+      </g>
+      <circle cx="65.5" cy="34.5" r="3.6" fill="#e2b1b1" />
+    </svg>
+  )
+}
+
+/** Hand-drawn-style artist's palette with two brushes, deep red on soft pink. */
+function PaletteGlyph() {
+  return (
+    <svg viewBox="2 7 100 100" className="h-full w-full bg-[#fcd5dc]" aria-hidden="true">
+      <g fill="none" stroke="#8e1b1b" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        {/* palette body (with thumb notch) + its thickness */}
+        <path d="M24 62C12 52 16 34 34 28c18-6 40-2 46 10 4 8-2 12-8 12s-8 4-5 8c3 5-3 10-15 11-12 1-22-2-28-7z" />
+        <path d="M21 64c8 8 22 10 35 8 8-1 13-4 14-8" />
+        <ellipse cx="67" cy="39" rx="5.5" ry="4" />
+        {/* paint wells */}
+        <ellipse cx="27" cy="50" rx="3.6" ry="3" />
+        <ellipse cx="32" cy="39" rx="3.8" ry="3" />
+        <ellipse cx="43" cy="33" rx="4" ry="3" />
+        <ellipse cx="55" cy="31.5" rx="3.6" ry="2.8" />
+        <ellipse cx="36" cy="59" rx="3.8" ry="3" />
+        <ellipse cx="49" cy="61" rx="3.6" ry="2.8" />
+        {/* two brushes */}
+        {[0, 6].map((dy) => (
+          <g key={dy} transform={`translate(${56 + dy} ${80 + dy * 0.3}) rotate(-32)`}>
+            <rect x="0" y="-1.8" width="36" height="3.6" rx="1.8" />
+            <rect x="-7" y="-2.4" width="7" height="4.8" rx="1" />
+            <path d="M-7-2.4c-6-.5-10 1.5-14 4.5 5 .5 9-.3 14-2.1" />
+          </g>
+        ))}
+      </g>
+    </svg>
   )
 }
 
