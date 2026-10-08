@@ -1,7 +1,7 @@
 {
   "name": "Dippin' Daisys",
   "tagline": "Mock Campaign",
-  "description": "i created this mock campaign as a creative exploration of one of my favorite swimwear brands, inspired by the way dippin’ daisys turns playful colors and patterns into fully realized worlds. i created two story sets, a mock instagram feed, and short-form content, with each concept built around the personality of a different collection. i especially loved designing the stories and finding little visual details that brought each concept to life while still feeling true to the dippin’ daisys brand.",
+  "description": "I created this mock campaign as a creative exploration of one of my favorite swimwear brands, inspired by the way Dippin’ Daisys turns playful colors and patterns into fully realized worlds. I created two story sets, a mock Instagram feed, and short-form content, with each concept built around the personality of a different collection. I especially loved designing the stories and finding little visual details that brought each concept to life while still feeling true to the Dippin’ Daisys brand.",
   "links": [
     { "label": "Mock Campaign", "url": "https://maggieslen.my.canva.site/dippin-daisys" },
     { "label": "Dippin’ Daisys", "url": "https://dippindaisys.com" },
@@ -20,9 +20,9 @@
         "link": "dippindaisys.com",
         "instagramUrl": "https://www.instagram.com/dippindaisys/",
         "highlights": [
-          { "label": "côte d'azur" },
-          { "label": "mallorca" },
-          { "label": "club ibiza" },
+          { "label": "Côte d'Azur" },
+          { "label": "Mallorca" },
+          { "label": "Club Ibiza" },
           { "label": "MSW '26" },
           { "label": "you in DD" }
         ]
