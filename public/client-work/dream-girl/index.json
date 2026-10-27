@@ -61,6 +61,12 @@
           ]
         }
       ]
+    },
+    {
+      "type": "canva",
+      "title": "Mock Campaign",
+      "embedUrl": "https://www.canva.com/design/DAHVXQnPjnI/LwHTHmIoH_qBwcc8qCdwrA/view?embed",
+      "url": "https://canva.link/87imkawe5ys5pee"
     }
   ]
 }
