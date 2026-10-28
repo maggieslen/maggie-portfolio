@@ -52,6 +52,13 @@
       "items": [{ "src": "media/brand-new-day.mp4", "url": "https://www.instagram.com/reel/Dc8mEAThMEh/" }]
     },
     {
+      "type": "gallery",
+      "title": "Shot on a Boilermaker's Phone",
+      "items": [
+        { "src": "media/shot-on-a-boilermakers-phone.mp4", "url": "https://www.instagram.com/reel/DexNMSFIjXF/" }
+      ]
+    },
+    {
       "type": "stories",
       "title": "Reels",
       "columns": 3,
