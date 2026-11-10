@@ -49,7 +49,7 @@ export const folders: Folder[] = [
       { id: 'ph-camden', title: 'Camden', kind: 'image', image: 'photos/camden-candid-cover.jpg', description: 'Candid on court' },
       { id: 'ph-brody', title: 'Brody', kind: 'image', image: 'photos/brody-forehand-cover.jpg', description: 'Match point 🎾' },
       { id: 'ph-talan', title: 'Talan', kind: 'image', image: 'photos/talan-serve.jpg', description: 'Snider tennis 🎾' },
-      { id: 'ph-fountain-trees', title: 'Engineering Mall', kind: 'image', image: 'photos/engineering-fountain-trees.jpg', description: 'Engineering Mall walkway' },
+      { id: 'ph-cary-quad', title: 'Cary Quad', kind: 'image', image: 'photos/cary-quad.jpg', description: 'Cary Quad 🍂' },
       { id: 'ph-pier', title: 'Pier at Sunset', kind: 'image', image: 'photos/pier-sunset.jpg', description: 'Pier at sunset 🌅' },
     ],
   },
