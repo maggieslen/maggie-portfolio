@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { SITE_TITLE, apps, folders, mobile, widgets } from '../content'
+import { apps, folders, mobile, widgets } from '../content'
 import type { AppProject, Folder } from '../types'
 import { asset } from '../lib/asset'
 import { FolderWindow } from './FolderWindow'
@@ -62,15 +62,13 @@ export function MobileView() {
             aria-label="About me"
             className="@container relative mt-2 block aspect-[1000/520] w-full overflow-hidden rounded-[26px] shadow-[0_6px_20px_rgba(0,0,0,0.12)] active:scale-[0.99]"
           >
+            {/* the photo already has "Maggie's Portfolio" drawn on it */}
             <img
               src={asset(mobile.hero)}
               alt=""
               draggable={false}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover object-top"
             />
-            <span className="absolute inset-x-0 bottom-[7%] text-center font-script whitespace-nowrap text-[clamp(16px,6cqw,26px)] leading-none text-black drop-shadow-[0_1px_6px_rgba(255,255,255,0.55)]">
-              {SITE_TITLE.replace(/!$/, '')}
-            </span>
           </button>
         </Pop>
 
